@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NVDA 投資分析報告 2026-06-11(快速模式)</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: "PingFang TC", "Noto Sans TC", sans-serif; background:#f4f4f5; color:#2a2a2e; line-height:1.7; margin:0; padding:32px 16px; }
+  .wrap { max-width:860px; margin:0 auto; }
+  .card { background:#fff; border-radius:12px; padding:28px 32px; margin-bottom:22px; box-shadow:0 1px 3px rgba(0,0,0,0.06); }
+  h1 { font-size:24px; margin:0 0 4px; }
+  h2 { font-size:18px; margin:26px 0 12px; padding-bottom:6px; border-bottom:2px solid #ececef; }
+  h3 { font-size:15px; margin:18px 0 8px; color:#444; }
+  .sub { color:#777; font-size:13px; margin:0; }
+  .hero { display:flex; align-items:center; gap:28px; flex-wrap:wrap; }
+  .score-box { text-align:center; padding:10px 24px; background:#0f6b3f; color:#fff; border-radius:12px; min-width:150px; }
+  .score-box .num { font-size:52px; font-weight:700; line-height:1; }
+  .score-box .band { font-size:14px; margin-top:6px; }
+  .hero-meta { flex:1; min-width:240px; }
+  .hero-meta .conf { display:inline-block; background:#fff4d6; color:#8a6d00; padding:2px 10px; border-radius:20px; font-size:13px; font-weight:600; }
+  table { width:100%; border-collapse:collapse; margin:10px 0; font-size:14px; }
+  th, td { padding:8px 10px; border-bottom:1px solid #eee; text-align:left; }
+  th { background:#fafafa; font-weight:600; color:#555; }
+  td.num, th.num { text-align:right; font-variant-numeric:tabular-nums; }
+  .warn { background:#fff8e1; border-left:4px solid #f5b400; padding:12px 16px; border-radius:6px; margin:14px 0; font-size:14px; }
+  .pos { color:#0f6b3f; font-weight:600; }
+  .neg { color:#b3261e; font-weight:600; }
+  .pt { display:flex; gap:10px; margin:8px 0; font-size:14px; }
+  .pt .dot { flex:none; width:10px; height:10px; border-radius:50%; margin-top:6px; }
+  .footer { text-align:center; color:#999; font-size:12px; margin-top:24px; line-height:1.8; }
+  ul { margin:6px 0; padding-left:20px; }
+  li { margin:4px 0; font-size:14px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="card">
+    <div class="hero">
+      <div class="score-box">
+        <div class="num">8.0</div>
+        <div class="band">推薦</div>
+      </div>
+      <div class="hero-meta">
+        <h1>NVIDIA Corporation (NVDA)</h1>
+        <p class="sub">投資人情境:1–3 年中期持有 · 積極 · 成長優先　|　報告日 2026-06-11</p>
+        <p style="margin:10px 0 0;">信心度 <span class="conf">中</span> &nbsp;<span style="color:#999;font-size:13px;">快速模式:未含法說會與外部風險查核</span></p>
+        <div style="margin-top:12px;">
+          <div class="pt"><span class="dot" style="background:#0f6b3f;"></span><span><b>最強多頭因子:</b>成長與獲利同時爆發 — FY2026 營收 $215.9B(+65% YoY)、淨利率 55.6%、自由現金流 $96.7B,AI 資本支出循環延續。</span></div>
+          <div class="pt"><span class="dot" style="background:#b3261e;"></span><span><b>最關鍵風險:</b>估值偏高(trailing P/E 42x、P/S 23x);護城河、客戶/供應鏈集中風險本次未評估;最新收盤價待人工確認。</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>① 資料品質與時效</h2>
+    <table>
+      <tr><th>項目</th><th>狀態 / 數值</th><th>as-of</th></tr>
+      <tr><td>技術面資料品質</td><td>review(cross_check = <span class="neg">mismatch</span>)</td><td>2026-06-09</td></tr>
+      <tr><td>年度財報(EDGAR)</td><td>FY2024–FY2026 完整</td><td>filed 2026-02-25</td></tr>
+      <tr><td>最新季報</td><td>Q1 FY2027</td><td>filed 2026-05-20</td></tr>
+    </table>
+    <div class="warn">
+      <b>⚠ 最新收盤待人工確認:</b>yfinance 收盤 208.19,但 Nasdaq 官方最新成交 200.42(Jun 10, 2026),差 3.73%。常見原因為 Yahoo 缺最新交易日收盤而落後一天。本報告估值以 208.19 計;若採 200.42,市值/各倍數約再低 3.7%。
+    </div>
+    <div class="warn">
+      <b>快速模式說明:</b>未做網搜。略過法說會(M3)與外部風險(M6);估值僅第一層(自身倍數);「產業地位與護城河」「供應鏈與外部風險」兩維未評估,權重已重新歸一化;整體信心度降一級。
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>② M2 基本面（年度 filed 2026-02-25 · 季 filed 2026-05-20）</h2>
+    <h3>近三年度損益與現金流</h3>
+    <table>
+      <tr><th>指標(USD)</th><th class="num">FY2024</th><th class="num">FY2025</th><th class="num">FY2026</th></tr>
+      <tr><td>營收</td><td class="num">60,922M</td><td class="num">130,497M</td><td class="num">215,938M</td></tr>
+      <tr><td>YoY 成長</td><td class="num">—</td><td class="num pos">+114%</td><td class="num pos">+65%</td></tr>
+      <tr><td>毛利率</td><td class="num">72.7%</td><td class="num">75.0%</td><td class="num">71.1%</td></tr>
+      <tr><td>營業利益</td><td class="num">32,972M</td><td class="num">81,453M</td><td class="num">130,387M</td></tr>
+      <tr><td>淨利</td><td class="num">29,760M</td><td class="num">72,880M</td><td class="num">120,067M</td></tr>
+      <tr><td>淨利率</td><td class="num">48.9%</td><td class="num">55.9%</td><td class="num">55.6%</td></tr>
+      <tr><td>稀釋 EPS</td><td class="num">1.19</td><td class="num">2.94</td><td class="num">4.90</td></tr>
+      <tr><td>營運現金流</td><td class="num">28,090M</td><td class="num">64,089M</td><td class="num">102,718M</td></tr>
+      <tr><td>自由現金流</td><td class="num">27,021M</td><td class="num">60,853M</td><td class="num">96,676M</td></tr>
+    </table>
+    <h3>最新動能(Q1 FY2027,季末 2026-04-26)</h3>
+    <ul>
+      <li>單季營收 <b>$81,615M</b>,YoY <span class="pos">+85%</span>(vs Q1 FY2026 $44,062M),QoQ <span class="pos">+20%</span>(vs Q4 FY2026 推算 $68.1B)。</li>
+      <li>單季淨利 $58,321M、EPS 2.39。<b>注意:</b>淨利($58.3B)高於營業利益($53.5B),淨利率達 71%,疑含非營業一次性利得(如投資利得),不宜當作常態經營獲利能力解讀。</li>
+    </ul>
+    <h3>長週期視角</h3>
+    <p style="font-size:14px;">歷史檔含 FY2008 起 19 個年度。從 FY2024 的 $60.9B 到 FY2026 的 $215.9B,三年營收成長約 3.5 倍,淨利率由 ~49% 拉升並穩定在 ~56%,屬高速成長階段、且伴隨利潤率結構性上移(資料中心 AI 加速)。FY2026 毛利率自 75% 回落至 71%,推測為 Blackwell 新平台量產初期成本(此為數據觀察,非法說會證實)。</p>
+  </div>
+
+  <div class="card">
+    <h2>③ M4 技術面（輔助時機訊號 · as-of 2026-06-09）</h2>
+    <table>
+      <tr><th>項目</th><th class="num">數值</th></tr>
+      <tr><td>最新收盤</td><td class="num">208.19 <span style="color:#999;">(Nasdaq 200.42,待確認)</span></td></tr>
+      <tr><td>MA20 / MA50 / MA200</td><td class="num">218.01 / 204.79 / 188.68</td></tr>
+      <tr><td>均線排列</td><td class="num pos">多頭排列(MA20>MA50>MA200)</td></tr>
+      <tr><td>最近交叉</td><td class="num">黃金交叉 2025-06-27(238 交易日前)</td></tr>
+      <tr><td>52 週區間</td><td class="num">141.78 – 235.47</td></tr>
+      <tr><td>距 52 週高 / 低</td><td class="num">−11.6% / +46.8%</td></tr>
+      <tr><td>量能(vs 20 日均量)</td><td class="num">1.01x(正常)</td></tr>
+    </table>
+    <p style="font-size:14px;">中期上升趨勢完整(站上 MA50、MA200,黃金交叉延續),但短線收盤跌破 MA20、距高點回檔約 12%,呈高檔整理。定位為時機輔助,非主要依據。</p>
+  </div>
+
+  <div class="card">
+    <h2>④ M5 估值（第一層:自身倍數 · 市值 ≈ $5.06T)</h2>
+    <p class="sub">市值 = 208.19 × 24.304B 股 ≈ $5.06T;NVDA 為淨現金(現金 $10.6B > 長債 $7.5B),EV≈市值。</p>
+    <table>
+      <tr><th>倍數(trailing FY2026)</th><th class="num">數值</th><th>備註</th></tr>
+      <tr><td>P/E</td><td class="num">42.1x</td><td>絕對水準偏高</td></tr>
+      <tr><td>P/S / EV/Sales</td><td class="num">23.4x</td><td>成長股主用,仍屬高估值</td></tr>
+      <tr><td>P/FCF(FCF yield)</td><td class="num">52.3x(1.9%)</td><td>現金殖利率薄</td></tr>
+      <tr><td>EV/EBITDA</td><td class="num">38.0x</td><td>—</td></tr>
+      <tr><td>P/B</td><td class="num">32.2x</td><td>—</td></tr>
+    </table>
+    <p style="font-size:14px;"><b>前瞻視角:</b>若以 Q1 FY2027 單季營收年化(~$326B),前瞻 P/S 降至 <b>~15.5x</b>。即估值高低高度取決於成長能否延續 — 在 +65~85% 的營收增速下,trailing 倍數會被快速攤薄;但一旦 AI 資本支出循環放緩,缺乏安全邊際。<b>自身歷史倍數區間需歷史股價(網搜),快速模式未取得,此項中信心。</b></p>
+  </div>
+
+  <div class="card">
+    <h2>⑤ M7 評分（0–10）</h2>
+    <table>
+      <tr><th>維度</th><th class="num">分數</th><th class="num">權重*</th><th>一句理由</th></tr>
+      <tr><td>成長與業務品質</td><td class="num">9.5</td><td class="num">41.7%</td><td>$216B 規模仍 +65% 成長、淨利率 55%、FCF $97B,罕見</td></tr>
+      <tr><td>估值合理性</td><td class="num">6.0</td><td class="num">34.7%</td><td>trailing 倍數高,靠未來成長支撐,安全邊際薄</td></tr>
+      <tr><td>財務體質</td><td class="num">9.5</td><td class="num">16.7%</td><td>淨現金、現金流堡壘、股東權益 $157B</td></tr>
+      <tr><td>技術面時機</td><td class="num">6.5</td><td class="num">6.9%</td><td>中期多頭完整,短線跌破 MA20 整理</td></tr>
+      <tr><td colspan="4" style="color:#999;">產業地位與護城河、供應鏈與外部風險 — 快速模式<b>未評估</b>,權重已剔除歸一化</td></tr>
+    </table>
+    <p class="sub">*原始權重(成長30/估值25/護城河20/財務12/風險8/技術5),剔除未評估兩維後對剩餘 72% 重新歸一化。</p>
+    <p style="font-size:15px;margin-top:14px;"><b>加權結果 ≈ 8.0　→　分數帶:推薦　|　信心度:中</b></p>
+    <p style="font-size:14px;">封頂閘門:無資料缺漏、無償債/持續經營紅旗、未觸發任何上限。信心度因快速模式(未含法說會/外部風險)與股價 mismatch 降為「中」。</p>
+  </div>
+
+  <div class="footer">
+    本內容為分析,非投資顧問建議。<br>
+    報告產出日期:2026-06-11　|　資料 as-of:技術面 2026-06-09、財報 filed 2026-02-25（年度）/ 2026-05-20（最新季）<br>
+    快速模式:未做網搜,略過法說會與外部風險查核。
+  </div>
+
+</div>
+</body>
+</html>

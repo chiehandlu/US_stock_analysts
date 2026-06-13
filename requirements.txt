@@ -1,0 +1,4 @@
+# fetch_stock.py 需要；fetch_financials.py 與 update_history.py 只用標準函式庫。
+# 本機已裝在 .venv；雲端 session 由 analyze skill 第 1 步自動 pip install。
+yfinance
+pandas

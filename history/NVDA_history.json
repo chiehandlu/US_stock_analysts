@@ -1,0 +1,2317 @@
+{
+  "schema_version": "history-1.0",
+  "_doc": {
+    "schema_version": "歷史檔結構版本。skill 應先檢查，不認得就警告而非默默讀錯。",
+    "meta.runs": "此歷史檔被更新過的次數",
+    "technical_snapshots": "技術面軌跡，依交易日排序，每個交易日一筆（同日重跑覆蓋）。欄位同 fetch_stock 輸出的 indicators；cross_check_status 為當次雙來源比對結果",
+    "financials.annual": "全部會計年度（只增不減），鍵為期間結束日。metrics 缺某指標代表該年無資料；tags 記錄各指標實際採用的 XBRL 標籤；filed 為該年資料最新申報日",
+    "financials.quarters": "全部單季序列（只增不減），鍵為季末日。損益/現金流為單季值（80~100天），資產負債為 10-Q 時點值",
+    "financials.annual.<end>.derived": "該年衍生指標：毛利率%、淨利率%、自由現金流、EBITDA（輸入齊全才計算）",
+    "last_run_warnings": "最近一次更新的警告（含兩支腳本的 warnings 與抓取失敗訊息）"
+  },
+  "meta": {
+    "ticker": "NVDA",
+    "company_name": "NVIDIA Corporation",
+    "entity_name": "NVIDIA CORP",
+    "cik": "0001045810",
+    "created_at_utc": "2026-06-11T07:42:26+00:00",
+    "last_updated_utc": "2026-06-11T07:59:24+00:00",
+    "runs": 3
+  },
+  "technical_snapshots": [
+    {
+      "as_of": "2026-06-09",
+      "fetched_at_utc": "2026-06-11T07:59:20+00:00",
+      "data_quality": "review",
+      "cross_check_status": "mismatch",
+      "indicators": {
+        "latest_close": 208.19,
+        "prev_close": 208.64,
+        "ma20": 218.01,
+        "ma50": 204.79,
+        "ma200": 188.68,
+        "ma_alignment": "多頭排列 (MA20>MA50>MA200)",
+        "trend_regime": "bullish (MA50>MA200)",
+        "last_cross": {
+          "type": "golden",
+          "date": "2025-06-27",
+          "trading_days_ago": 238
+        },
+        "high_52w": 235.47,
+        "low_52w": 141.78,
+        "pct_from_52w_high": -11.58,
+        "pct_from_52w_low": 46.84,
+        "volume_latest": 180327000,
+        "volume_avg20": 178906960,
+        "volume_ratio_vs_avg20": 1.01
+      }
+    }
+  ],
+  "financials": {
+    "annual": {
+      "2008-01-27": {
+        "fy_label": "FY2008",
+        "filed": "2011-03-16",
+        "metrics": {
+          "revenue": 4097860000,
+          "gross_profit": 1869280000,
+          "operating_income": 836346000,
+          "net_income": 797645000,
+          "eps_diluted": 1.31,
+          "operating_cash_flow": 1270196000,
+          "dep_amort": 133192000,
+          "stockholders_equity": 2617912000,
+          "cash": 726969000
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "operating_cash_flow": "NetCashProvidedByUsedInOperatingActivities",
+          "dep_amort": "DepreciationAndAmortization",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue"
+        },
+        "derived": {
+          "gross_margin_pct": 45.62,
+          "net_margin_pct": 19.46,
+          "free_cash_flow": null,
+          "ebitda": 969538000
+        }
+      },
+      "2009-01-25": {
+        "fy_label": "FY2009",
+        "filed": "2012-03-13",
+        "metrics": {
+          "revenue": 3424859000,
+          "gross_profit": 1174269000,
+          "operating_income": -70700000,
+          "net_income": -30041000,
+          "eps_diluted": -0.05,
+          "operating_cash_flow": 249360000,
+          "dep_amort": 185023000,
+          "total_assets": 3350727000,
+          "stockholders_equity": 2394652000,
+          "cash": 417688000,
+          "shares_outstanding": 538460766
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "operating_cash_flow": "NetCashProvidedByUsedInOperatingActivities",
+          "dep_amort": "DepreciationAndAmortization",
+          "total_assets": "Assets",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue",
+          "shares_outstanding": "CommonStockSharesOutstanding"
+        },
+        "derived": {
+          "gross_margin_pct": 34.29,
+          "net_margin_pct": -0.88,
+          "free_cash_flow": null,
+          "ebitda": 114323000
+        }
+      },
+      "2010-01-31": {
+        "fy_label": "FY2010",
+        "filed": "2013-03-12",
+        "metrics": {
+          "revenue": 3326445000,
+          "gross_profit": 1176923000,
+          "operating_income": -98945000,
+          "net_income": -67987000,
+          "eps_diluted": -0.12,
+          "operating_cash_flow": 487807000,
+          "capex": 77601000,
+          "dep_amort": 196664000,
+          "total_assets": 3585918000,
+          "stockholders_equity": 2665140000,
+          "cash": 447221000,
+          "shares_outstanding": 561465851
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "operating_cash_flow": "NetCashProvidedByUsedInOperatingActivities",
+          "capex": "PaymentsToAcquirePropertyPlantAndEquipment",
+          "dep_amort": "DepreciationAndAmortization",
+          "total_assets": "Assets",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue",
+          "shares_outstanding": "CommonStockSharesOutstanding"
+        },
+        "derived": {
+          "gross_margin_pct": 35.38,
+          "net_margin_pct": -2.04,
+          "free_cash_flow": 410206000,
+          "ebitda": 97719000
+        }
+      },
+      "2011-01-30": {
+        "fy_label": "FY2011",
+        "filed": "2014-03-13",
+        "metrics": {
+          "revenue": 3543309000,
+          "gross_profit": 1409090000,
+          "operating_income": 255747000,
+          "net_income": 253146000,
+          "eps_diluted": 0.43,
+          "operating_cash_flow": 675797000,
+          "capex": 97890000,
+          "dep_amort": 186989000,
+          "total_assets": 4495246000,
+          "stockholders_equity": 3181462000,
+          "cash": 665361000,
+          "shares_outstanding": 588555701
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "operating_cash_flow": "NetCashProvidedByUsedInOperatingActivities",
+          "capex": "PaymentsToAcquirePropertyPlantAndEquipment",
+          "dep_amort": "DepreciationAndAmortization",
+          "total_assets": "Assets",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue",
+          "shares_outstanding": "CommonStockSharesOutstanding"
+        },
+        "derived": {
+          "gross_margin_pct": 39.77,
+          "net_margin_pct": 7.14,
+          "free_cash_flow": 577907000,
+          "ebitda": 442736000
+        }
+      },
+      "2012-01-29": {
+        "fy_label": "FY2012",
+        "filed": "2015-03-12",
+        "metrics": {
+          "revenue": 3997930000,
+          "gross_profit": 2056517000,
+          "operating_income": 648299000,
+          "net_income": 581090000,
+          "eps_diluted": 0.94,
+          "operating_cash_flow": 909156000,
+          "capex": 138735000,
+          "dep_amort": 204205000,
+          "total_assets": 5552928000,
+          "stockholders_equity": 4145724000,
+          "cash": 667876000,
+          "shares_outstanding": 612191412
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "operating_cash_flow": "NetCashProvidedByUsedInOperatingActivities",
+          "capex": "PaymentsToAcquirePropertyPlantAndEquipment",
+          "dep_amort": "DepreciationAndAmortization",
+          "total_assets": "Assets",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue",
+          "shares_outstanding": "CommonStockSharesOutstanding"
+        },
+        "derived": {
+          "gross_margin_pct": 51.44,
+          "net_margin_pct": 14.53,
+          "free_cash_flow": 770421000,
+          "ebitda": 852504000
+        }
+      },
+      "2013-01-27": {
+        "fy_label": "FY2013",
+        "filed": "2016-03-17",
+        "metrics": {
+          "revenue": 4280159000,
+          "gross_profit": 2226343000,
+          "operating_income": 648239000,
+          "net_income": 562536000,
+          "eps_diluted": 0.9,
+          "operating_cash_flow": 824172000,
+          "dep_amort": 226235000,
+          "total_assets": 6412245000,
+          "stockholders_equity": 4827000000,
+          "cash": 733000000,
+          "long_term_debt": 0,
+          "shares_outstanding": 616756134
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "operating_cash_flow": "NetCashProvidedByUsedInOperatingActivities",
+          "dep_amort": "DepreciationAndAmortization",
+          "total_assets": "Assets",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue",
+          "long_term_debt": "LongTermDebt",
+          "shares_outstanding": "CommonStockSharesOutstanding"
+        },
+        "derived": {
+          "gross_margin_pct": 52.02,
+          "net_margin_pct": 13.14,
+          "free_cash_flow": null,
+          "ebitda": 874474000
+        }
+      },
+      "2014-01-26": {
+        "fy_label": "FY2014",
+        "filed": "2017-03-01",
+        "metrics": {
+          "revenue": 4130000000,
+          "gross_profit": 2268000000,
+          "operating_income": 496000000,
+          "net_income": 440000000,
+          "eps_diluted": 0.74,
+          "operating_cash_flow": 835000000,
+          "dep_amort": 239000000,
+          "total_assets": 7250894000,
+          "stockholders_equity": 4455000000,
+          "cash": 1152000000,
+          "long_term_debt": 1356375000,
+          "shares_outstanding": 567997000
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "operating_cash_flow": "NetCashProvidedByUsedInOperatingActivities",
+          "dep_amort": "DepreciationAndAmortization",
+          "total_assets": "Assets",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue",
+          "long_term_debt": "LongTermDebt",
+          "shares_outstanding": "CommonStockSharesOutstanding"
+        },
+        "derived": {
+          "gross_margin_pct": 54.92,
+          "net_margin_pct": 10.65,
+          "free_cash_flow": null,
+          "ebitda": 735000000
+        }
+      },
+      "2015-01-25": {
+        "fy_label": "FY2015",
+        "filed": "2018-02-28",
+        "metrics": {
+          "revenue": 4682000000,
+          "gross_profit": 2599000000,
+          "operating_income": 759000000,
+          "net_income": 631000000,
+          "eps_diluted": 1.12,
+          "operating_cash_flow": 906000000,
+          "dep_amort": 220000000,
+          "total_assets": 7201000000,
+          "total_liabilities": 2783000000,
+          "stockholders_equity": 4418000000,
+          "cash": 497000000,
+          "long_term_debt": 1384000000,
+          "shares_outstanding": 545000000
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "operating_cash_flow": "NetCashProvidedByUsedInOperatingActivities",
+          "dep_amort": "DepreciationAndAmortization",
+          "total_assets": "Assets",
+          "total_liabilities": "Liabilities",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue",
+          "long_term_debt": "LongTermDebt",
+          "shares_outstanding": "CommonStockSharesOutstanding"
+        },
+        "derived": {
+          "gross_margin_pct": 55.51,
+          "net_margin_pct": 13.48,
+          "free_cash_flow": null,
+          "ebitda": 979000000
+        }
+      },
+      "2016-01-31": {
+        "fy_label": "FY2016",
+        "filed": "2019-02-21",
+        "metrics": {
+          "revenue": 5010000000,
+          "gross_profit": 2811000000,
+          "operating_income": 747000000,
+          "net_income": 614000000,
+          "eps_diluted": 1.08,
+          "operating_cash_flow": 1175000000,
+          "dep_amort": 197000000,
+          "total_assets": 7370000000,
+          "total_liabilities": 2814000000,
+          "stockholders_equity": 4469000000,
+          "cash": 596000000,
+          "long_term_debt": 0,
+          "shares_outstanding": 539000000
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "operating_cash_flow": "NetCashProvidedByUsedInOperatingActivities",
+          "dep_amort": "DepreciationAndAmortization",
+          "total_assets": "Assets",
+          "total_liabilities": "Liabilities",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue",
+          "long_term_debt": "LongTermDebt",
+          "shares_outstanding": "CommonStockSharesOutstanding"
+        },
+        "derived": {
+          "gross_margin_pct": 56.11,
+          "net_margin_pct": 12.26,
+          "free_cash_flow": null,
+          "ebitda": 944000000
+        }
+      },
+      "2017-01-29": {
+        "fy_label": "FY2017",
+        "filed": "2020-02-20",
+        "metrics": {
+          "revenue": 6910000000,
+          "gross_profit": 4063000000,
+          "operating_income": 1934000000,
+          "net_income": 1666000000,
+          "eps_diluted": 2.57,
+          "operating_cash_flow": 1672000000,
+          "dep_amort": 187000000,
+          "total_assets": 9841000000,
+          "total_liabilities": 4048000000,
+          "stockholders_equity": 5762000000,
+          "cash": 1766000000,
+          "long_term_debt": 1983000000,
+          "shares_outstanding": 585000000
+        },
+        "tags": {
+          "revenue": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "operating_cash_flow": "NetCashProvidedByUsedInOperatingActivities",
+          "dep_amort": "DepreciationAndAmortization",
+          "total_assets": "Assets",
+          "total_liabilities": "Liabilities",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue",
+          "long_term_debt": "LongTermDebt",
+          "shares_outstanding": "CommonStockSharesOutstanding"
+        },
+        "derived": {
+          "gross_margin_pct": 58.8,
+          "net_margin_pct": 24.11,
+          "free_cash_flow": null,
+          "ebitda": 2121000000
+        }
+      },
+      "2018-01-28": {
+        "fy_label": "FY2018",
+        "filed": "2021-02-26",
+        "metrics": {
+          "revenue": 9714000000,
+          "gross_profit": 5822000000,
+          "operating_income": 3210000000,
+          "net_income": 3047000000,
+          "eps_diluted": 4.82,
+          "operating_cash_flow": 3502000000,
+          "dep_amort": 199000000,
+          "total_assets": 11241000000,
+          "total_liabilities": 3770000000,
+          "stockholders_equity": 7471000000,
+          "cash": 4002000000,
+          "long_term_debt": 1985000000,
+          "shares_outstanding": 606000000
+        },
+        "tags": {
+          "revenue": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "operating_cash_flow": "NetCashProvidedByUsedInOperatingActivities",
+          "dep_amort": "DepreciationAndAmortization",
+          "total_assets": "Assets",
+          "total_liabilities": "Liabilities",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue",
+          "long_term_debt": "LongTermDebt",
+          "shares_outstanding": "CommonStockSharesOutstanding"
+        },
+        "derived": {
+          "gross_margin_pct": 59.93,
+          "net_margin_pct": 31.37,
+          "free_cash_flow": null,
+          "ebitda": 3409000000
+        }
+      },
+      "2019-01-27": {
+        "fy_label": "FY2019",
+        "filed": "2022-03-18",
+        "metrics": {
+          "revenue": 11716000000,
+          "gross_profit": 7171000000,
+          "operating_income": 3804000000,
+          "net_income": 4141000000,
+          "eps_diluted": 6.63,
+          "operating_cash_flow": 3743000000,
+          "dep_amort": 262000000,
+          "total_assets": 13292000000,
+          "total_liabilities": 3950000000,
+          "stockholders_equity": 9342000000,
+          "cash": 782000000,
+          "long_term_debt": 1988000000,
+          "shares_outstanding": 606000000
+        },
+        "tags": {
+          "revenue": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "operating_cash_flow": "NetCashProvidedByUsedInOperatingActivities",
+          "dep_amort": "DepreciationAndAmortization",
+          "total_assets": "Assets",
+          "total_liabilities": "Liabilities",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue",
+          "long_term_debt": "LongTermDebt",
+          "shares_outstanding": "CommonStockSharesOutstanding"
+        },
+        "derived": {
+          "gross_margin_pct": 61.21,
+          "net_margin_pct": 35.34,
+          "free_cash_flow": null,
+          "ebitda": 4066000000
+        }
+      },
+      "2020-01-26": {
+        "fy_label": "FY2020",
+        "filed": "2023-02-24",
+        "metrics": {
+          "revenue": 10918000000,
+          "gross_profit": 6768000000,
+          "operating_income": 2846000000,
+          "net_income": 2796000000,
+          "eps_diluted": 1.13,
+          "operating_cash_flow": 4761000000,
+          "dep_amort": 381000000,
+          "total_assets": 17315000000,
+          "total_liabilities": 5111000000,
+          "stockholders_equity": 12204000000,
+          "cash": 10896000000,
+          "long_term_debt": 1991000000,
+          "shares_outstanding": 612000000
+        },
+        "tags": {
+          "revenue": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "operating_cash_flow": "NetCashProvidedByUsedInOperatingActivities",
+          "dep_amort": "DepreciationDepletionAndAmortization",
+          "total_assets": "Assets",
+          "total_liabilities": "Liabilities",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue",
+          "long_term_debt": "LongTermDebtNoncurrent",
+          "shares_outstanding": "CommonStockSharesOutstanding"
+        },
+        "derived": {
+          "gross_margin_pct": 61.99,
+          "net_margin_pct": 25.61,
+          "free_cash_flow": null,
+          "ebitda": 3227000000
+        }
+      },
+      "2021-01-31": {
+        "fy_label": "FY2021",
+        "filed": "2024-02-21",
+        "metrics": {
+          "revenue": 16675000000,
+          "gross_profit": 10396000000,
+          "operating_income": 4532000000,
+          "net_income": 4332000000,
+          "eps_diluted": 1.73,
+          "operating_cash_flow": 5822000000,
+          "dep_amort": 1098000000,
+          "total_assets": 28791000000,
+          "total_liabilities": 11898000000,
+          "stockholders_equity": 16893000000,
+          "cash": 847000000,
+          "long_term_debt": 5964000000,
+          "shares_outstanding": 2479000000
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "operating_cash_flow": "NetCashProvidedByUsedInOperatingActivities",
+          "dep_amort": "DepreciationDepletionAndAmortization",
+          "total_assets": "Assets",
+          "total_liabilities": "Liabilities",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue",
+          "long_term_debt": "LongTermDebtNoncurrent",
+          "shares_outstanding": "CommonStockSharesOutstanding"
+        },
+        "derived": {
+          "gross_margin_pct": 62.34,
+          "net_margin_pct": 25.98,
+          "free_cash_flow": null,
+          "ebitda": 5630000000
+        }
+      },
+      "2022-01-30": {
+        "fy_label": "FY2022",
+        "filed": "2025-02-26",
+        "metrics": {
+          "revenue": 26914000000,
+          "gross_profit": 17475000000,
+          "operating_income": 10041000000,
+          "net_income": 9752000000,
+          "eps_diluted": 3.85,
+          "operating_cash_flow": 9108000000,
+          "capex": 976000000,
+          "dep_amort": 1174000000,
+          "total_assets": 44187000000,
+          "total_liabilities": 17575000000,
+          "stockholders_equity": 26612000000,
+          "cash": 1990000000,
+          "long_term_debt": 10946000000,
+          "shares_outstanding": 2506000000
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "operating_cash_flow": "NetCashProvidedByUsedInOperatingActivities",
+          "capex": "PaymentsToAcquireProductiveAssets",
+          "dep_amort": "DepreciationDepletionAndAmortization",
+          "total_assets": "Assets",
+          "total_liabilities": "Liabilities",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue",
+          "long_term_debt": "LongTermDebtNoncurrent",
+          "shares_outstanding": "CommonStockSharesOutstanding"
+        },
+        "derived": {
+          "gross_margin_pct": 64.93,
+          "net_margin_pct": 36.23,
+          "free_cash_flow": 8132000000,
+          "ebitda": 11215000000
+        }
+      },
+      "2023-01-29": {
+        "fy_label": "FY2023",
+        "filed": "2026-02-25",
+        "metrics": {
+          "revenue": 26974000000,
+          "gross_profit": 15356000000,
+          "operating_income": 4224000000,
+          "net_income": 4368000000,
+          "eps_diluted": 0.17,
+          "operating_cash_flow": 5641000000,
+          "capex": 1833000000,
+          "dep_amort": 1544000000,
+          "total_assets": 41182000000,
+          "total_liabilities": 19081000000,
+          "stockholders_equity": 22101000000,
+          "cash": 3389000000,
+          "long_term_debt": 9703000000,
+          "shares_outstanding": 2466000000
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "operating_cash_flow": "NetCashProvidedByUsedInOperatingActivities",
+          "capex": "PaymentsToAcquireProductiveAssets",
+          "dep_amort": "DepreciationDepletionAndAmortization",
+          "total_assets": "Assets",
+          "total_liabilities": "Liabilities",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue",
+          "long_term_debt": "LongTermDebtNoncurrent",
+          "shares_outstanding": "CommonStockSharesOutstanding"
+        },
+        "derived": {
+          "gross_margin_pct": 56.93,
+          "net_margin_pct": 16.19,
+          "free_cash_flow": 3808000000,
+          "ebitda": 5768000000
+        }
+      },
+      "2024-01-28": {
+        "fy_label": "FY2024",
+        "filed": "2026-02-25",
+        "metrics": {
+          "revenue": 60922000000,
+          "gross_profit": 44301000000,
+          "operating_income": 32972000000,
+          "net_income": 29760000000,
+          "eps_diluted": 1.19,
+          "operating_cash_flow": 28090000000,
+          "capex": 1069000000,
+          "dep_amort": 1508000000,
+          "total_assets": 65728000000,
+          "total_liabilities": 22750000000,
+          "stockholders_equity": 42978000000,
+          "cash": 7280000000,
+          "long_term_debt": 8459000000,
+          "shares_outstanding": 24643000000
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "operating_cash_flow": "NetCashProvidedByUsedInOperatingActivities",
+          "capex": "PaymentsToAcquireProductiveAssets",
+          "dep_amort": "DepreciationDepletionAndAmortization",
+          "total_assets": "Assets",
+          "total_liabilities": "Liabilities",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue",
+          "long_term_debt": "LongTermDebtNoncurrent",
+          "shares_outstanding": "CommonStockSharesOutstanding"
+        },
+        "derived": {
+          "gross_margin_pct": 72.72,
+          "net_margin_pct": 48.85,
+          "free_cash_flow": 27021000000,
+          "ebitda": 34480000000
+        }
+      },
+      "2025-01-26": {
+        "fy_label": "FY2025",
+        "filed": "2026-02-25",
+        "metrics": {
+          "revenue": 130497000000,
+          "gross_profit": 97858000000,
+          "operating_income": 81453000000,
+          "net_income": 72880000000,
+          "eps_diluted": 2.94,
+          "operating_cash_flow": 64089000000,
+          "capex": 3236000000,
+          "dep_amort": 1864000000,
+          "total_assets": 111601000000,
+          "total_liabilities": 32274000000,
+          "stockholders_equity": 79327000000,
+          "cash": 8589000000,
+          "long_term_debt": 8463000000,
+          "shares_outstanding": 24477000000
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "operating_cash_flow": "NetCashProvidedByUsedInOperatingActivities",
+          "capex": "PaymentsToAcquireProductiveAssets",
+          "dep_amort": "DepreciationDepletionAndAmortization",
+          "total_assets": "Assets",
+          "total_liabilities": "Liabilities",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue",
+          "long_term_debt": "LongTermDebtNoncurrent",
+          "shares_outstanding": "CommonStockSharesOutstanding"
+        },
+        "derived": {
+          "gross_margin_pct": 74.99,
+          "net_margin_pct": 55.85,
+          "free_cash_flow": 60853000000,
+          "ebitda": 83317000000
+        }
+      },
+      "2026-01-25": {
+        "fy_label": "FY2026",
+        "filed": "2026-02-25",
+        "metrics": {
+          "revenue": 215938000000,
+          "gross_profit": 153463000000,
+          "operating_income": 130387000000,
+          "net_income": 120067000000,
+          "eps_diluted": 4.9,
+          "operating_cash_flow": 102718000000,
+          "capex": 6042000000,
+          "dep_amort": 2843000000,
+          "total_assets": 206803000000,
+          "total_liabilities": 49510000000,
+          "stockholders_equity": 157293000000,
+          "cash": 10605000000,
+          "long_term_debt": 7469000000,
+          "shares_outstanding": 24304000000
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "operating_cash_flow": "NetCashProvidedByUsedInOperatingActivities",
+          "capex": "PaymentsToAcquireProductiveAssets",
+          "dep_amort": "DepreciationDepletionAndAmortization",
+          "total_assets": "Assets",
+          "total_liabilities": "Liabilities",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue",
+          "long_term_debt": "LongTermDebtNoncurrent",
+          "shares_outstanding": "CommonStockSharesOutstanding"
+        },
+        "derived": {
+          "gross_margin_pct": 71.07,
+          "net_margin_pct": 55.6,
+          "free_cash_flow": 96676000000,
+          "ebitda": 133230000000
+        }
+      }
+    },
+    "quarters": {
+      "2008-07-27": {
+        "filed": "2009-08-20",
+        "metrics": {
+          "revenue": 892676000,
+          "gross_profit": 149917000,
+          "operating_income": -155392000,
+          "net_income": -120929000,
+          "eps_diluted": -0.22,
+          "cash": 719143000
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "cash": "CashAndCashEquivalentsAtCarryingValue"
+        }
+      },
+      "2008-10-26": {
+        "filed": "2009-11-19",
+        "metrics": {
+          "revenue": 897655000,
+          "gross_profit": 367843000,
+          "operating_income": 56796000,
+          "net_income": 61748000,
+          "eps_diluted": 0.11,
+          "cash": 461253000
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "cash": "CashAndCashEquivalentsAtCarryingValue"
+        }
+      },
+      "2009-04-26": {
+        "filed": "2010-05-21",
+        "metrics": {
+          "revenue": 664231000,
+          "gross_profit": 189696000,
+          "operating_income": -230965000,
+          "net_income": -201338000,
+          "eps_diluted": -0.37,
+          "operating_cash_flow": 142128000,
+          "dep_amort": 50658000,
+          "cash": 512274000
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "operating_cash_flow": "NetCashProvidedByUsedInOperatingActivities",
+          "dep_amort": "DepreciationAndAmortization",
+          "cash": "CashAndCashEquivalentsAtCarryingValue"
+        }
+      },
+      "2009-07-26": {
+        "filed": "2010-08-30",
+        "metrics": {
+          "revenue": 776520000,
+          "gross_profit": 156723000,
+          "operating_income": -110107000,
+          "net_income": -105302000,
+          "eps_diluted": -0.19,
+          "dep_amort": 49322000,
+          "total_assets": 3298409000,
+          "stockholders_equity": 2247409000,
+          "cash": 523785000
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "dep_amort": "DepreciationAndAmortization",
+          "total_assets": "Assets",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue"
+        }
+      },
+      "2009-10-25": {
+        "filed": "2010-12-07",
+        "metrics": {
+          "revenue": 903206000,
+          "gross_profit": 391783000,
+          "operating_income": 107845000,
+          "net_income": 107577000,
+          "eps_diluted": 0.19,
+          "dep_amort": 48770000,
+          "total_assets": 3463574000,
+          "stockholders_equity": 2423635000,
+          "cash": 614490000
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "dep_amort": "DepreciationAndAmortization",
+          "total_assets": "Assets",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue"
+        }
+      },
+      "2010-05-02": {
+        "filed": "2011-05-27",
+        "metrics": {
+          "revenue": 1001813000,
+          "gross_profit": 456377000,
+          "operating_income": 147393000,
+          "net_income": 137594000,
+          "eps_diluted": 0.23,
+          "operating_cash_flow": -5397000,
+          "dep_amort": 47147000,
+          "total_assets": 3803030000,
+          "stockholders_equity": 2860645000,
+          "cash": 447262000
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "operating_cash_flow": "NetCashProvidedByUsedInOperatingActivities",
+          "dep_amort": "DepreciationAndAmortization",
+          "total_assets": "Assets",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue"
+        }
+      },
+      "2010-08-01": {
+        "filed": "2011-08-25",
+        "metrics": {
+          "revenue": 811208000,
+          "gross_profit": 134292000,
+          "operating_income": -175207000,
+          "net_income": -140961000,
+          "eps_diluted": -0.25,
+          "dep_amort": 46573000,
+          "total_assets": 3731268000,
+          "stockholders_equity": 2760514000,
+          "cash": 377003000
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "dep_amort": "DepreciationAndAmortization",
+          "total_assets": "Assets",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue"
+        }
+      },
+      "2010-10-31": {
+        "filed": "2011-11-22",
+        "metrics": {
+          "revenue": 843912000,
+          "gross_profit": 392062000,
+          "operating_income": 103783000,
+          "net_income": 84862000,
+          "eps_diluted": 0.15,
+          "dep_amort": 46786000,
+          "total_assets": 3915579000,
+          "stockholders_equity": 2897880000,
+          "cash": 451174000
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "dep_amort": "DepreciationAndAmortization",
+          "total_assets": "Assets",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue"
+        }
+      },
+      "2011-05-01": {
+        "filed": "2012-05-23",
+        "metrics": {
+          "revenue": 962039000,
+          "gross_profit": 484503000,
+          "operating_income": 154862000,
+          "net_income": 135219000,
+          "eps_diluted": 0.22,
+          "operating_cash_flow": 172200000,
+          "capex": 31195000,
+          "dep_amort": 47764000,
+          "total_assets": 4736744000,
+          "stockholders_equity": 3447808000,
+          "cash": 683633000
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "operating_cash_flow": "NetCashProvidedByUsedInOperatingActivities",
+          "capex": "PaymentsToAcquirePropertyPlantAndEquipment",
+          "dep_amort": "DepreciationAndAmortization",
+          "total_assets": "Assets",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue"
+        }
+      },
+      "2011-07-31": {
+        "filed": "2012-08-22",
+        "metrics": {
+          "revenue": 1016517000,
+          "gross_profit": 525284000,
+          "operating_income": 174030000,
+          "net_income": 151573000,
+          "eps_diluted": 0.25,
+          "dep_amort": 52160000,
+          "total_assets": 4864424000,
+          "stockholders_equity": 3689469000,
+          "cash": 532614000
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "dep_amort": "DepreciationAndAmortization",
+          "total_assets": "Assets",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue"
+        }
+      },
+      "2011-10-30": {
+        "filed": "2012-11-19",
+        "metrics": {
+          "revenue": 1066180000,
+          "gross_profit": 556717000,
+          "operating_income": 197090000,
+          "net_income": 178273000,
+          "eps_diluted": 0.29,
+          "dep_amort": 52387000,
+          "total_assets": 5089043000,
+          "stockholders_equity": 3973450000,
+          "cash": 566816000
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "dep_amort": "DepreciationAndAmortization",
+          "total_assets": "Assets",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue"
+        }
+      },
+      "2012-04-29": {
+        "filed": "2013-05-22",
+        "metrics": {
+          "revenue": 924877000,
+          "gross_profit": 463364000,
+          "operating_income": 72826000,
+          "net_income": 60437000,
+          "eps_diluted": 0.1,
+          "operating_cash_flow": -9208000,
+          "capex": 28923000,
+          "dep_amort": 54491000,
+          "total_assets": 5708167000,
+          "stockholders_equity": 4287428000,
+          "cash": 369135000
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "operating_cash_flow": "NetCashProvidedByUsedInOperatingActivities",
+          "capex": "PaymentsToAcquirePropertyPlantAndEquipment",
+          "dep_amort": "DepreciationAndAmortization",
+          "total_assets": "Assets",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue"
+        }
+      },
+      "2012-07-29": {
+        "filed": "2013-08-21",
+        "metrics": {
+          "revenue": 1044270000,
+          "gross_profit": 540719000,
+          "operating_income": 139623000,
+          "net_income": 119046000,
+          "eps_diluted": 0.19,
+          "dep_amort": 56195000,
+          "total_assets": 5891881000,
+          "stockholders_equity": 4453665000,
+          "cash": 499618000
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "dep_amort": "DepreciationAndAmortization",
+          "total_assets": "Assets",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue"
+        }
+      },
+      "2012-10-28": {
+        "filed": "2013-11-19",
+        "metrics": {
+          "revenue": 1204110000,
+          "gross_profit": 636658000,
+          "operating_income": 252217000,
+          "net_income": 209080000,
+          "eps_diluted": 0.33,
+          "dep_amort": 57148000,
+          "total_assets": 6075144000,
+          "stockholders_equity": 4722846000,
+          "cash": 525388000
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "dep_amort": "DepreciationAndAmortization",
+          "total_assets": "Assets",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue"
+        }
+      },
+      "2013-04-28": {
+        "filed": "2014-05-21",
+        "metrics": {
+          "revenue": 954739000,
+          "gross_profit": 518568000,
+          "operating_income": 82781000,
+          "net_income": 77891000,
+          "eps_diluted": 0.13,
+          "operating_cash_flow": 175650000,
+          "capex": 65667000,
+          "dep_amort": 59744000,
+          "total_assets": 6279527000,
+          "stockholders_equity": 4824936000,
+          "cash": 561423000
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "operating_cash_flow": "NetCashProvidedByUsedInOperatingActivities",
+          "capex": "PaymentsToAcquirePropertyPlantAndEquipment",
+          "dep_amort": "DepreciationAndAmortization",
+          "total_assets": "Assets",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue"
+        }
+      },
+      "2013-07-28": {
+        "filed": "2014-08-20",
+        "metrics": {
+          "revenue": 977238000,
+          "gross_profit": 545538000,
+          "operating_income": 105534000,
+          "net_income": 96448000,
+          "eps_diluted": 0.16,
+          "dep_amort": 61840000,
+          "total_assets": 5569592000,
+          "stockholders_equity": 4172173000,
+          "cash": 591321000
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "dep_amort": "DepreciationAndAmortization",
+          "total_assets": "Assets",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue"
+        }
+      },
+      "2013-10-27": {
+        "filed": "2014-11-19",
+        "metrics": {
+          "revenue": 1053967000,
+          "gross_profit": 584415000,
+          "operating_income": 140988000,
+          "net_income": 118734000,
+          "eps_diluted": 0.2,
+          "dep_amort": 62726000,
+          "total_assets": 5711373000,
+          "stockholders_equity": 4320647000,
+          "cash": 562084000
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "dep_amort": "DepreciationAndAmortization",
+          "total_assets": "Assets",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue"
+        }
+      },
+      "2014-04-27": {
+        "filed": "2015-05-20",
+        "metrics": {
+          "revenue": 1103000000,
+          "gross_profit": 604000000,
+          "operating_income": 151000000,
+          "net_income": 137000000,
+          "eps_diluted": 0.24,
+          "operating_cash_flow": 151000000,
+          "capex": 29000000,
+          "dep_amort": 55000000,
+          "total_assets": 6864663000,
+          "stockholders_equity": 4166985000,
+          "cash": 509000000,
+          "long_term_debt": 1363276000
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "operating_cash_flow": "NetCashProvidedByUsedInOperatingActivities",
+          "capex": "PaymentsToAcquirePropertyPlantAndEquipment",
+          "dep_amort": "DepreciationAndAmortization",
+          "total_assets": "Assets",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue",
+          "long_term_debt": "LongTermDebt"
+        }
+      },
+      "2014-07-27": {
+        "filed": "2015-08-19",
+        "metrics": {
+          "revenue": 1103000000,
+          "gross_profit": 619000000,
+          "operating_income": 163000000,
+          "net_income": 128000000,
+          "eps_diluted": 0.22,
+          "dep_amort": 56000000,
+          "total_assets": 6933719000,
+          "stockholders_equity": 4304786000,
+          "cash": 515000000,
+          "long_term_debt": 1370249000
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "dep_amort": "DepreciationAndAmortization",
+          "total_assets": "Assets",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue",
+          "long_term_debt": "LongTermDebt"
+        }
+      },
+      "2014-10-26": {
+        "filed": "2015-11-18",
+        "metrics": {
+          "revenue": 1225000000,
+          "gross_profit": 676000000,
+          "operating_income": 213000000,
+          "net_income": 173000000,
+          "eps_diluted": 0.31,
+          "dep_amort": 56000000,
+          "total_assets": 6885869000,
+          "stockholders_equity": 4204593000,
+          "cash": 395000000,
+          "long_term_debt": 1377259000
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "dep_amort": "DepreciationAndAmortization",
+          "total_assets": "Assets",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue",
+          "long_term_debt": "LongTermDebt"
+        }
+      },
+      "2015-04-26": {
+        "filed": "2016-05-25",
+        "metrics": {
+          "revenue": 1151000000,
+          "gross_profit": 653000000,
+          "operating_income": 176000000,
+          "net_income": 134000000,
+          "eps_diluted": 0.24,
+          "operating_cash_flow": 246000000,
+          "capex": 30000000,
+          "dep_amort": 54000000,
+          "total_assets": 7291000000,
+          "stockholders_equity": 4556000000,
+          "cash": 464000000,
+          "long_term_debt": 1391000000
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "operating_cash_flow": "NetCashProvidedByUsedInOperatingActivities",
+          "capex": "PaymentsToAcquirePropertyPlantAndEquipment",
+          "dep_amort": "DepreciationAndAmortization",
+          "total_assets": "Assets",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue",
+          "long_term_debt": "LongTermDebt"
+        }
+      },
+      "2015-07-26": {
+        "filed": "2016-08-23",
+        "metrics": {
+          "revenue": 1153000000,
+          "gross_profit": 634000000,
+          "operating_income": 76000000,
+          "net_income": 26000000,
+          "eps_diluted": 0.05,
+          "dep_amort": 49000000,
+          "total_assets": 6979000000,
+          "stockholders_equity": 4185000000,
+          "cash": 435000000,
+          "long_term_debt": 1399000000
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "dep_amort": "DepreciationAndAmortization",
+          "total_assets": "Assets",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue",
+          "long_term_debt": "LongTermDebt"
+        }
+      },
+      "2015-10-25": {
+        "filed": "2016-11-22",
+        "metrics": {
+          "revenue": 1305000000,
+          "gross_profit": 734000000,
+          "operating_income": 245000000,
+          "net_income": 246000000,
+          "eps_diluted": 0.44,
+          "dep_amort": 48000000,
+          "total_assets": 7174000000,
+          "stockholders_equity": 4465000000,
+          "cash": 471000000,
+          "long_term_debt": 1406000000
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "dep_amort": "DepreciationAndAmortization",
+          "total_assets": "Assets",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue",
+          "long_term_debt": "LongTermDebt"
+        }
+      },
+      "2016-05-01": {
+        "filed": "2017-05-23",
+        "metrics": {
+          "revenue": 1305000000,
+          "gross_profit": 751000000,
+          "operating_income": 245000000,
+          "net_income": 208000000,
+          "eps_diluted": 0.35,
+          "operating_cash_flow": 319000000,
+          "capex": 55000000,
+          "dep_amort": 45000000,
+          "total_assets": 7108000000,
+          "total_liabilities": 2833000000,
+          "stockholders_equity": 4196000000,
+          "cash": 547000000
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "operating_cash_flow": "NetCashProvidedByUsedInOperatingActivities",
+          "capex": "PaymentsToAcquirePropertyPlantAndEquipment",
+          "dep_amort": "DepreciationAndAmortization",
+          "total_assets": "Assets",
+          "total_liabilities": "Liabilities",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue"
+        }
+      },
+      "2016-07-31": {
+        "filed": "2017-08-23",
+        "metrics": {
+          "revenue": 1428000000,
+          "gross_profit": 826000000,
+          "operating_income": 317000000,
+          "net_income": 261000000,
+          "eps_diluted": 0.41,
+          "operating_cash_flow": 201000000,
+          "dep_amort": 47000000,
+          "total_assets": 7461000000,
+          "total_liabilities": 2909000000,
+          "stockholders_equity": 4480000000,
+          "cash": 426000000
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "operating_cash_flow": "NetCashProvidedByUsedInOperatingActivities",
+          "dep_amort": "DepreciationAndAmortization",
+          "total_assets": "Assets",
+          "total_liabilities": "Liabilities",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue"
+        }
+      },
+      "2016-10-30": {
+        "filed": "2017-11-21",
+        "metrics": {
+          "revenue": 2004000000,
+          "gross_profit": 1183000000,
+          "operating_income": 639000000,
+          "net_income": 542000000,
+          "eps_diluted": 0.83,
+          "dep_amort": 48000000,
+          "total_assets": 9612000000,
+          "total_liabilities": 4243000000,
+          "stockholders_equity": 5324000000,
+          "cash": 1940000000,
+          "long_term_debt": 1982000000
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "dep_amort": "DepreciationAndAmortization",
+          "total_assets": "Assets",
+          "total_liabilities": "Liabilities",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue",
+          "long_term_debt": "LongTermDebt"
+        }
+      },
+      "2017-04-30": {
+        "filed": "2018-05-22",
+        "metrics": {
+          "revenue": 1937000000,
+          "gross_profit": 1150000000,
+          "operating_income": 554000000,
+          "net_income": 507000000,
+          "eps_diluted": 0.79,
+          "operating_cash_flow": 282000000,
+          "capex": 54000000,
+          "dep_amort": 47000000,
+          "total_assets": 9410000000,
+          "total_liabilities": 3271000000,
+          "stockholders_equity": 6132000000,
+          "cash": 1989000000,
+          "long_term_debt": 1984000000
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "operating_cash_flow": "NetCashProvidedByUsedInOperatingActivities",
+          "capex": "PaymentsToAcquirePropertyPlantAndEquipment",
+          "dep_amort": "DepreciationAndAmortization",
+          "total_assets": "Assets",
+          "total_liabilities": "Liabilities",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue",
+          "long_term_debt": "LongTermDebt"
+        }
+      },
+      "2017-07-30": {
+        "filed": "2018-08-16",
+        "metrics": {
+          "revenue": 2230000000,
+          "gross_profit": 1302000000,
+          "operating_income": 688000000,
+          "net_income": 583000000,
+          "eps_diluted": 0.92,
+          "dep_amort": 49000000,
+          "total_assets": 9402000000,
+          "total_liabilities": 3427000000,
+          "stockholders_equity": 5973000000,
+          "cash": 1988000000,
+          "long_term_debt": 1984000000
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "dep_amort": "DepreciationAndAmortization",
+          "total_assets": "Assets",
+          "total_liabilities": "Liabilities",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue",
+          "long_term_debt": "LongTermDebt"
+        }
+      },
+      "2017-10-29": {
+        "filed": "2018-11-15",
+        "metrics": {
+          "revenue": 2636000000,
+          "gross_profit": 1569000000,
+          "operating_income": 895000000,
+          "net_income": 838000000,
+          "eps_diluted": 1.33,
+          "dep_amort": 50000000,
+          "total_assets": 9830000000,
+          "total_liabilities": 3477000000,
+          "stockholders_equity": 6352000000,
+          "cash": 2802000000,
+          "long_term_debt": 1985000000
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "dep_amort": "DepreciationAndAmortization",
+          "total_assets": "Assets",
+          "total_liabilities": "Liabilities",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue",
+          "long_term_debt": "LongTermDebt"
+        }
+      },
+      "2018-04-29": {
+        "filed": "2019-08-15",
+        "metrics": {
+          "revenue": 3207000000,
+          "gross_profit": 2068000000,
+          "operating_income": 1295000000,
+          "net_income": 1244000000,
+          "eps_diluted": 1.98,
+          "operating_cash_flow": 1445000000,
+          "capex": 118000000,
+          "dep_amort": 57000000,
+          "total_assets": 11460000000,
+          "total_liabilities": 3743000000,
+          "stockholders_equity": 7717000000,
+          "cash": 765000000,
+          "long_term_debt": 1986000000
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "operating_cash_flow": "NetCashProvidedByUsedInOperatingActivities",
+          "capex": "PaymentsToAcquirePropertyPlantAndEquipment",
+          "dep_amort": "DepreciationAndAmortization",
+          "total_assets": "Assets",
+          "total_liabilities": "Liabilities",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue",
+          "long_term_debt": "LongTermDebt"
+        }
+      },
+      "2018-07-29": {
+        "filed": "2019-11-14",
+        "metrics": {
+          "revenue": 3123000000,
+          "gross_profit": 1975000000,
+          "operating_income": 1157000000,
+          "net_income": 1101000000,
+          "eps_diluted": 1.76,
+          "dep_amort": 58000000,
+          "total_assets": 12882000000,
+          "total_liabilities": 4087000000,
+          "stockholders_equity": 8795000000,
+          "cash": 718000000,
+          "long_term_debt": 1987000000
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "dep_amort": "DepreciationAndAmortization",
+          "total_assets": "Assets",
+          "total_liabilities": "Liabilities",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue",
+          "long_term_debt": "LongTermDebt"
+        }
+      },
+      "2018-10-28": {
+        "filed": "2019-11-14",
+        "metrics": {
+          "revenue": 3181000000,
+          "gross_profit": 1921000000,
+          "operating_income": 1058000000,
+          "net_income": 1230000000,
+          "eps_diluted": 1.97,
+          "dep_amort": 68000000,
+          "total_assets": 13657000000,
+          "total_liabilities": 4182000000,
+          "stockholders_equity": 9475000000,
+          "cash": 721000000,
+          "long_term_debt": 1987000000
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "dep_amort": "DepreciationAndAmortization",
+          "total_assets": "Assets",
+          "total_liabilities": "Liabilities",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue",
+          "long_term_debt": "LongTermDebt"
+        }
+      },
+      "2019-04-28": {
+        "filed": "2020-08-19",
+        "metrics": {
+          "revenue": 2220000000,
+          "gross_profit": 1296000000,
+          "operating_income": 358000000,
+          "net_income": 394000000,
+          "eps_diluted": 0.64,
+          "operating_cash_flow": 720000000,
+          "capex": 128000000,
+          "dep_amort": 91000000,
+          "total_assets": 14021000000,
+          "total_liabilities": 4317000000,
+          "stockholders_equity": 9704000000,
+          "cash": 2772000000,
+          "long_term_debt": 1988000000
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "operating_cash_flow": "NetCashProvidedByUsedInOperatingActivities",
+          "capex": "PaymentsToAcquirePropertyPlantAndEquipment",
+          "dep_amort": "DepreciationAndAmortization",
+          "total_assets": "Assets",
+          "total_liabilities": "Liabilities",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue",
+          "long_term_debt": "LongTermDebt"
+        }
+      },
+      "2019-07-28": {
+        "filed": "2020-11-18",
+        "metrics": {
+          "revenue": 2579000000,
+          "gross_profit": 1541000000,
+          "operating_income": 571000000,
+          "net_income": 552000000,
+          "eps_diluted": 0.9,
+          "dep_amort": 92000000,
+          "total_assets": 14775000000,
+          "total_liabilities": 4439000000,
+          "stockholders_equity": 10336000000,
+          "cash": 7105000000,
+          "long_term_debt": 1989000000
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "dep_amort": "DepreciationAndAmortization",
+          "total_assets": "Assets",
+          "total_liabilities": "Liabilities",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue",
+          "long_term_debt": "LongTermDebt"
+        }
+      },
+      "2019-10-27": {
+        "filed": "2020-11-18",
+        "metrics": {
+          "revenue": 3014000000,
+          "gross_profit": 1916000000,
+          "operating_income": 927000000,
+          "net_income": 899000000,
+          "eps_diluted": 1.45,
+          "dep_amort": 92000000,
+          "total_assets": 15810000000,
+          "total_liabilities": 4596000000,
+          "stockholders_equity": 11214000000,
+          "cash": 9765000000,
+          "long_term_debt": 1990000000
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "dep_amort": "DepreciationAndAmortization",
+          "total_assets": "Assets",
+          "total_liabilities": "Liabilities",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue",
+          "long_term_debt": "LongTermDebt"
+        }
+      },
+      "2020-04-26": {
+        "filed": "2021-08-20",
+        "metrics": {
+          "revenue": 3080000000,
+          "gross_profit": 2004000000,
+          "operating_income": 976000000,
+          "net_income": 917000000,
+          "eps_diluted": 1.47,
+          "operating_cash_flow": 909000000,
+          "capex": 155000000,
+          "dep_amort": 107000000,
+          "total_assets": 23254000000,
+          "total_liabilities": 10155000000,
+          "stockholders_equity": 13099000000,
+          "cash": 15494000000,
+          "long_term_debt": 6959000000
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "operating_cash_flow": "NetCashProvidedByUsedInOperatingActivities",
+          "capex": "PaymentsToAcquireProductiveAssets",
+          "dep_amort": "DepreciationAndAmortization",
+          "total_assets": "Assets",
+          "total_liabilities": "Liabilities",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue",
+          "long_term_debt": "LongTermDebt"
+        }
+      },
+      "2020-07-26": {
+        "filed": "2021-11-22",
+        "metrics": {
+          "revenue": 3866000000,
+          "gross_profit": 2275000000,
+          "operating_income": 651000000,
+          "net_income": 622000000,
+          "eps_diluted": 0.25,
+          "total_assets": 25180000000,
+          "total_liabilities": 11266000000,
+          "stockholders_equity": 13914000000,
+          "cash": 3274000000,
+          "long_term_debt": 6960000000
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "total_assets": "Assets",
+          "total_liabilities": "Liabilities",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue",
+          "long_term_debt": "LongTermDebt"
+        }
+      },
+      "2020-10-25": {
+        "filed": "2021-11-22",
+        "metrics": {
+          "revenue": 4726000000,
+          "gross_profit": 2960000000,
+          "operating_income": 1398000000,
+          "net_income": 1336000000,
+          "eps_diluted": 0.53,
+          "total_assets": 26881000000,
+          "total_liabilities": 11547000000,
+          "stockholders_equity": 15334000000,
+          "cash": 2251000000,
+          "long_term_debt": 5963000000
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "total_assets": "Assets",
+          "total_liabilities": "Liabilities",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue",
+          "long_term_debt": "LongTermDebtNoncurrent"
+        }
+      },
+      "2021-05-02": {
+        "filed": "2022-08-31",
+        "metrics": {
+          "revenue": 5661000000,
+          "gross_profit": 3629000000,
+          "operating_income": 1956000000,
+          "net_income": 1912000000,
+          "eps_diluted": 0.76,
+          "operating_cash_flow": 1874000000,
+          "capex": 298000000,
+          "dep_amort": 281000000,
+          "total_assets": 30796000000,
+          "total_liabilities": 12022000000,
+          "stockholders_equity": 18774000000,
+          "cash": 978000000,
+          "long_term_debt": 5964000000
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "operating_cash_flow": "NetCashProvidedByUsedInOperatingActivities",
+          "capex": "PaymentsToAcquireProductiveAssets",
+          "dep_amort": "DepreciationDepletionAndAmortization",
+          "total_assets": "Assets",
+          "total_liabilities": "Liabilities",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue",
+          "long_term_debt": "LongTermDebtNoncurrent"
+        }
+      },
+      "2021-08-01": {
+        "filed": "2022-11-18",
+        "metrics": {
+          "revenue": 6507000000,
+          "gross_profit": 4215000000,
+          "operating_income": 2444000000,
+          "net_income": 2374000000,
+          "eps_diluted": 0.94,
+          "total_assets": 38650000000,
+          "total_liabilities": 17503000000,
+          "stockholders_equity": 21147000000,
+          "cash": 5628000000,
+          "long_term_debt": 10943000000
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "total_assets": "Assets",
+          "total_liabilities": "Liabilities",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue",
+          "long_term_debt": "LongTermDebtNoncurrent"
+        }
+      },
+      "2021-10-31": {
+        "filed": "2022-11-18",
+        "metrics": {
+          "revenue": 7103000000,
+          "gross_profit": 4631000000,
+          "operating_income": 2671000000,
+          "net_income": 2464000000,
+          "eps_diluted": 0.97,
+          "total_assets": 40632000000,
+          "total_liabilities": 16834000000,
+          "stockholders_equity": 23798000000,
+          "cash": 1288000000,
+          "long_term_debt": 10944000000
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "total_assets": "Assets",
+          "total_liabilities": "Liabilities",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue",
+          "long_term_debt": "LongTermDebtNoncurrent"
+        }
+      },
+      "2022-05-01": {
+        "filed": "2023-08-28",
+        "metrics": {
+          "revenue": 8288000000,
+          "gross_profit": 5431000000,
+          "operating_income": 1868000000,
+          "net_income": 1618000000,
+          "eps_diluted": 0.64,
+          "operating_cash_flow": 1731000000,
+          "dep_amort": 334000000,
+          "total_assets": 45212000000,
+          "total_liabilities": 18892000000,
+          "stockholders_equity": 26320000000,
+          "cash": 3887000000,
+          "long_term_debt": 10947000000
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "operating_cash_flow": "NetCashProvidedByUsedInOperatingActivities",
+          "dep_amort": "DepreciationDepletionAndAmortization",
+          "total_assets": "Assets",
+          "total_liabilities": "Liabilities",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue",
+          "long_term_debt": "LongTermDebtNoncurrent"
+        }
+      },
+      "2022-07-31": {
+        "filed": "2023-11-21",
+        "metrics": {
+          "revenue": 6704000000,
+          "gross_profit": 2915000000,
+          "operating_income": 499000000,
+          "net_income": 656000000,
+          "eps_diluted": 0.26,
+          "total_assets": 43476000000,
+          "total_liabilities": 19625000000,
+          "stockholders_equity": 23851000000,
+          "cash": 3013000000,
+          "long_term_debt": 9700000000
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "total_assets": "Assets",
+          "total_liabilities": "Liabilities",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue",
+          "long_term_debt": "LongTermDebtNoncurrent"
+        }
+      },
+      "2022-10-30": {
+        "filed": "2023-11-21",
+        "metrics": {
+          "revenue": 5931000000,
+          "gross_profit": 3177000000,
+          "operating_income": 601000000,
+          "net_income": 680000000,
+          "eps_diluted": 0.27,
+          "total_assets": 40488000000,
+          "total_liabilities": 19139000000,
+          "stockholders_equity": 21349000000,
+          "cash": 2800000000,
+          "long_term_debt": 9701000000
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "total_assets": "Assets",
+          "total_liabilities": "Liabilities",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue",
+          "long_term_debt": "LongTermDebtNoncurrent"
+        }
+      },
+      "2023-04-30": {
+        "filed": "2024-08-28",
+        "metrics": {
+          "revenue": 7192000000,
+          "gross_profit": 4648000000,
+          "operating_income": 2140000000,
+          "net_income": 2043000000,
+          "eps_diluted": 0.82,
+          "operating_cash_flow": 2911000000,
+          "capex": 248000000,
+          "dep_amort": 384000000,
+          "total_assets": 44460000000,
+          "total_liabilities": 19940000000,
+          "stockholders_equity": 24520000000,
+          "cash": 5079000000,
+          "long_term_debt": 9704000000
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "operating_cash_flow": "NetCashProvidedByUsedInOperatingActivities",
+          "capex": "PaymentsToAcquireProductiveAssets",
+          "dep_amort": "DepreciationDepletionAndAmortization",
+          "total_assets": "Assets",
+          "total_liabilities": "Liabilities",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue",
+          "long_term_debt": "LongTermDebtNoncurrent"
+        }
+      },
+      "2023-07-30": {
+        "filed": "2024-11-20",
+        "metrics": {
+          "revenue": 13507000000,
+          "gross_profit": 9462000000,
+          "operating_income": 6800000000,
+          "net_income": 6188000000,
+          "eps_diluted": 0.25,
+          "total_assets": 49555000000,
+          "total_liabilities": 22054000000,
+          "stockholders_equity": 27501000000,
+          "cash": 5783000000,
+          "long_term_debt": 8456000000
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "total_assets": "Assets",
+          "total_liabilities": "Liabilities",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue",
+          "long_term_debt": "LongTermDebtNoncurrent"
+        }
+      },
+      "2023-10-29": {
+        "filed": "2024-11-20",
+        "metrics": {
+          "revenue": 18120000000,
+          "gross_profit": 13400000000,
+          "operating_income": 10417000000,
+          "net_income": 9243000000,
+          "eps_diluted": 0.37,
+          "total_assets": 54148000000,
+          "total_liabilities": 20883000000,
+          "stockholders_equity": 33265000000,
+          "cash": 5519000000,
+          "long_term_debt": 8457000000
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "total_assets": "Assets",
+          "total_liabilities": "Liabilities",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue",
+          "long_term_debt": "LongTermDebtNoncurrent"
+        }
+      },
+      "2024-04-28": {
+        "filed": "2025-08-27",
+        "metrics": {
+          "revenue": 26044000000,
+          "gross_profit": 20406000000,
+          "operating_income": 16909000000,
+          "net_income": 14881000000,
+          "eps_diluted": 0.6,
+          "operating_cash_flow": 15345000000,
+          "capex": 369000000,
+          "dep_amort": 410000000,
+          "total_assets": 77072000000,
+          "total_liabilities": 27930000000,
+          "stockholders_equity": 49142000000,
+          "cash": 7587000000,
+          "long_term_debt": 8460000000
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "operating_cash_flow": "NetCashProvidedByUsedInOperatingActivities",
+          "capex": "PaymentsToAcquireProductiveAssets",
+          "dep_amort": "DepreciationDepletionAndAmortization",
+          "total_assets": "Assets",
+          "total_liabilities": "Liabilities",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue",
+          "long_term_debt": "LongTermDebtNoncurrent"
+        }
+      },
+      "2024-07-28": {
+        "filed": "2025-11-19",
+        "metrics": {
+          "revenue": 30040000000,
+          "gross_profit": 22574000000,
+          "operating_income": 18642000000,
+          "net_income": 16599000000,
+          "eps_diluted": 0.67,
+          "total_assets": 85227000000,
+          "total_liabilities": 27070000000,
+          "stockholders_equity": 58157000000,
+          "cash": 8563000000,
+          "long_term_debt": 8461000000
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "total_assets": "Assets",
+          "total_liabilities": "Liabilities",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue",
+          "long_term_debt": "LongTermDebtNoncurrent"
+        }
+      },
+      "2024-10-27": {
+        "filed": "2025-11-19",
+        "metrics": {
+          "revenue": 35082000000,
+          "gross_profit": 26156000000,
+          "operating_income": 21869000000,
+          "net_income": 19309000000,
+          "eps_diluted": 0.78,
+          "total_assets": 96013000000,
+          "total_liabilities": 30114000000,
+          "stockholders_equity": 65899000000,
+          "cash": 9107000000,
+          "long_term_debt": 8462000000
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "total_assets": "Assets",
+          "total_liabilities": "Liabilities",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue",
+          "long_term_debt": "LongTermDebtNoncurrent"
+        }
+      },
+      "2025-04-27": {
+        "filed": "2026-05-20",
+        "metrics": {
+          "revenue": 44062000000,
+          "gross_profit": 26668000000,
+          "operating_income": 21638000000,
+          "net_income": 18775000000,
+          "eps_diluted": 0.76,
+          "operating_cash_flow": 27414000000,
+          "capex": 1227000000,
+          "dep_amort": 611000000,
+          "total_assets": 125254000000,
+          "total_liabilities": 41411000000,
+          "stockholders_equity": 83843000000,
+          "cash": 15234000000,
+          "long_term_debt": 8464000000
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "operating_cash_flow": "NetCashProvidedByUsedInOperatingActivities",
+          "capex": "PaymentsToAcquireProductiveAssets",
+          "dep_amort": "DepreciationDepletionAndAmortization",
+          "total_assets": "Assets",
+          "total_liabilities": "Liabilities",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue",
+          "long_term_debt": "LongTermDebtNoncurrent"
+        }
+      },
+      "2025-07-27": {
+        "filed": "2025-11-19",
+        "metrics": {
+          "revenue": 46743000000,
+          "gross_profit": 33853000000,
+          "operating_income": 28440000000,
+          "net_income": 26422000000,
+          "eps_diluted": 1.08,
+          "total_assets": 140740000000,
+          "total_liabilities": 40609000000,
+          "stockholders_equity": 100131000000,
+          "cash": 11639000000,
+          "long_term_debt": 8466000000
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "total_assets": "Assets",
+          "total_liabilities": "Liabilities",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue",
+          "long_term_debt": "LongTermDebtNoncurrent"
+        }
+      },
+      "2025-10-26": {
+        "filed": "2025-11-19",
+        "metrics": {
+          "revenue": 57006000000,
+          "gross_profit": 41849000000,
+          "operating_income": 36010000000,
+          "net_income": 31910000000,
+          "eps_diluted": 1.3,
+          "total_assets": 161148000000,
+          "total_liabilities": 42251000000,
+          "stockholders_equity": 118897000000,
+          "cash": 11486000000,
+          "long_term_debt": 7468000000
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "total_assets": "Assets",
+          "total_liabilities": "Liabilities",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue",
+          "long_term_debt": "LongTermDebtNoncurrent"
+        }
+      },
+      "2026-04-26": {
+        "filed": "2026-05-20",
+        "metrics": {
+          "revenue": 81615000000,
+          "gross_profit": 61157000000,
+          "operating_income": 53536000000,
+          "net_income": 58321000000,
+          "eps_diluted": 2.39,
+          "operating_cash_flow": 50344000000,
+          "capex": 1757000000,
+          "dep_amort": 997000000,
+          "total_assets": 259474000000,
+          "total_liabilities": 64000000000,
+          "stockholders_equity": 195474000000,
+          "cash": 13237000000,
+          "long_term_debt": 7470000000
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "operating_cash_flow": "NetCashProvidedByUsedInOperatingActivities",
+          "capex": "PaymentsToAcquireProductiveAssets",
+          "dep_amort": "DepreciationDepletionAndAmortization",
+          "total_assets": "Assets",
+          "total_liabilities": "Liabilities",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue",
+          "long_term_debt": "LongTermDebtNoncurrent"
+        }
+      }
+    }
+  },
+  "last_run_warnings": [
+    "yfinance 最新收盤 208.19 與 Nasdaq 最新成交 200.42（Jun 10, 2026）差異 3.73%（>1.5%）。常見原因：Yahoo 缺最新交易日收盤而落後一天、除權息日、或盤中即時報價與收盤時點不同，建議人工確認最新收盤價"
+  ]
+}

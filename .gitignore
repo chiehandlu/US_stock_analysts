@@ -1,0 +1,14 @@
+# Python 虛擬環境（巨大、平台相關；雲端會依 requirements.txt 自行安裝）
+.venv/
+__pycache__/
+*.pyc
+
+# 每次重跑即可重生的「當日快照」——純暫存，不需版控（history/ 與 reports/ 才是要保留的累積資料）
+/*_stock_*.json
+/*_fin_*.json
+
+# Claude Code 本機個人設定（每台機器自己的權限允許清單，不共享）
+.claude/settings.local.json
+
+# 系統雜物
+.DS_Store
