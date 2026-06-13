@@ -47,10 +47,10 @@ CSS = """
     --accent:#818cf8;--pos:#22c55e;--neg:#f87171;--warnbg:#2a2211;--warnbd:#f59e0b;--card:#111c2e;--ink2:#cbd5e1}
   *{box-sizing:border-box}
   body{font-family:"PingFang TC","Noto Sans TC",sans-serif;color:var(--ink);background:var(--page);
-    margin:0;line-height:1.75;font-size:17.5px;-webkit-text-size-adjust:100%}
-  .wrap{max-width:1240px;margin:0 auto;background:var(--bg)}
+    margin:0;line-height:1.8;font-size:19px;-webkit-text-size-adjust:100%}
+  .wrap{max-width:1440px;margin:0 auto;background:var(--bg)}
   .hero{background:linear-gradient(135deg,#1e1b4b 0%,#4f46e5 60%,#0ea5e9 100%);color:#fff;padding:32px 32px 26px}
-  .hero h1{font-size:28px;margin:0 0 2px;font-weight:800}
+  .hero h1{font-size:31px;margin:0 0 2px;font-weight:800}
   .hero .tic{font-size:13px;opacity:.85;letter-spacing:1px}
   .hero .sub{font-size:12.5px;opacity:.8;margin-top:10px}
   .scorewrap{display:flex;gap:24px;align-items:center;flex-wrap:wrap;margin-top:18px}
@@ -62,23 +62,23 @@ CSS = """
   .conf{font-size:12px;opacity:.85;margin-top:2px}
   .radarwrap{flex:1;min-width:300px;display:flex;justify-content:center}
   .body{padding:8px 32px 40px}
-  h2{font-size:21px;margin:32px 0 6px;display:flex;align-items:center;gap:9px}
+  h2{font-size:23px;margin:34px 0 6px;display:flex;align-items:center;gap:9px}
   h2 .tag{font-size:11px;background:var(--accent);color:#fff;border-radius:6px;padding:2px 8px;font-weight:700}
   h2::after{content:"";flex:1;height:2px;background:linear-gradient(90deg,var(--accent),transparent)}
-  h3{font-size:16.5px;margin:18px 0 4px;color:var(--ink2)}
+  h3{font-size:18px;margin:18px 0 4px;color:var(--ink2)}
   p{margin:8px 0}
-  table{width:100%;border-collapse:collapse;margin:10px 0;font-size:15px}
+  table{width:100%;border-collapse:collapse;margin:10px 0;font-size:16.5px}
   th,td{padding:9px 11px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
   th{background:var(--card);font-weight:700;color:var(--ink2)}
   td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
   .pos{color:var(--pos);font-weight:700}.neg{color:var(--neg);font-weight:700}
   .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:14px 0}
   .chartcard{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:14px;margin:14px 0;overflow-x:auto}
-  .chartttl{font-size:14.5px;font-weight:700;color:var(--ink2);margin:2px 0 8px 4px}
-  .warn{background:var(--warnbg);border-left:4px solid var(--warnbd);border-radius:8px;padding:12px 16px;margin:12px 0;font-size:14.5px}
-  .factor{margin:8px 0;font-size:15.5px}
+  .chartttl{font-size:16px;font-weight:700;color:var(--ink2);margin:2px 0 8px 4px}
+  .warn{background:var(--warnbg);border-left:4px solid var(--warnbd);border-radius:8px;padding:13px 17px;margin:12px 0;font-size:16px}
+  .factor{margin:9px 0;font-size:17px}
   .factor b.bull{color:var(--pos)}.factor b.bear{color:var(--neg)}
-  ul{margin:6px 0;padding-left:22px}li{margin:4px 0;font-size:15.5px}
+  ul{margin:6px 0;padding-left:22px}li{margin:5px 0;font-size:17px}
   svg text{font-family:"PingFang TC","Noto Sans TC",sans-serif}
   .tree{display:flex;flex-direction:column;align-items:center;margin:8px 0}
   .tlevel{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
@@ -90,7 +90,7 @@ CSS = """
   .rangebar{position:relative;height:34px;background:linear-gradient(90deg,#fecaca,#fde68a,#bbf7d0);border-radius:8px;margin:10px 0 22px}
   .rangebar .mk{position:absolute;top:-4px;width:3px;height:42px;background:var(--ink);border-radius:2px}
   .rangebar .lbl{position:absolute;top:38px;font-size:11px;color:var(--mute);transform:translateX(-50%)}
-  .foot{margin-top:30px;padding:16px 32px 26px;border-top:1px solid var(--line);color:var(--mute);font-size:13px;background:var(--card)}
+  .foot{margin-top:30px;padding:16px 32px 26px;border-top:1px solid var(--line);color:var(--mute);font-size:14px;background:var(--card)}
   @media(max-width:520px){.body{padding:8px 16px 32px}.hero{padding:24px 18px}.foot{padding:16px 18px}}
 """
 
@@ -164,7 +164,7 @@ def annual_chart_svg(items):
         line = (f'<polyline points="{" ".join(line_pts)}" fill="none" stroke="#0ea5e9" stroke-width="2.5"/>'
                 + "".join(f'<circle cx="{p.split(",")[0]}" cy="{p.split(",")[1]}" r="3.5" fill="#0ea5e9"/>' for p in line_pts))
     xlbl = "".join(f'<text x="{left+slot*i+slot/2:.1f}" y="{base+18}" fill="#94a3b8" font-size="11" font-weight="600" text-anchor="middle">{it["label"]}</text>' for i, it in enumerate(items))
-    return f'<svg viewBox="0 0 {W} {Hc}" width="100%" style="height:auto;display:block;max-width:840px;margin:0 auto">{grid}{bars}{line}{vals}{xlbl}</svg>'
+    return f'<svg viewBox="0 0 {W} {Hc}" width="100%" style="height:auto;display:block;max-width:1000px;margin:0 auto">{grid}{bars}{line}{vals}{xlbl}</svg>'
 
 
 def bar_chart_svg(items, color="#0ea5e9"):
@@ -182,7 +182,7 @@ def bar_chart_svg(items, color="#0ea5e9"):
             out += f'<rect x="{xc-barw/2:.1f}" y="{base-h:.1f}" width="{barw:.1f}" height="{h:.1f}" rx="3" fill="{color}"/>'
             out += f'<text x="{xc:.1f}" y="{base-h-5:.1f}" fill="#7dd3fc" font-size="11" font-weight="700" text-anchor="middle">{it["val"]:.1f}</text>'
         out += f'<text x="{xc:.1f}" y="{base+16}" fill="#94a3b8" font-size="10" text-anchor="middle">{it["label"]}</text>'
-    return f'<svg viewBox="0 0 {W} {Hc}" width="100%" style="height:auto;display:block;max-width:840px;margin:0 auto">{out}</svg>'
+    return f'<svg viewBox="0 0 {W} {Hc}" width="100%" style="height:auto;display:block;max-width:1000px;margin:0 auto">{out}</svg>'
 
 
 def peer_bar_svg(peer):
@@ -191,7 +191,7 @@ def peer_bar_svg(peer):
     sp, pp = peer.get("self_pe"), peer.get("peer_pe")
     mx = max(sp or 0, pp or 0, 1)
     w = lambda v: (v or 0) / mx * 280
-    return (f'<svg viewBox="0 0 400 120" width="100%" style="height:auto;display:block;max-width:540px;margin:0 auto">'
+    return (f'<svg viewBox="0 0 400 120" width="100%" style="height:auto;display:block;max-width:640px;margin:0 auto">'
             f'<line x1="90" y1="92" x2="380" y2="92" stroke="#2b3a52"/>'
             f'<rect x="90" y="28" width="{w(sp):.1f}" height="22" rx="4" fill="#6366f1"/>'
             f'<rect x="90" y="62" width="{w(pp):.1f}" height="22" rx="4" fill="#94a3b8"/>'
