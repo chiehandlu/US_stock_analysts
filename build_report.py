@@ -67,7 +67,7 @@ CSS = """
   h2::after{content:"";flex:1;height:2px;background:linear-gradient(90deg,var(--accent),transparent)}
   h3{font-size:18px;margin:18px 0 4px;color:var(--ink2)}
   p{margin:8px 0}
-  table{width:100%;border-collapse:collapse;margin:10px 0;font-size:16.5px}
+  table{width:100%;border-collapse:collapse;margin:10px 0;font-size:19px}
   th,td{padding:9px 11px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
   th{background:var(--card);font-weight:700;color:var(--ink2)}
   td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
@@ -86,10 +86,10 @@ CSS = """
   .tnode.mid{background:var(--accent);color:#0b1020;font-weight:700}
   .tnode small{display:block;font-size:10.5px;opacity:.75;font-weight:400}
   .tconn{width:2px;height:16px;background:var(--accent);opacity:.5}
-  .tlabel{font-size:11px;color:var(--mute);margin:9px 0 3px}
+  .tlabel{font-size:14px;color:var(--mute);margin:9px 0 3px}
   .rangebar{position:relative;height:34px;background:linear-gradient(90deg,#fecaca,#fde68a,#bbf7d0);border-radius:8px;margin:10px 0 22px}
   .rangebar .mk{position:absolute;top:-4px;width:3px;height:42px;background:var(--ink);border-radius:2px}
-  .rangebar .lbl{position:absolute;top:38px;font-size:11px;color:var(--mute);transform:translateX(-50%)}
+  .rangebar .lbl{position:absolute;top:38px;font-size:14px;color:var(--mute);transform:translateX(-50%)}
   .foot{margin-top:30px;padding:16px 32px 26px;border-top:1px solid var(--line);color:var(--mute);font-size:14px;background:var(--card)}
   @media(max-width:520px){.body{padding:8px 16px 32px}.hero{padding:24px 18px}.foot{padding:16px 18px}}
 """
@@ -135,7 +135,7 @@ def radar_svg(dims):
             f'<g stroke="rgba(255,255,255,.25)">{axes}</g>'
             f'<polygon points="{data}" fill="rgba(56,189,248,.45)" stroke="#7dd3fc" stroke-width="2"/>'
             f'<g fill="#fff">{dots}</g>'
-            f'<g fill="#e0e7ff" font-size="11.5" font-weight="600">{labels}</g></svg>')
+            f'<g fill="#e0e7ff" font-size="14" font-weight="600">{labels}</g></svg>')
 
 
 def annual_chart_svg(items):
@@ -147,7 +147,7 @@ def annual_chart_svg(items):
     barw = min(56, slot * 0.55)
     grid = "".join(
         f'<line x1="{left}" y1="{base-scl*v:.1f}" x2="{right}" y2="{base-scl*v:.1f}" stroke="#2b3a52" stroke-dasharray="3 3"/>'
-        f'<text x="{left-6}" y="{base-scl*v+4:.1f}" fill="#94a3b8" font-size="10" text-anchor="end">{v:.0f}</text>'
+        f'<text x="{left-6}" y="{base-scl*v+4:.1f}" fill="#94a3b8" font-size="12.5" text-anchor="end">{v:.0f}</text>'
         for v in (0, maxv / 2, maxv))
     bars = vals = ""
     line_pts = []
@@ -156,14 +156,14 @@ def annual_chart_svg(items):
         if it["rev"] is not None:
             h = it["rev"] * scl
             bars += f'<rect x="{xc-barw/2:.1f}" y="{base-h:.1f}" width="{barw:.1f}" height="{h:.1f}" rx="3" fill="#6366f1"/>'
-            vals += f'<text x="{xc:.1f}" y="{base-h-6:.1f}" fill="#c7d2fe" font-size="11" font-weight="700" text-anchor="middle">{it["rev"]:.1f}</text>'
+            vals += f'<text x="{xc:.1f}" y="{base-h-6:.1f}" fill="#c7d2fe" font-size="13" font-weight="700" text-anchor="middle">{it["rev"]:.1f}</text>'
         if it.get("fcf") is not None:
             line_pts.append(f'{xc:.1f},{base-it["fcf"]*scl:.1f}')
     line = ""
     if len(line_pts) >= 2:
         line = (f'<polyline points="{" ".join(line_pts)}" fill="none" stroke="#0ea5e9" stroke-width="2.5"/>'
                 + "".join(f'<circle cx="{p.split(",")[0]}" cy="{p.split(",")[1]}" r="3.5" fill="#0ea5e9"/>' for p in line_pts))
-    xlbl = "".join(f'<text x="{left+slot*i+slot/2:.1f}" y="{base+18}" fill="#94a3b8" font-size="11" font-weight="600" text-anchor="middle">{it["label"]}</text>' for i, it in enumerate(items))
+    xlbl = "".join(f'<text x="{left+slot*i+slot/2:.1f}" y="{base+18}" fill="#94a3b8" font-size="13" font-weight="600" text-anchor="middle">{it["label"]}</text>' for i, it in enumerate(items))
     return f'<svg viewBox="0 0 {W} {Hc}" width="100%" style="height:auto;display:block;max-width:1000px;margin:0 auto">{grid}{bars}{line}{vals}{xlbl}</svg>'
 
 
@@ -180,8 +180,8 @@ def bar_chart_svg(items, color="#0ea5e9"):
         if it["val"] is not None:
             h = it["val"] * scl
             out += f'<rect x="{xc-barw/2:.1f}" y="{base-h:.1f}" width="{barw:.1f}" height="{h:.1f}" rx="3" fill="{color}"/>'
-            out += f'<text x="{xc:.1f}" y="{base-h-5:.1f}" fill="#7dd3fc" font-size="11" font-weight="700" text-anchor="middle">{it["val"]:.1f}</text>'
-        out += f'<text x="{xc:.1f}" y="{base+16}" fill="#94a3b8" font-size="10" text-anchor="middle">{it["label"]}</text>'
+            out += f'<text x="{xc:.1f}" y="{base-h-5:.1f}" fill="#7dd3fc" font-size="13" font-weight="700" text-anchor="middle">{it["val"]:.1f}</text>'
+        out += f'<text x="{xc:.1f}" y="{base+16}" fill="#94a3b8" font-size="12.5" text-anchor="middle">{it["label"]}</text>'
     return f'<svg viewBox="0 0 {W} {Hc}" width="100%" style="height:auto;display:block;max-width:1000px;margin:0 auto">{out}</svg>'
 
 
@@ -195,9 +195,9 @@ def peer_bar_svg(peer):
             f'<line x1="90" y1="92" x2="380" y2="92" stroke="#2b3a52"/>'
             f'<rect x="90" y="28" width="{w(sp):.1f}" height="22" rx="4" fill="#6366f1"/>'
             f'<rect x="90" y="62" width="{w(pp):.1f}" height="22" rx="4" fill="#94a3b8"/>'
-            f'<g font-size="12" font-weight="700" fill="#fff" text-anchor="end">'
+            f'<g font-size="13.5" font-weight="700" fill="#fff" text-anchor="end">'
             f'<text x="{86+w(sp):.1f}" y="44">{sp:g}x</text><text x="{86+w(pp):.1f}" y="78">{pp:g}x</text></g>'
-            f'<g font-size="12" fill="#cbd5e1" font-weight="600" text-anchor="end">'
+            f'<g font-size="13.5" fill="#cbd5e1" font-weight="600" text-anchor="end">'
             f'<text x="84" y="44">{peer["self_label"]}</text><text x="84" y="78">{peer["peer_label"]}</text></g></svg>')
 
 
@@ -270,7 +270,7 @@ def build(ticker, content):
         yoy = pct(m.get("revenue"), prev)
         yoy_s = "—" if yoy is None else f'<span class="{"pos" if yoy>=0 else "neg"}">{yoy:+.0f}%</span>'
         gm = d.get("gross_margin_pct")
-        rows += (f'<tr><td>{annual[e]["fy_label"]}<br><span style="font-size:11px;color:var(--mute)">{fy_period(e)}</span></td>'
+        rows += (f'<tr><td>{annual[e]["fy_label"]}<br><span style="font-size:14px;color:var(--mute)">{fy_period(e)}</span></td>'
                  f'<td class="num">{b(m.get("revenue"))}</td>'
                  f'<td class="num">{yoy_s}</td><td class="num">{gm if gm is not None else "—"}%</td>'
                  f'<td class="num">{b(m.get("net_income"))}</td><td class="num">{b(d.get("free_cash_flow"))}</td>'
@@ -331,10 +331,10 @@ def build(ticker, content):
     # M2
     parts.append('<h2><span class="tag">M2</span> 基本面</h2>')
     parts.append(f'<div class="chartcard"><div class="chartttl">年度營收（長條）與自由現金流（折線）　單位：十億美元</div>{annual_chart_svg(chart_items)}</div>')
-    parts.append(f'<table><tr><th>會計年度<br><span style="font-size:11px;color:var(--mute)">(實際期間)</span></th>'
+    parts.append(f'<table><tr><th>會計年度<br><span style="font-size:14px;color:var(--mute)">(實際期間)</span></th>'
                  f'<th class="num">營收</th><th class="num">YoY</th><th class="num">毛利率</th>'
                  f'<th class="num">淨利</th><th class="num">FCF</th><th class="num">EPS</th></tr>{rows}</table>')
-    parts.append('<p style="font-size:12px;color:var(--mute);margin-top:2px">財年依「期間結束日」命名，未必對齊曆年（如財年結束於 1 月底者，FY 標籤年份＝結束年，該年實際多落在前一曆年）。</p>')
+    parts.append('<p style="font-size:14px;color:var(--mute);margin-top:2px">財年依「期間結束日」命名，未必對齊曆年（如財年結束於 1 月底者，FY 標籤年份＝結束年，該年實際多落在前一曆年）。</p>')
     parts.append(f'<p>{content.get("m2_note","")}</p>')
     parts.append(f'<div class="chartcard"><div class="chartttl">近 6 季單季營收　單位：十億美元（季末）</div>{bar_chart_svg(q_items)}</div>')
     # M3
