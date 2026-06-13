@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NVDA 投資分析報告 2026-06-13</title>
+<style>
+  :root{--ink:#1f2937;--mute:#6b7280;--line:#e5e7eb;--bg:#ffffff;--accent:#111827;
+        --pos:#15803d;--neg:#b91c1c;--warnbg:#fffbeb;--warnbd:#f59e0b;--card:#f9fafb;}
+  *{box-sizing:border-box}
+  body{font-family:"PingFang TC","Noto Sans TC",sans-serif;color:var(--ink);background:#f3f4f6;
+       margin:0;line-height:1.75;font-size:16px;}
+  .wrap{max-width:860px;margin:32px auto;background:var(--bg);padding:48px 56px;
+        box-shadow:0 1px 3px rgba(0,0,0,.08);border-radius:8px;}
+  h1{font-size:26px;margin:0 0 4px;letter-spacing:.5px}
+  h2{font-size:19px;margin:34px 0 12px;padding-bottom:6px;border-bottom:2px solid var(--accent);}
+  h3{font-size:16px;margin:20px 0 6px;color:var(--accent)}
+  .sub{color:var(--mute);font-size:13px;margin-bottom:24px}
+  table{width:100%;border-collapse:collapse;margin:12px 0;font-size:14.5px}
+  th,td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+  th{background:var(--card);font-weight:600}
+  td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+  .pos{color:var(--pos);font-weight:600}.neg{color:var(--neg);font-weight:600}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:20px 24px;margin:18px 0}
+  .scorecard{display:flex;align-items:center;gap:28px;flex-wrap:wrap}
+  .bigscore{font-size:58px;font-weight:800;line-height:1;color:var(--accent)}
+  .bigscore small{font-size:20px;color:var(--mute);font-weight:600}
+  .band{font-size:18px;font-weight:700;color:var(--pos)}
+  .pill{display:inline-block;background:#eef2ff;color:#3730a3;border-radius:999px;
+        padding:2px 12px;font-size:13px;font-weight:600;margin-left:6px}
+  .warn{background:var(--warnbg);border-left:4px solid var(--warnbd);border-radius:6px;
+        padding:12px 16px;margin:14px 0;font-size:14px}
+  .factor{margin:6px 0}
+  .factor b.bull{color:var(--pos)}.factor b.bear{color:var(--neg)}
+  ul{margin:6px 0 6px 0;padding-left:20px}li{margin:3px 0}
+  .foot{margin-top:36px;padding-top:16px;border-top:1px solid var(--line);
+        color:var(--mute);font-size:12.5px}
+  .conf{font-size:13px;color:var(--mute)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>NVIDIA Corporation（NVDA）投資分析報告</h1>
+  <div class="sub">報告產出日期 2026-06-13　·　投資情境：1–3 年中期持有、積極、成長優先　·　完整模式（M2–M7）</div>
+
+  <!-- 摘要卡 -->
+  <div class="card scorecard">
+    <div>
+      <div class="bigscore">8.0<small> / 10</small></div>
+      <div class="band">推薦 <span class="pill">信心度：中（偏高）</span></div>
+    </div>
+    <div style="flex:1;min-width:260px">
+      <div class="factor"><b class="bull">多方核心 ▲</b>　AI 資本支出超級週期 + 近乎壟斷的全棧地位，前瞻 P/E 22–25x 對應 25–85% 成長（PEG&lt;1），估值對成長其實不貴。</div>
+      <div class="factor"><b class="bear">空方核心 ▼</b>　營收高度集中於少數雲端巨頭的 capex，加上自研 ASIC 侵蝕份額——最大風險是成長的<strong>「持續性」</strong>而非估值本身。</div>
+    </div>
+  </div>
+
+  <div class="warn">
+    <b>數據品質與時效</b>　technical data_quality=<b>ok</b>、cross_check=<b>consistent</b>（雙來源一致）。
+    股價 as-of <b>2026-06-12</b>（$205.19）；財報為 SEC EDGAR：年報 FY2026（期間結束 2026-01-25）+ 最新季 Q1 FY2027（期間結束 2026-04-26，約 2026-05 申報）。無本機數據警告。
+  </div>
+  <div class="warn">
+    <b>須留意（影響估值判讀）</b>　Q1 FY2027 GAAP 淨利 58.3B <b>大於</b>營業利益 53.5B，淨利率達 71%（遠高於常態約 55%），代表含<strong>顯著業外利益</strong>（推測為投資/持股評價）。以 GAAP 淨利計算之 TTM 淨利與 P/E 會被高估，本報告估值以營業利益與前瞻數字交叉校正。M5 同業倍數、前瞻 P/E、產業 capex 數字來自網搜，列<b>中信心</b>。
+  </div>
+
+  <!-- M2 -->
+  <h2>M2　基本面（本機 EDGAR 數據）</h2>
+  <table>
+    <tr><th>會計年度</th><th class="num">營收</th><th class="num">YoY</th><th class="num">毛利率</th><th class="num">淨利</th><th class="num">營業現金流</th><th class="num">自由現金流</th><th class="num">EPS(稀釋)</th></tr>
+    <tr><td>FY2022</td><td class="num">26.9B</td><td class="num">—</td><td class="num">64.9%</td><td class="num">9.8B</td><td class="num">9.1B</td><td class="num">8.1B</td><td class="num">3.85</td></tr>
+    <tr><td>FY2023</td><td class="num">27.0B</td><td class="num">+0.2%</td><td class="num">56.9%</td><td class="num">4.4B</td><td class="num">5.6B</td><td class="num">3.8B</td><td class="num">0.17</td></tr>
+    <tr><td>FY2024</td><td class="num">60.9B</td><td class="num pos">+126%</td><td class="num">72.7%</td><td class="num">29.8B</td><td class="num">28.1B</td><td class="num">27.0B</td><td class="num">1.19</td></tr>
+    <tr><td>FY2025</td><td class="num">130.5B</td><td class="num pos">+114%</td><td class="num">75.0%</td><td class="num">72.9B</td><td class="num">64.1B</td><td class="num">60.9B</td><td class="num">2.94</td></tr>
+    <tr><td><b>FY2026</b></td><td class="num"><b>215.9B</b></td><td class="num pos">+65%</td><td class="num">71.1%</td><td class="num">120.1B</td><td class="num">102.7B</td><td class="num">96.7B</td><td class="num">4.90</td></tr>
+  </table>
+  <p>三年內營收自 27B 暴增至 216B（約 8 倍），FY2026 仍 +65%。毛利率穩在 70%+，自由現金流 FY2026 達 96.7B、現金轉換極佳。FY2023 的低谷（毛利率 56.9%、EPS 0.17）為當年資料中心轉型前的庫存修正，之後由 AI 需求帶動結構性跳升。</p>
+  <h3>季度動能（單季，as-of 2026-04-26）</h3>
+  <table>
+    <tr><th>季別（季末）</th><th class="num">營收</th><th class="num">淨利</th><th class="num">毛利率</th></tr>
+    <tr><td>Q2 FY26（2024-07-28）</td><td class="num">30.0B</td><td class="num">16.6B</td><td class="num">75.1%</td></tr>
+    <tr><td>Q3 FY26（2024-10-27）</td><td class="num">35.1B</td><td class="num">19.3B</td><td class="num">74.6%</td></tr>
+    <tr><td>Q1 FY27（2025-04-27）<sup>*</sup></td><td class="num">44.1B</td><td class="num">18.8B</td><td class="num">60.5%</td></tr>
+    <tr><td>Q2 FY27（2025-07-27）</td><td class="num">46.7B</td><td class="num">26.4B</td><td class="num">72.4%</td></tr>
+    <tr><td>Q3 FY27（2025-10-26）</td><td class="num">57.0B</td><td class="num">31.9B</td><td class="num">73.4%</td></tr>
+    <tr><td><b>最新季（2026-04-26）</b></td><td class="num"><b>81.6B</b></td><td class="num">58.3B<sup>†</sup></td><td class="num">74.9%</td></tr>
+  </table>
+  <p class="conf"><sup>*</sup>毛利率 60.5% 之季反映當期 H20 對中相關存貨減值的一次性衝擊，非常態。<sup>†</sup>淨利 58.3B 含業外利益（見上方警示）。季營收連續放大、毛利率回到 ~75%。</p>
+
+  <!-- M3 -->
+  <h2>M3　法說會 10 點（Q1 FY2027，2026-05-20 公布）</h2>
+  <table>
+    <tr><th>項目</th><th>重點</th></tr>
+    <tr><td>① 財測 guidance</td><td>Q2 FY27 營收 <b>$91B</b>（高於市場約 86.8B 共識）；毛利率 GAAP 74.9% / non-GAAP 75%（±50bp）。<b>不假設任何中國資料中心算力營收</b>。</td></tr>
+    <tr><td>② 本季營收驅動</td><td>資料中心營收 $75B（YoY +92%、QoQ +21%），Blackwell 架構為主力，貢獻約 70% 資料中心算力營收。</td></tr>
+    <tr><td>③ 利潤率趨勢</td><td>毛利率回升至 74.9%，Blackwell 量產良率與組合改善；指引維持 ~75%。</td></tr>
+    <tr><td>④ 資本支出/產能</td><td>Vera Rubin 平台 FY2027 Q3 開始出貨、Q4 放量；客戶端 AI factory 建置加速。</td></tr>
+    <tr><td>⑤ 需求端強弱</td><td>Jensen 稱「AI factory 建置是人類史上最大基礎建設擴張」，並提及潛在約 <b>$1 兆訂單能見度</b>（Blackwell + Vera Rubin）。</td></tr>
+    <tr><td>⑥ 庫存/供應鏈</td><td>Blackwell 供給持續爬坡；H20 對中受限後，中國資料中心算力已排除於展望外。</td></tr>
+    <tr><td>⑦ 資本配置</td><td>本季宣布調升股利與買回（持續回饋股東）。</td></tr>
+    <tr><td>⑧ 語氣 vs 上季</td><td>更明確偏多，主軸由「Blackwell 爬坡」轉向「Agentic AI 已落地、產生實際價值」。</td></tr>
+    <tr><td>⑨ Q&A 痛點</td><td>市場聚焦：中國缺口的長期影響、自研 ASIC 的份額侵蝕、超大規模客戶 capex 的永續性。</td></tr>
+    <tr><td>⑩ 超預期/意外</td><td>營收 81.6B 超出公司自身指引（78B±2%）；Q2 指引 91B 明顯高於共識，為主要正向意外。</td></tr>
+  </table>
+
+  <!-- M4 -->
+  <h2>M4　技術面（輔助時機，非主依據）</h2>
+  <table>
+    <tr><th>指標</th><th class="num">數值</th><th>判讀</th></tr>
+    <tr><td>最新收盤（2026-06-12）</td><td class="num">$205.19</td><td>較前次軌跡 6/09 的 $208.19 微跌</td></tr>
+    <tr><td>MA20 / MA50 / MA200</td><td class="num">214.5 / 206.7 / 189.0</td><td><b>多頭排列</b>（MA20&gt;MA50&gt;MA200），站上 MA50/MA200、短線在 MA20 之下</td></tr>
+    <tr><td>趨勢格局</td><td class="num">bullish</td><td>MA50&gt;MA200，中期偏多</td></tr>
+    <tr><td>距 52 週高 / 低</td><td class="num">-12.9% / +44.7%</td><td>高點回檔後於高檔區整理</td></tr>
+    <tr><td>量能比（vs 20 日均量）</td><td class="num">0.60x</td><td>量縮，回檔伴隨低量，賣壓不重</td></tr>
+    <tr><td>黃金交叉</td><td class="num">2025-06-27</td><td>241 個交易日前，中期多頭格局延續中</td></tr>
+  </table>
+  <p>整體：中期多頭結構完整，目前為高檔量縮整理、短線略弱（跌破 MA20）。屬「趨勢健康、短線非最佳買點」，不構成基本面以外的負面訊號。</p>
+
+  <!-- M5 -->
+  <h2>M5　估值</h2>
+  <p>市值 ≈ $205.19 × 24.30B 股 ≈ <b>$4.99 兆</b>；淨現金（現金 10.6B vs 長債 7.5B）使 EV ≈ 市值。</p>
+  <table>
+    <tr><th>指標</th><th class="num">水準</th><th>說明 / 對照</th></tr>
+    <tr><td>P/S（TTM ≈ 253B 營收）</td><td class="num">≈ 19.7x</td><td>絕對值高，但對應 60%+ 營收成長</td></tr>
+    <tr><td>前瞻 P/E（網搜，中信心）</td><td class="num">≈ 22–25x</td><td><b>處自身歷史低檔</b>（NVDA 過往常 35–60x 前瞻）</td></tr>
+    <tr><td>P/B（權益 157B）</td><td class="num">≈ 31.8x</td><td>資產輕、無形價值高，P/B 參考性低</td></tr>
+    <tr><td>EV/EBITDA</td><td class="num">前瞻≈30x / TTM≈37x</td><td>高品質高成長下尚屬合理區間上緣</td></tr>
+    <tr><td>FCF 殖利率（FY26 FCF 96.7B）</td><td class="num">≈ 1.9%</td><td>偏薄，反映高成長定價</td></tr>
+  </table>
+  <h3>分層判斷</h3>
+  <ul>
+    <li><b>第一層（自身）</b>：當前前瞻 P/E 22–25x 是 NVDA 數年來相對低檔，主因 E（盈餘）成長快過股價。以自身標準，<b>估值不貴反偏便宜</b>。</li>
+    <li><b>第二層（同業）</b>：AMD 前瞻 P/E ~28x、成長性與確定性均不及 NVDA；NVDA 以更低倍數享更高成長與護城河，相對具吸引力（中信心）。</li>
+    <li><b>第三層（逆向 DCF 概念檢驗）</b>：前瞻 22–25x 對 25–85% 成長，PEG 明顯 &lt;1，市場隱含成長假設<b>相對保守</b>，未達「超過產業成長天花板兩倍」的過熱門檻。產業面：2026 超大規模 AI capex 指引上看 $660B、Jensen 提 $1T 訂單能見度，支撐近年成長路徑。</li>
+  </ul>
+  <p>結論（帶安全邊際）：以成長股框架，估值落在<b>合理偏便宜</b>；風險不在「貴」，而在前述成長持續性與業外利益對 GAAP 盈餘的干擾。不給單一目標價。</p>
+
+  <!-- M6 -->
+  <h2>M6　風險（網搜，各標信心）</h2>
+  <ul>
+    <li><b>客戶集中（高，核心風險）</b>：約 85% 營收來自 6 大客戶、前 4 大約 60%。任一雲端巨頭 capex 縮手都會放大傳導至 NVDA。〔中信心，2026〕</li>
+    <li><b>自研 ASIC 侵蝕（中高）</b>：Broadcom 握約 70% 客製 AI 加速器市場；市場預期 NVDA 於超大規模訓練的份額或自 ~80% 降至 55–60%。〔中信心〕</li>
+    <li><b>AI capex 永續性 / 泡沫疑慮（中高）</b>：2026 超大規模 capex 上看 $660B，但大廠自由現金流因投資擴張而縮水，若變現指標不改善，投資人耐心可能轉向。〔中信心〕</li>
+    <li><b>中國 / 出口管制（中）</b>：H20 受限後中國資料中心算力已排除於展望（市場估每年約 $50B 機會成本被放棄）；政策方向仍是變數。〔中信心〕</li>
+    <li><b>地緣 / 製造集中（中）</b>：先進製程高度依賴台積電與台灣，地緣事件為尾部風險。〔一般認知〕</li>
+  </ul>
+
+  <!-- M7 -->
+  <h2>M7　評分（0–10）</h2>
+  <table>
+    <tr><th>維度</th><th class="num">分數</th><th class="num">權重</th><th>一句理由</th></tr>
+    <tr><td>成長與業務品質</td><td class="num">9.0</td><td class="num">30%</td><td>FY26 +65%、Q1FY27 +85%，資料中心 +92%，毛利率 71–75%，FCF 96.7B</td></tr>
+    <tr><td>估值合理性</td><td class="num">7.0</td><td class="num">25%</td><td>前瞻 P/E 22–25x（PEG&lt;1、自身歷史低檔），但 P/S ~20x、FCF 殖利率 ~1.9% 絕對值偏高</td></tr>
+    <tr><td>產業地位與護城河</td><td class="num">9.0</td><td class="num">20%</td><td>AI 訓練 ~80% 份額、CUDA 生態、全棧路線圖（Blackwell→Vera Rubin）、$1T 訂單能見度</td></tr>
+    <tr><td>財務體質</td><td class="num">9.0</td><td class="num">12%</td><td>淨現金、權益 157B、總負債僅 49.5B、年 FCF 96.7B，體質頂級</td></tr>
+    <tr><td>供應鏈與外部風險</td><td class="num">5.0</td><td class="num">8%</td><td>客戶集中（6 家占 85%）、中國被排除、TSMC 集中、ASIC 競爭與 capex 永續性</td></tr>
+    <tr><td>技術面時機</td><td class="num">6.0</td><td class="num">5%</td><td>多頭排列、站上 MA50/200、距高 -12.9% 量縮整理；短線在 MA20 之下</td></tr>
+    <tr><td colspan="4"><b>加權平均 = 9×0.30 + 7×0.25 + 9×0.20 + 9×0.12 + 5×0.08 + 6×0.05 = <span style="font-size:18px">8.03 → 8.0</span></b></td></tr>
+  </table>
+  <p><b>封頂閘門檢查</b>：data_quality=ok、核心指標齊全（不觸發資料不足）；無償債/持續經營紅旗（淨現金）；逆向 DCF 隱含成長未超產業天花板兩倍（前瞻倍數偏低）→ <b>無封頂</b>。</p>
+  <p style="font-size:18px"><b>最終評分 8.0 / 10　·　分數帶：推薦（7–8）　·　信心度：中（偏高）</b></p>
+  <div class="card">
+    <div class="factor"><b class="bull">最關鍵多方 ▲</b>：AI 基礎建設超級週期 + 全棧近壟斷地位，而前瞻估值對其成長其實偏便宜（PEG&lt;1）。</div>
+    <div class="factor"><b class="bear">最關鍵空方 ▼</b>：營收命脈繫於少數雲端巨頭 capex + 自研 ASIC 長期侵蝕份額——賭的是 AI 投資週期的「持續性」。</div>
+  </div>
+
+  <div class="foot">
+    本內容為數據分析，<b>非投資顧問建議</b>，不構成買賣要約。投資涉及風險，請自行判斷並承擔後果。<br>
+    報告產出日期：2026-06-13　·　股價資料 as-of：2026-06-12　·　財報來源：SEC EDGAR（FY2026 年報 + Q1 FY2027 季報）<br>
+    本機數據：history-1.0（NVDA_history.json）　·　法說會/同業/風險數字經網路查證，列中信心。
+  </div>
+
+</div>
+</body>
+</html>

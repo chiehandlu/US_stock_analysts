@@ -15,8 +15,8 @@
     "entity_name": "NVIDIA CORP",
     "cik": "0001045810",
     "created_at_utc": "2026-06-11T07:42:26+00:00",
-    "last_updated_utc": "2026-06-11T07:59:24+00:00",
-    "runs": 3
+    "last_updated_utc": "2026-06-13T03:04:46+00:00",
+    "runs": 4
   },
   "technical_snapshots": [
     {
@@ -44,6 +44,33 @@
         "volume_latest": 180327000,
         "volume_avg20": 178906960,
         "volume_ratio_vs_avg20": 1.01
+      }
+    },
+    {
+      "as_of": "2026-06-12",
+      "fetched_at_utc": "2026-06-13T03:04:44+00:00",
+      "data_quality": "ok",
+      "cross_check_status": "consistent",
+      "indicators": {
+        "latest_close": 205.19,
+        "prev_close": 204.87,
+        "ma20": 214.46,
+        "ma50": 206.7,
+        "ma200": 189.04,
+        "ma_alignment": "多頭排列 (MA20>MA50>MA200)",
+        "trend_regime": "bullish (MA50>MA200)",
+        "last_cross": {
+          "type": "golden",
+          "date": "2025-06-27",
+          "trading_days_ago": 241
+        },
+        "high_52w": 235.47,
+        "low_52w": 141.78,
+        "pct_from_52w_high": -12.86,
+        "pct_from_52w_low": 44.72,
+        "volume_latest": 105436612,
+        "volume_avg20": 175711810,
+        "volume_ratio_vs_avg20": 0.6
       }
     }
   ],
@@ -2311,7 +2338,5 @@
       }
     }
   },
-  "last_run_warnings": [
-    "yfinance 最新收盤 208.19 與 Nasdaq 最新成交 200.42（Jun 10, 2026）差異 3.73%（>1.5%）。常見原因：Yahoo 缺最新交易日收盤而落後一天、除權息日、或盤中即時報價與收盤時點不同，建議人工確認最新收盤價"
-  ]
+  "last_run_warnings": []
 }
