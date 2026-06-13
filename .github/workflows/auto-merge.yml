@@ -1,0 +1,44 @@
+name: Auto-merge claude/* into main
+
+# 用途：Claude Code 網頁版（手機雲端 session）只能推 claude/* 分支、無法直接推 main。
+# 本 workflow 在 claude/* 分支被推上來時，用 repo token（不受 Claude 沙箱限制）
+# 自動把它併進 main 並刪除該分支，讓 GitHub Pages（從 main 出）即時更新。
+# 純個人累積 repo、無人工審查。合併衝突時 job 會失敗，需手動處理。
+
+on:
+  push:
+    branches:
+      - 'claude/**'
+
+# 同時多個 claude/* 推上來時序列化，避免同時動 main 互踩
+concurrency:
+  group: auto-merge-main
+  cancel-in-progress: false
+
+jobs:
+  merge:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Merge branch into main
+        run: |
+          set -e
+          BR="${GITHUB_REF#refs/heads/}"
+          echo "處理分支：$BR"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git fetch origin main "$BR"
+          git checkout -B main origin/main
+          if git merge --no-ff "origin/$BR" -m "auto-merge $BR into main"; then
+            git push origin main
+            git push origin --delete "$BR"
+            echo "✅ 已併入 main 並刪除 $BR"
+          else
+            echo "::error::合併 $BR 進 main 發生衝突，請手動處理（未刪分支）。"
+            exit 1
+          fi
