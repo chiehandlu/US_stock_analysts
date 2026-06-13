@@ -1,0 +1,68 @@
+{
+  "report_date": "2026-06-13",
+  "mode": "full",
+  "confidence": "中（偏高）",
+  "summary": {
+    "bull": "AI 資本支出超級週期 + 全棧近壟斷地位，前瞻 P/E 22–25x 對應 25–85% 成長（PEG<1），估值對成長其實不貴。",
+    "bear": "營收高度集中於少數雲端巨頭 capex，加上自研 ASIC 侵蝕份額——最大風險是成長「持續性」而非估值本身。"
+  },
+  "warnings": [
+    "Q1 FY2027 GAAP 淨利 58.3B 大於營業利益 53.5B（淨利率 71%，含顯著業外利益）→ GAAP P/E 會被高估，估值以營業利益與前瞻交叉校正。",
+    "M5 同業倍數、前瞻 P/E、產業 capex 數字來自網搜（中信心）。"
+  ],
+  "m2_note": "三年營收自 27B → 216B（約 8 倍），毛利率穩在 70%+，FY2026 FCF 達 96.7B。FY2023 低谷（毛利率 56.9%、EPS 0.17）為 AI 需求起飛前的庫存修正。",
+  "m3_points": [
+    {"label": "① 財測", "text": "Q2 FY27 營收指引 $91B（高於共識 ~86.8B）；毛利率 ~75%。未含中國算力營收。"},
+    {"label": "② 營收驅動", "text": "資料中心 $75B（YoY +92%、QoQ +21%），Blackwell 為主力（佔資料中心算力約 70%）。"},
+    {"label": "③ 利潤率", "text": "毛利率回升至 74.9%，Blackwell 良率/組合改善。"},
+    {"label": "④ 資本支出/產能", "text": "Vera Rubin 平台 FY27 Q3 出貨、Q4 放量。"},
+    {"label": "⑤ 需求", "text": "Jensen：「AI factory 建置為人類史上最大基建擴張」；提及約 $1 兆訂單能見度。"},
+    {"label": "⑥ 供應鏈", "text": "Blackwell 供給持續爬坡；中國算力已排除於展望。"},
+    {"label": "⑦ 資本配置", "text": "本季調升股利與買回。"},
+    {"label": "⑧ 語氣", "text": "更明確偏多，主軸轉向「Agentic AI 已落地」。"},
+    {"label": "⑨ Q&A 痛點", "text": "中國缺口、ASIC 份額侵蝕、超大規模 capex 永續性。"},
+    {"label": "⑩ 意外", "text": "營收 81.6B 超自身指引；Q2 指引 91B 顯著高於共識。"}
+  ],
+  "m4_note": "多頭排列（MA20 214.5 > MA50 206.7 > MA200 189.0），站上 MA50/MA200、短線在 MA20 之下；量縮（0.60x）整理。可切換 1月／半年／1年／2年 檢視日K線，移游標看當日 OHLC。",
+  "m5": {
+    "market_cap_text": "$4.99 兆（淨現金，EV ≈ 市值）",
+    "rows": [
+      {"metric": "P/S（TTM ~253B）", "value": "≈ 19.7x", "note": "絕對值高，對應 60%+ 成長"},
+      {"metric": "前瞻 P/E（網搜·中信心）", "value": "≈ 22–25x", "note": "處自身歷史低檔（過往常 35–60x）"},
+      {"metric": "EV/EBITDA", "value": "前瞻~30x / TTM~37x", "note": "高成長下屬合理上緣"},
+      {"metric": "FCF 殖利率（FY26）", "value": "≈ 1.9%", "note": "偏薄，反映成長定價"}
+    ],
+    "peer": {"self_label": "NVDA", "self_pe": 23.5, "peer_label": "AMD", "peer_pe": 28},
+    "note": "分層：① 自身——前瞻 22–25x 為數年低檔，估值不貴反偏便宜。② 同業——較 AMD ~28x 更低、確定性更高。③ 逆向 DCF 概念——PEG<1，市場隱含成長相對保守，未達過熱門檻。結論：合理偏便宜，風險在成長持續性而非估值。"
+  },
+  "m6_risks": [
+    {"title": "客戶集中", "level": "高·核心", "text": "約 85% 營收來自 6 大客戶。任一雲端巨頭 capex 縮手即放大傳導。", "confidence": "中"},
+    {"title": "自研 ASIC 侵蝕", "level": "中高", "text": "Broadcom 握約 70% 客製 AI 加速器市場；NVDA 訓練份額或自 ~80% 降至 55–60%。", "confidence": "中"},
+    {"title": "AI capex 永續性", "level": "中高", "text": "2026 超大規模 capex 上看 $660B，若變現不改善投資人耐心可能轉向。", "confidence": "中"},
+    {"title": "中國/出口管制", "level": "中", "text": "H20 受限，中國算力已排除展望（市場估每年 ~$50B 機會成本）。", "confidence": "中"},
+    {"title": "地緣/製造集中", "level": "中", "text": "先進製程高度依賴台積電與台灣。", "confidence": "一般"}
+  ],
+  "value_chain": {
+    "upstream": [{"name": "台積電", "desc": "先進製程代工"}, {"name": "SK海力士/美光", "desc": "HBM 記憶體"}],
+    "mid": {"name": "NVIDIA", "desc": "GPU + CUDA（~80% AI 訓練份額）"},
+    "downstream": [{"name": "Microsoft"}, {"name": "Amazon"}, {"name": "Google"}, {"name": "Meta"}],
+    "downstream_note": "約 85% 營收集中於 6 家，前 4 大約 60%"
+  },
+  "valuation_snapshot": {
+    "price": 205.19, "market_cap_usd": 4986000000000, "ps_ttm": 19.7,
+    "pe_forward": 23.5, "fcf_yield_pct": 1.9
+  },
+  "scoring": {
+    "dimensions": [
+      {"name": "成長與業務品質", "score": 9.0, "weight": 30, "reason": "FY26 +65%、Q1FY27 +85%、資料中心 +92%、FCF 96.7B"},
+      {"name": "估值合理性", "score": 7.0, "weight": 25, "reason": "前瞻 P/E 22–25x（PEG<1、歷史低檔），絕對 P/S ~20x 偏高"},
+      {"name": "產業地位與護城河", "score": 9.0, "weight": 20, "reason": "~80% 訓練份額、CUDA、全棧路線圖、$1T 能見度"},
+      {"name": "財務體質", "score": 9.0, "weight": 12, "reason": "淨現金、權益 157B、總負債僅 49.5B"},
+      {"name": "供應鏈與外部風險", "score": 5.0, "weight": 8, "reason": "客戶集中、中國排除、TSMC 集中、ASIC 競爭"},
+      {"name": "技術面時機", "score": 6.0, "weight": 5, "reason": "多頭排列、距高 -12.9% 量縮整理"}
+    ],
+    "gate_note": "封頂閘門：均未觸發",
+    "final_score": 8.0,
+    "band": "推薦"
+  }
+}

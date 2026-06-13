@@ -72,50 +72,40 @@ description: 美股個股投資分析。當使用者要求評估/分析某美股
 3. 信心度(高/中/低)獨立標註,不併入分數。由 warnings、缺值、依賴網搜程度、資料新鮮度決定。
 分數帶:9-10 高度推薦｜7-8 推薦｜5-6 中性觀望｜3-4 不具吸引力｜0-2 避開。
 
-### 第 4 步:輸出報告(繁體中文)
-結構:
-1. 資料品質與時效(data_quality、最新交易日、財報 filed 日、warnings)
-2. M2 基本面 → M3 法說會 → M4 技術面 → M5 估值 → M6 風險(快速模式只含 M2/M4/M5 第一層)
-3. M7:最終分數 + 信心度 + 六維各自分數與一句理由 + 最關鍵 1-2 個多空因子
-4. 結尾必附:「本內容為分析,非投資顧問建議」+ 報告產出日期
+### 第 4 步:產出「內容 JSON」(不再手寫 HTML)
+**報告版面已由 `build_report.py` 固定,你不要自己寫 HTML、也不要改 HTML。** 只需把分析
+結果整理成 content JSON,存到 `reports/{TICKER}_content_{YYYY-MM-DD}.json`。欄位(缺的給
+null 或 []，完整結構見 `build_report.py` 檔頭):
+- `report_date`、`mode`(full|quick|news-update)、`confidence`
+- `summary`{bull,bear}（最關鍵多空各一句）
+- `warnings`[]（你額外發現的警示；資料品質警示程式會自動加,不用重複）
+- `m2_note`（基本面文字；財報數字與圖表程式自動從 history 畫）
+- `m3_points`[10]{label,text}（快速模式給 []）
+- `m4_note`（技術面文字；日K線與52週條程式自動畫）
+- `m5`{market_cap_text, rows[{metric,value,note}], peer{self_label,self_pe,peer_label,peer_pe}, note}
+- `m6_risks`[]{title,level,text,confidence}（快速模式給 []）
+- `value_chain`{upstream[],mid,downstream[],downstream_note}
+- `valuation_snapshot`{...}
+- `scoring`{dimensions[6]{name,score,weight,reason}, gate_note, final_score, band}
 
-### 第 5 步:存成自包含 HTML（含圖表）並開啟/給連結(必做)
-報告寫成**單一自包含 HTML** 存到 `reports/{TICKER}_report_{YYYY-MM-DD}.html`(資料夾不存在就建立)。
+固定規則:dimensions **一律六維、固定名稱與權重**(成長與業務品質30／估值合理性25／
+產業地位與護城河20／財務體質12／供應鏈與外部風險8／技術面時機5)。快速模式把「產業地位
+與護城河」「供應鏈與外部風險」的 score 設 null、reason 寫「未評估」,m3_points 與 m6_risks 給 []。
 
-**自包含鐵則(關鍵)**:所有樣式與圖表都內嵌,**絕不引用任何外部資源**(不可用 Chart.js / CDN / 外部字型 / 外部圖)。圖表一律用**內嵌 SVG**(或純 CSS)手繪——因為使用者會把檔案下載到手機本機開啟,離線也必須完整渲染。
+### 第 5 步:產生固定格式報告(必做)
+執行 `{PYTHON} build_report.py {TICKER} reports/{TICKER}_content_{YYYY-MM-DD}.json`
+(`{PYTHON}` 同第 1 步:本機 `.venv/bin/python`、雲端 `python3`)。它會:讀 history(財報/指標/
+日K線)+ content JSON → 產出**版面固定**的 `reports/{TICKER}_report_{YYYY-MM-DD}.html`
+(已內含互動日K線與所有圖表:雷達/長條+折線/季度/52週條/同業P/E/價值鏈樹)+ 機器可讀摘要
+`reports/{TICKER}_report_{YYYY-MM-DD}.json`。版面、配色、章節、圖表畫法全由程式固定。
 
-HTML 要求:
-- 內嵌 CSS,中文字型 `"PingFang TC","Noto Sans TC",sans-serif`;加 `<meta name="viewport">` 響應式,手機可讀。
-- 開頭 hero 區:ticker、公司名、**最終分數(大字)**、分數帶、信心度、多空各一句,並放**六維評分雷達圖(SVG)**。
-- 標準圖表(用 SVG/CSS,有數據就畫):六維評分→雷達圖;年度營收/FCF→長條+折線;近 6 季營收→長條;52 週位置→水平區間條(現價標記);估值對同業→水平長條(前瞻 P/E);價值鏈/客戶集中→CSS 樹狀圖。
-- 財務數據用表格,數字靠右對齊;綠/紅標多空;黃底框放 warnings。
-- 頁尾:免責聲明 + 報告產出日 + 資料 as-of 日。
-
-寫好 HTML 後,**先注入日K線再開啟/給連結**:
-- M4 區塊須含 `<!-- KLINE -->` 佔位符。
-- 執行 `{PYTHON} inject_kline.py {TICKER} reports/{TICKER}_report_{YYYY-MM-DD}.html`（`{PYTHON}` 同第 1 步：本機 `.venv/bin/python`、雲端 `python3`）→ 會把佔位符換成自包含的互動日K線（含 MA20/50、成交量、1月/半年/1年/2年 鈕；資料取自 history 的 price_bars）。
-
-**開啟方式(依環境)**:
-- 本機(Mac,`open` 可用):執行 `open reports/{TICKER}_report_{YYYY-MM-DD}.html`。
-- 雲端 session(無瀏覽器):**不要** open。改在第 6 步 push 後,於對話輸出可點連結與下載步驟:
-  連結 `https://github.com/{OWNER}/{REPO}/blob/main/reports/{TICKER}_report_{YYYY-MM-DD}.html`({OWNER}/{REPO} 由 `git remote get-url origin` 取得),
-  並附說明:「手機點開→按『Download raw file』下載→從下載項目用 Chrome 開啟即完整渲染(離線也可)→看完可刪。」
+**開啟/連結(依環境)**:
+- 本機(Mac):`open reports/{TICKER}_report_{YYYY-MM-DD}.html`。
+- 雲端 session(無瀏覽器):**不要** open。在第 6 步 push 後,於對話輸出可點連結與下載步驟:
+  `https://github.com/{OWNER}/{REPO}/blob/main/reports/{TICKER}_report_{YYYY-MM-DD}.html`
+  ({OWNER}/{REPO} 由 `git remote get-url origin` 取得),並附:「手機點開→按『Download raw file』
+  下載→從下載項目用 Chrome 開啟即完整渲染(離線也可)→看完可刪。」
 - 對話中給重點摘要即可,不重複整份報告。
-
-同時存一份機器可讀摘要 `reports/{TICKER}_report_{YYYY-MM-DD}.json`(供日後消息比對與報告間比較,不給人看):
-```json
-{
-  "ticker": "...", "report_date": "...", "mode": "full | quick | news-update",
-  "score": 7.5, "band": "推薦", "confidence": "中",
-  "dimensions": {"成長與業務品質": {"score": 9, "reason": "一句理由"}, "...": {}},
-  "key_factors": {"bull": ["..."], "bear": ["..."]},
-  "valuation_snapshot": {"price": 0, "pe": 0, "ps": 0, "ev_ebitda": 0, "fcf_yield_pct": 0, "implied_growth_pct": 0},
-  "data_as_of": {"price": "...", "financials_filed": "..."},
-  "warnings": ["..."],
-  "news_adjustments": []
-}
-```
-欄位有就填、沒有就 null,不臆測。
 
 ### 第 6 步:自動同步回雲端(必做,在 git repo 內時)
 報告產出後,把累積資料推回遠端,讓電腦/手機永遠共用同一份歷史:
@@ -151,6 +141,5 @@ HTML 要求:
 
 ### N4 輸出
 - 對話中給:消息查證結果(等級+來源)、受影響維度與調整、新舊分數對照、是否建議重跑完整評估(若消息涉及財報數字或重大結構變化,建議重跑並提示「下一份財報/法說會時間點」)。
-- 產出更新版 HTML 報告存 `reports/{TICKER}_report_{YYYY-MM-DD}_news.html` 並開啟:沿用原報告骨架,開頭加「消息更新」區塊(消息摘要、查證等級、來源清單),受調整的維度用醒目標示新舊分數。
-- 同步存新的 JSON 摘要(`mode: "news-update"`),並在 `news_adjustments` 陣列記錄:消息摘要、日期、查證等級、調整了哪些維度、調整前後分數。這樣未來再比對時,調整軌跡都在。
+- 產出更新版報告:用**同一個 build_report.py 固定模板**——以舊報告的 content 為基礎,套用調整(改 scoring 分數/reason、把消息查證摘要寫進 `warnings` 與 `summary`、`mode` 設 `news-update`、在 `news_adjustments` 記錄:消息摘要、日期、查證等級、調整了哪些維度、調整前後分數),存成 `reports/{TICKER}_content_{YYYY-MM-DD}.json`,再跑 `{PYTHON} build_report.py {TICKER} reports/{TICKER}_content_{YYYY-MM-DD}.json`。格式與一般報告一致,調整軌跡留在摘要 JSON 的 `news_adjustments`。
 - 最後執行**第 6 步「自動同步回雲端」**,把更新版報告 push 回遠端。

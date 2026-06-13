@@ -1,0 +1,53 @@
+{
+  "ticker": "ONDS",
+  "report_date": "2026-06-13",
+  "mode": "full",
+  "score": 5.3,
+  "band": "中性觀望",
+  "confidence": "中",
+  "dimensions": {
+    "成長與業務品質": {"score": 7, "reason": "營收爆發(YoY +1,065%)、賽道熱、backlog/pipeline/Palantir佳,但成長偏併購驅動且獲利未證實"},
+    "估值合理性": {"score": 3, "reason": "TTM P/S 55x+、無真實獲利與正FCF;前瞻~12x雖較可接受但安全邊際薄、稀釋壓抑每股"},
+    "產業地位與護城河": {"score": 5, "reason": "反無人機/防務題材強且有實際平台+Palantir,但相對AVAV/KTOS仍是小型roll-up,護城河未證實"},
+    "財務體質": {"score": 7, "reason": "現金+短投$14.8億、近乎無債,存活無虞、併購彈藥足,但仍燒錢且歷來仰賴資本市場"},
+    "供應鏈與外部風險": {"score": 4, "reason": "無重大供應瓶頸,但地緣集中(以色列/中東)、整合風險、盈餘受權證劇烈干擾、持續稀釋"},
+    "技術面時機": {"score": 5, "reason": "長線多頭+黃金交叉未破,但回落MA20/50之下、貼MA200整理、量縮,中線轉弱"}
+  },
+  "key_factors": {
+    "bull": [
+      "站在最熱國防/反無人機浪潮,營收爆發經多源證實(Q1 +1,065%、FY26財測上調至$390M)",
+      "backlog $457M + pipeline $4.3B + Palantir合作 + $14.8億現金,成長彈藥罕見充足"
+    ],
+    "bear": [
+      "靠巨額稀釋+併購堆出的故事股:股數一年翻5倍(40M→469M,+259%)且仍將續增",
+      "TTM P/S 55x+、無真實獲利與正現金流,GAAP淨利全是$389.5M認股權證重估假象",
+      "得標率/整合未證實,題材或財測落空時估值壓縮與每股攤薄雙殺"
+    ]
+  },
+  "valuation_snapshot": {
+    "price": 9.33,
+    "pe": null,
+    "ps": 55.0,
+    "ps_forward_fy26": 12.0,
+    "ev_sales_forward": 8.0,
+    "ev_ebitda": null,
+    "fcf_yield_pct": null,
+    "implied_growth_pct": null,
+    "market_cap_est_usd": 4600000000,
+    "cash_and_st_inv_usd": 1480000000,
+    "shares_outstanding_q1fy26": 469062109,
+    "fy2026_revenue_guidance_usd": 390000000,
+    "backlog_usd": 457000000
+  },
+  "data_as_of": {
+    "price": "2026-06-12",
+    "financials_filed": "2026-05-15"
+  },
+  "warnings": [
+    "GAAP淨利+$362.9M為認股權證重估非現金收益($389.5M)+去合併收益所致,調整後EBITDA仍虧-$10.9M,非真實轉盈",
+    "資產負債表$1.1B為認股權證負債(非現金或有負債),公司自述幾乎無傳統債務",
+    "股數一年內由~40M暴增至469M(+259%),並將為併購持續增發",
+    "25Q4單季營收為年度減前三季之推算值"
+  ],
+  "news_adjustments": []
+}

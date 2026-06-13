@@ -1,0 +1,5420 @@
+{
+  "schema_version": "history-1.1",
+  "_doc": {
+    "schema_version": "歷史檔結構版本。skill 應先檢查，不認得就警告而非默默讀錯。",
+    "meta.runs": "此歷史檔被更新過的次數",
+    "technical_snapshots": "技術面軌跡，依交易日排序，每個交易日一筆（同日重跑覆蓋）。欄位同 fetch_stock 輸出的 indicators；cross_check_status 為當次雙來源比對結果",
+    "financials.annual": "全部會計年度（只增不減），鍵為期間結束日。metrics 缺某指標代表該年無資料；tags 記錄各指標實際採用的 XBRL 標籤；filed 為該年資料最新申報日",
+    "financials.quarters": "全部單季序列（只增不減），鍵為季末日。損益/現金流為單季值（80~100天），資產負債為 10-Q 時點值",
+    "price_bars": "近 2 年日線 [日期,開,高,低,收,量]，每次更新覆蓋（滾動視窗，非累積），供報告畫日K線",
+    "financials.annual.<end>.derived": "該年衍生指標：毛利率%、淨利率%、自由現金流、EBITDA（輸入齊全才計算）",
+    "last_run_warnings": "最近一次更新的警告（含兩支腳本的 warnings 與抓取失敗訊息）"
+  },
+  "meta": {
+    "ticker": "ONDS",
+    "company_name": "Ondas Inc.",
+    "entity_name": "Ondas Inc.",
+    "cik": "0001646188",
+    "created_at_utc": "2026-06-13T03:52:28+00:00",
+    "last_updated_utc": "2026-06-13T03:52:34+00:00",
+    "runs": 1
+  },
+  "technical_snapshots": [
+    {
+      "as_of": "2026-06-12",
+      "fetched_at_utc": "2026-06-13T03:52:33+00:00",
+      "data_quality": "ok",
+      "cross_check_status": "consistent",
+      "indicators": {
+        "latest_close": 9.33,
+        "prev_close": 9.83,
+        "ma20": 10.68,
+        "ma50": 10.18,
+        "ma200": 9.24,
+        "ma_alignment": "多頭排列 (MA20>MA50>MA200)",
+        "trend_regime": "bullish (MA50>MA200)",
+        "last_cross": {
+          "type": "golden",
+          "date": "2025-07-01",
+          "trading_days_ago": 239
+        },
+        "high_52w": 14.01,
+        "low_52w": 1.43,
+        "pct_from_52w_high": -33.4,
+        "pct_from_52w_low": 552.45,
+        "volume_latest": 54155036,
+        "volume_avg20": 82691561,
+        "volume_ratio_vs_avg20": 0.65
+      }
+    }
+  ],
+  "financials": {
+    "annual": {
+      "2015-12-31": {
+        "fy_label": "FY2015",
+        "filed": "2018-03-28",
+        "metrics": {
+          "gross_profit": -1518,
+          "operating_income": -19775,
+          "net_income": -19775,
+          "eps_diluted": -0.01,
+          "operating_cash_flow": -20641,
+          "total_assets": 8040,
+          "total_liabilities": 28303,
+          "stockholders_equity": -20263,
+          "cash": 5174,
+          "shares_outstanding": 3000000
+        },
+        "tags": {
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareBasicAndDiluted",
+          "operating_cash_flow": "NetCashProvidedByUsedInOperatingActivitiesContinuingOperations",
+          "total_assets": "Assets",
+          "total_liabilities": "Liabilities",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue",
+          "shares_outstanding": "CommonStockSharesOutstanding"
+        },
+        "derived": {
+          "gross_margin_pct": null,
+          "net_margin_pct": null,
+          "free_cash_flow": null,
+          "ebitda": null
+        }
+      },
+      "2016-12-31": {
+        "fy_label": "FY2016",
+        "filed": "2019-03-19",
+        "metrics": {
+          "gross_profit": -6910,
+          "operating_income": -34580,
+          "net_income": -34580,
+          "eps_diluted": -0.01,
+          "operating_cash_flow": -28992,
+          "total_assets": 5660,
+          "total_liabilities": 60503,
+          "stockholders_equity": -4907489,
+          "cash": 45248,
+          "shares_outstanding": 3000000
+        },
+        "tags": {
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareBasicAndDiluted",
+          "operating_cash_flow": "NetCashProvidedByUsedInOperatingActivities",
+          "total_assets": "Assets",
+          "total_liabilities": "Liabilities",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue",
+          "shares_outstanding": "CommonStockSharesOutstanding"
+        },
+        "derived": {
+          "gross_margin_pct": null,
+          "net_margin_pct": null,
+          "free_cash_flow": null,
+          "ebitda": null
+        }
+      },
+      "2017-12-31": {
+        "fy_label": "FY2017",
+        "filed": "2020-03-13",
+        "metrics": {
+          "revenue": 274403,
+          "gross_profit": 194635,
+          "operating_income": -2394337,
+          "net_income": -3022207,
+          "eps_diluted": -0.19,
+          "operating_cash_flow": -2630482,
+          "dep_amort": 13439,
+          "total_assets": 717627,
+          "total_liabilities": 8639414,
+          "stockholders_equity": -7921787,
+          "cash": 456018,
+          "shares_outstanding": 16797744
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareBasicAndDiluted",
+          "operating_cash_flow": "NetCashProvidedByUsedInOperatingActivities",
+          "dep_amort": "Depreciation",
+          "total_assets": "Assets",
+          "total_liabilities": "Liabilities",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue",
+          "shares_outstanding": "CommonStockSharesOutstanding"
+        },
+        "derived": {
+          "gross_margin_pct": 70.93,
+          "net_margin_pct": -1101.38,
+          "free_cash_flow": null,
+          "ebitda": -2380898
+        }
+      },
+      "2018-12-31": {
+        "fy_label": "FY2018",
+        "filed": "2021-03-08",
+        "metrics": {
+          "revenue": 190029,
+          "gross_profit": 150664,
+          "operating_income": -8435533,
+          "net_income": -12096864,
+          "eps_diluted": -0.42,
+          "operating_cash_flow": -8517263,
+          "capex": 544236,
+          "dep_amort": 54946,
+          "total_assets": 2661521,
+          "total_liabilities": 17546276,
+          "stockholders_equity": -14884755,
+          "cash": 1129863,
+          "shares_outstanding": 50463732
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareBasicAndDiluted",
+          "operating_cash_flow": "NetCashProvidedByUsedInOperatingActivities",
+          "capex": "PaymentsToAcquirePropertyPlantAndEquipment",
+          "dep_amort": "Depreciation",
+          "total_assets": "Assets",
+          "total_liabilities": "Liabilities",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue",
+          "shares_outstanding": "CommonStockSharesOutstanding"
+        },
+        "derived": {
+          "gross_margin_pct": 79.28,
+          "net_margin_pct": -6365.8,
+          "free_cash_flow": -9061499,
+          "ebitda": -8380587
+        }
+      },
+      "2019-12-31": {
+        "fy_label": "FY2019",
+        "filed": "2022-03-22",
+        "metrics": {
+          "revenue": 320383,
+          "gross_profit": 241257,
+          "operating_income": -15371936,
+          "net_income": -19390132,
+          "eps_diluted": -1.1,
+          "operating_cash_flow": -14664385,
+          "capex": 77936,
+          "dep_amort": 143459,
+          "total_assets": 4263516,
+          "total_liabilities": 16693758,
+          "stockholders_equity": -12430242,
+          "cash": 2153028,
+          "long_term_debt": 500000,
+          "shares_outstanding": 19756154
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareBasicAndDiluted",
+          "operating_cash_flow": "NetCashProvidedByUsedInOperatingActivities",
+          "capex": "PaymentsToAcquirePropertyPlantAndEquipment",
+          "dep_amort": "Depreciation",
+          "total_assets": "Assets",
+          "total_liabilities": "Liabilities",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue",
+          "long_term_debt": "LongTermDebtNoncurrent",
+          "shares_outstanding": "CommonStockSharesOutstanding"
+        },
+        "derived": {
+          "gross_margin_pct": 75.3,
+          "net_margin_pct": -6052.17,
+          "free_cash_flow": -14742321,
+          "ebitda": -15228477
+        }
+      },
+      "2020-12-31": {
+        "fy_label": "FY2020",
+        "filed": "2023-03-14",
+        "metrics": {
+          "revenue": 2163719,
+          "gross_profit": 927668,
+          "operating_income": -11523886,
+          "net_income": -13477880,
+          "eps_diluted": -0.66,
+          "operating_cash_flow": -7534256,
+          "capex": 8598,
+          "dep_amort": 117599,
+          "total_assets": 28511769,
+          "total_liabilities": 13428174,
+          "stockholders_equity": 15083595,
+          "cash": 26060733,
+          "long_term_debt": 907000,
+          "shares_outstanding": 26540769
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareBasicAndDiluted",
+          "operating_cash_flow": "NetCashProvidedByUsedInOperatingActivities",
+          "capex": "PaymentsToAcquirePropertyPlantAndEquipment",
+          "dep_amort": "DepreciationAndAmortization",
+          "total_assets": "Assets",
+          "total_liabilities": "Liabilities",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue",
+          "long_term_debt": "LongTermDebtNoncurrent",
+          "shares_outstanding": "CommonStockSharesOutstanding"
+        },
+        "derived": {
+          "gross_margin_pct": 42.87,
+          "net_margin_pct": -622.9,
+          "free_cash_flow": -7542854,
+          "ebitda": -11406287
+        }
+      },
+      "2021-12-31": {
+        "fy_label": "FY2021",
+        "filed": "2024-04-01",
+        "metrics": {
+          "revenue": 2906771,
+          "gross_profit": 1095829,
+          "operating_income": -17973617,
+          "net_income": -15023842,
+          "eps_diluted": -0.44,
+          "operating_cash_flow": -16895416,
+          "capex": 923718,
+          "dep_amort": 1512594,
+          "total_assets": 117438575,
+          "total_liabilities": 5205743,
+          "stockholders_equity": 112232832,
+          "cash": 40815123,
+          "long_term_debt": 300000,
+          "shares_outstanding": 40990604
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "operating_cash_flow": "NetCashProvidedByUsedInOperatingActivities",
+          "capex": "PaymentsToAcquirePropertyPlantAndEquipment",
+          "dep_amort": "DepreciationAndAmortization",
+          "total_assets": "Assets",
+          "total_liabilities": "Liabilities",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue",
+          "long_term_debt": "LongTermDebtNoncurrent",
+          "shares_outstanding": "CommonStockSharesOutstanding"
+        },
+        "derived": {
+          "gross_margin_pct": 37.7,
+          "net_margin_pct": -516.86,
+          "free_cash_flow": -17819134,
+          "ebitda": -16461023
+        }
+      },
+      "2022-12-31": {
+        "fy_label": "FY2022",
+        "filed": "2025-03-12",
+        "metrics": {
+          "revenue": 2125817,
+          "gross_profit": 1109163,
+          "operating_income": -69429522,
+          "net_income": -73241805,
+          "eps_diluted": -1.73,
+          "operating_cash_flow": -37963076,
+          "capex": 2880900,
+          "dep_amort": 4019548,
+          "total_assets": 97945245,
+          "total_liabilities": 39722338,
+          "stockholders_equity": 58222907,
+          "cash": 29775096,
+          "shares_outstanding": 44108661
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "operating_cash_flow": "NetCashProvidedByUsedInOperatingActivities",
+          "capex": "PaymentsToAcquirePropertyPlantAndEquipment",
+          "dep_amort": "DepreciationDepletionAndAmortization",
+          "total_assets": "Assets",
+          "total_liabilities": "Liabilities",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue",
+          "shares_outstanding": "CommonStockSharesOutstanding"
+        },
+        "derived": {
+          "gross_margin_pct": 52.18,
+          "net_margin_pct": -3445.35,
+          "free_cash_flow": -40843976,
+          "ebitda": -65409974
+        }
+      },
+      "2023-12-31": {
+        "fy_label": "FY2023",
+        "filed": "2026-03-30",
+        "metrics": {
+          "revenue": 15691430,
+          "gross_profit": 6381174,
+          "operating_income": -39729300,
+          "net_income": -44844872,
+          "eps_diluted": -0.88,
+          "operating_cash_flow": -34019519,
+          "capex": 211035,
+          "dep_amort": 844833,
+          "total_assets": 92164682,
+          "total_liabilities": 47108861,
+          "stockholders_equity": 33134000,
+          "shares_outstanding": 61940878
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "operating_cash_flow": "NetCashProvidedByUsedInOperatingActivities",
+          "capex": "PaymentsToAcquirePropertyPlantAndEquipment",
+          "dep_amort": "Depreciation",
+          "total_assets": "Assets",
+          "total_liabilities": "Liabilities",
+          "stockholders_equity": "StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest",
+          "shares_outstanding": "CommonStockSharesOutstanding"
+        },
+        "derived": {
+          "gross_margin_pct": 40.67,
+          "net_margin_pct": -285.79,
+          "free_cash_flow": -34230554,
+          "ebitda": -38884467
+        }
+      },
+      "2024-12-31": {
+        "fy_label": "FY2024",
+        "filed": "2026-03-30",
+        "metrics": {
+          "revenue": 7193000,
+          "gross_profit": 345000,
+          "operating_income": -34609000,
+          "net_income": -38007000,
+          "eps_diluted": -0.61,
+          "operating_cash_flow": -33469000,
+          "capex": 1636000,
+          "dep_amort": 602000,
+          "total_assets": 109622000,
+          "total_liabilities": 73678000,
+          "stockholders_equity": 16583000,
+          "cash": 29958000,
+          "long_term_debt": 300000,
+          "shares_outstanding": 93173191
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "operating_cash_flow": "NetCashProvidedByUsedInOperatingActivities",
+          "capex": "PaymentsToAcquirePropertyPlantAndEquipment",
+          "dep_amort": "DepreciationDepletionAndAmortization",
+          "total_assets": "Assets",
+          "total_liabilities": "Liabilities",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue",
+          "long_term_debt": "LongTermDebt",
+          "shares_outstanding": "CommonStockSharesOutstanding"
+        },
+        "derived": {
+          "gross_margin_pct": 4.8,
+          "net_margin_pct": -528.39,
+          "free_cash_flow": -35105000,
+          "ebitda": -34007000
+        }
+      },
+      "2025-12-31": {
+        "fy_label": "FY2025",
+        "filed": "2026-03-30",
+        "metrics": {
+          "revenue": 50731000,
+          "gross_profit": 20156000,
+          "operating_income": -58384000,
+          "net_income": -132235000,
+          "eps_diluted": -0.62,
+          "operating_cash_flow": -38746000,
+          "capex": 2034000,
+          "dep_amort": 946000,
+          "total_assets": 1132841000,
+          "total_liabilities": 661226000,
+          "stockholders_equity": 437808000,
+          "cash": 550744000,
+          "shares_outstanding": 380763481
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "operating_cash_flow": "NetCashProvidedByUsedInOperatingActivities",
+          "capex": "PaymentsToAcquirePropertyPlantAndEquipment",
+          "dep_amort": "DepreciationDepletionAndAmortization",
+          "total_assets": "Assets",
+          "total_liabilities": "Liabilities",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue",
+          "shares_outstanding": "CommonStockSharesOutstanding"
+        },
+        "derived": {
+          "gross_margin_pct": 39.73,
+          "net_margin_pct": -260.66,
+          "free_cash_flow": -40780000,
+          "ebitda": -57438000
+        }
+      }
+    },
+    "quarters": {
+      "2015-09-30": {
+        "filed": "2016-11-21",
+        "metrics": {
+          "gross_profit": -268,
+          "operating_income": -4315,
+          "cash": 4889
+        },
+        "tags": {
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "cash": "CashAndCashEquivalentsAtCarryingValue"
+        }
+      },
+      "2016-03-31": {
+        "filed": "2017-05-22",
+        "metrics": {
+          "gross_profit": -383,
+          "operating_income": -3135,
+          "net_income": -3135,
+          "eps_diluted": 0,
+          "operating_cash_flow": -2550,
+          "cash": 2624
+        },
+        "tags": {
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareBasicAndDiluted",
+          "operating_cash_flow": "NetCashProvidedByUsedInOperatingActivitiesContinuingOperations",
+          "cash": "CashAndCashEquivalentsAtCarryingValue"
+        }
+      },
+      "2016-06-30": {
+        "filed": "2017-08-21",
+        "metrics": {
+          "gross_profit": -2458,
+          "operating_income": -12173,
+          "cash": 6313
+        },
+        "tags": {
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "cash": "CashAndCashEquivalentsAtCarryingValue"
+        }
+      },
+      "2016-09-30": {
+        "filed": "2017-11-20",
+        "metrics": {
+          "gross_profit": -1117,
+          "operating_income": -3806,
+          "eps_diluted": 0,
+          "total_assets": 13652,
+          "total_liabilities": 53029,
+          "stockholders_equity": -39377,
+          "cash": 6447,
+          "shares_outstanding": 3000000
+        },
+        "tags": {
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "eps_diluted": "EarningsPerShareBasicAndDiluted",
+          "total_assets": "Assets",
+          "total_liabilities": "Liabilities",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue",
+          "shares_outstanding": "CommonStockSharesOutstanding"
+        }
+      },
+      "2017-03-31": {
+        "filed": "2018-05-21",
+        "metrics": {
+          "revenue": 302,
+          "gross_profit": -888,
+          "operating_income": -7404,
+          "net_income": -7404,
+          "eps_diluted": 0,
+          "operating_cash_flow": -6884,
+          "total_assets": 6681,
+          "total_liabilities": 68928,
+          "stockholders_equity": -62247,
+          "cash": 548,
+          "shares_outstanding": 3000000
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareBasicAndDiluted",
+          "operating_cash_flow": "NetCashProvidedByUsedInOperatingActivities",
+          "total_assets": "Assets",
+          "total_liabilities": "Liabilities",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue",
+          "shares_outstanding": "CommonStockSharesOutstanding"
+        }
+      },
+      "2017-06-30": {
+        "filed": "2018-08-10",
+        "metrics": {
+          "revenue": 1355,
+          "gross_profit": -1946,
+          "operating_income": -4838,
+          "net_income": -4838,
+          "eps_diluted": 0,
+          "total_assets": 24968,
+          "total_liabilities": 71053,
+          "stockholders_equity": -46085,
+          "cash": 21659,
+          "shares_outstanding": 3420000
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareBasicAndDiluted",
+          "total_assets": "Assets",
+          "total_liabilities": "Liabilities",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue",
+          "shares_outstanding": "CommonStockSharesOutstanding"
+        }
+      },
+      "2017-09-30": {
+        "filed": "2018-11-13",
+        "metrics": {
+          "revenue": 40134,
+          "gross_profit": 23972,
+          "operating_income": -863495,
+          "net_income": -1036433,
+          "eps_diluted": -0.06,
+          "total_assets": 6870,
+          "total_liabilities": 70633,
+          "stockholders_equity": -63763,
+          "cash": 60603,
+          "shares_outstanding": 5760000
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareBasicAndDiluted",
+          "total_assets": "Assets",
+          "total_liabilities": "Liabilities",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue",
+          "shares_outstanding": "CommonStockSharesOutstanding"
+        }
+      },
+      "2018-03-31": {
+        "filed": "2019-11-14",
+        "metrics": {
+          "revenue": 29382,
+          "gross_profit": 28414,
+          "operating_income": -563367,
+          "net_income": -1571469,
+          "eps_diluted": -0.09,
+          "operating_cash_flow": -878166,
+          "capex": 1623,
+          "dep_amort": 2635,
+          "total_assets": 8090,
+          "total_liabilities": 91633,
+          "stockholders_equity": -9464028,
+          "cash": 4625874,
+          "shares_outstanding": 5760000
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareBasicAndDiluted",
+          "operating_cash_flow": "NetCashProvidedByUsedInOperatingActivities",
+          "capex": "PaymentsToAcquirePropertyPlantAndEquipment",
+          "dep_amort": "Depreciation",
+          "total_assets": "Assets",
+          "total_liabilities": "Liabilities",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue",
+          "shares_outstanding": "CommonStockSharesOutstanding"
+        }
+      },
+      "2018-06-30": {
+        "filed": "2019-11-14",
+        "metrics": {
+          "revenue": 16444,
+          "gross_profit": 5303,
+          "operating_income": -1317831,
+          "net_income": -1829893,
+          "eps_diluted": -0.1,
+          "dep_amort": 4896,
+          "total_assets": 3199,
+          "total_liabilities": 21035,
+          "stockholders_equity": -11297247,
+          "cash": 2917286,
+          "shares_outstanding": 5760000
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareBasicAndDiluted",
+          "dep_amort": "Depreciation",
+          "total_assets": "Assets",
+          "total_liabilities": "Liabilities",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue",
+          "shares_outstanding": "CommonStockSharesOutstanding"
+        }
+      },
+      "2018-09-30": {
+        "filed": "2019-11-14",
+        "metrics": {
+          "revenue": 35176,
+          "gross_profit": 28749,
+          "operating_income": -2072459,
+          "net_income": -3729035,
+          "eps_diluted": -0.16,
+          "dep_amort": 7874,
+          "total_assets": 1206063,
+          "total_liabilities": 11101777,
+          "stockholders_equity": -9895714,
+          "cash": 516251,
+          "shares_outstanding": 50463732
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareBasicAndDiluted",
+          "dep_amort": "Depreciation",
+          "total_assets": "Assets",
+          "total_liabilities": "Liabilities",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue",
+          "shares_outstanding": "CommonStockSharesOutstanding"
+        }
+      },
+      "2019-03-31": {
+        "filed": "2020-11-06",
+        "metrics": {
+          "revenue": 32294,
+          "gross_profit": 26992,
+          "operating_income": -5118128,
+          "net_income": -5823725,
+          "eps_diluted": -0.12,
+          "operating_cash_flow": -4694328,
+          "capex": 45189,
+          "dep_amort": 32701,
+          "total_assets": 2823917,
+          "total_liabilities": 23480713,
+          "stockholders_equity": -20656796,
+          "cash": 437298,
+          "long_term_debt": 4400000,
+          "shares_outstanding": 50463732
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "ProfitLoss",
+          "eps_diluted": "EarningsPerShareBasicAndDiluted",
+          "operating_cash_flow": "NetCashProvidedByUsedInOperatingActivities",
+          "capex": "PaymentsToAcquirePropertyPlantAndEquipment",
+          "dep_amort": "Depreciation",
+          "total_assets": "Assets",
+          "total_liabilities": "Liabilities",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue",
+          "long_term_debt": "LongTermDebtNoncurrent",
+          "shares_outstanding": "CommonStockSharesOutstanding"
+        }
+      },
+      "2019-06-30": {
+        "filed": "2020-11-06",
+        "metrics": {
+          "revenue": 193157,
+          "gross_profit": 142511,
+          "operating_income": -4265284,
+          "net_income": -5100628,
+          "eps_diluted": -0.1,
+          "dep_amort": 34982,
+          "total_assets": 3420135,
+          "total_liabilities": 29143307,
+          "stockholders_equity": -25723172,
+          "cash": 590902,
+          "long_term_debt": 18800000,
+          "shares_outstanding": 50463732
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "ProfitLoss",
+          "eps_diluted": "EarningsPerShareBasicAndDiluted",
+          "dep_amort": "Depreciation",
+          "total_assets": "Assets",
+          "total_liabilities": "Liabilities",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue",
+          "long_term_debt": "LongTermDebtNoncurrent",
+          "shares_outstanding": "CommonStockSharesOutstanding"
+        }
+      },
+      "2019-09-30": {
+        "filed": "2020-11-06",
+        "metrics": {
+          "revenue": 88132,
+          "gross_profit": 72947,
+          "operating_income": -3388095,
+          "net_income": -5203659,
+          "eps_diluted": -0.1,
+          "dep_amort": 34403,
+          "total_assets": 7215820,
+          "total_liabilities": 17558262,
+          "stockholders_equity": -10342442,
+          "cash": 4650318,
+          "long_term_debt": 500000,
+          "shares_outstanding": 58688485
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "dep_amort": "Depreciation",
+          "total_assets": "Assets",
+          "total_liabilities": "Liabilities",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue",
+          "long_term_debt": "LongTermDebtNoncurrent",
+          "shares_outstanding": "CommonStockSharesOutstanding"
+        }
+      },
+      "2020-03-31": {
+        "filed": "2021-11-15",
+        "metrics": {
+          "revenue": 200198,
+          "gross_profit": 19106,
+          "operating_income": -2331428,
+          "net_income": -2807285,
+          "eps_diluted": -0.14,
+          "operating_cash_flow": -1973754,
+          "dep_amort": 24648,
+          "total_assets": 2284874,
+          "total_liabilities": 17346800,
+          "stockholders_equity": -15061926,
+          "cash": 176881,
+          "long_term_debt": 500000,
+          "shares_outstanding": 59268085
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "ProfitLoss",
+          "eps_diluted": "EarningsPerShareBasicAndDiluted",
+          "operating_cash_flow": "NetCashProvidedByUsedInOperatingActivities",
+          "dep_amort": "Depreciation",
+          "total_assets": "Assets",
+          "total_liabilities": "Liabilities",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue",
+          "long_term_debt": "LongTermDebtNoncurrent",
+          "shares_outstanding": "CommonStockSharesOutstanding"
+        }
+      },
+      "2020-06-30": {
+        "filed": "2021-11-15",
+        "metrics": {
+          "revenue": 1155374,
+          "gross_profit": 614789,
+          "operating_income": -2765754,
+          "net_income": -3220541,
+          "eps_diluted": -0.16,
+          "dep_amort": 24825,
+          "total_assets": 2557831,
+          "total_liabilities": 18959218,
+          "stockholders_equity": -16401387,
+          "cash": 43964,
+          "long_term_debt": 947000,
+          "shares_outstanding": 59268085
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "ProfitLoss",
+          "eps_diluted": "EarningsPerShareBasicAndDiluted",
+          "dep_amort": "Depreciation",
+          "total_assets": "Assets",
+          "total_liabilities": "Liabilities",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue",
+          "long_term_debt": "LongTermDebtNoncurrent",
+          "shares_outstanding": "CommonStockSharesOutstanding"
+        }
+      },
+      "2020-09-30": {
+        "filed": "2021-11-15",
+        "metrics": {
+          "revenue": 614026,
+          "gross_profit": 248163,
+          "operating_income": -2733111,
+          "net_income": -3325880,
+          "eps_diluted": -0.17,
+          "dep_amort": 24606,
+          "total_assets": 4815408,
+          "total_liabilities": 18560542,
+          "stockholders_equity": -13745134,
+          "cash": 2148345,
+          "long_term_debt": 600000,
+          "shares_outstanding": 59388085
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareBasicAndDiluted",
+          "dep_amort": "Depreciation",
+          "total_assets": "Assets",
+          "total_liabilities": "Liabilities",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue",
+          "long_term_debt": "LongTermDebtNoncurrent",
+          "shares_outstanding": "CommonStockSharesOutstanding"
+        }
+      },
+      "2021-03-31": {
+        "filed": "2022-11-14",
+        "metrics": {
+          "revenue": 1164764,
+          "gross_profit": 609414,
+          "operating_income": -2881388,
+          "net_income": -3138119,
+          "eps_diluted": -0.12,
+          "operating_cash_flow": -3066199,
+          "capex": 58281,
+          "dep_amort": 25142,
+          "total_assets": 26948503,
+          "total_liabilities": 12239570,
+          "stockholders_equity": 14708933,
+          "cash": 24026187,
+          "long_term_debt": 862000,
+          "shares_outstanding": 26672040
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareBasicAndDiluted",
+          "operating_cash_flow": "NetCashProvidedByUsedInOperatingActivities",
+          "capex": "PaymentsToAcquirePropertyPlantAndEquipment",
+          "dep_amort": "Depreciation",
+          "total_assets": "Assets",
+          "total_liabilities": "Liabilities",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue",
+          "long_term_debt": "LongTermDebtNoncurrent",
+          "shares_outstanding": "CommonStockSharesOutstanding"
+        }
+      },
+      "2021-06-30": {
+        "filed": "2022-11-14",
+        "metrics": {
+          "revenue": 887432,
+          "gross_profit": 306757,
+          "operating_income": -3138305,
+          "net_income": -2821766,
+          "eps_diluted": -0.1,
+          "dep_amort": 25130,
+          "total_assets": 64918505,
+          "total_liabilities": 5141109,
+          "stockholders_equity": 59777396,
+          "cash": 58550105,
+          "long_term_debt": 300000,
+          "shares_outstanding": 34038707
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "dep_amort": "Depreciation",
+          "total_assets": "Assets",
+          "total_liabilities": "Liabilities",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue",
+          "long_term_debt": "LongTermDebtNoncurrent",
+          "shares_outstanding": "CommonStockSharesOutstanding"
+        }
+      },
+      "2021-09-30": {
+        "filed": "2022-11-14",
+        "metrics": {
+          "revenue": 283329,
+          "gross_profit": 13613,
+          "operating_income": -4913351,
+          "net_income": -4914272,
+          "eps_diluted": -0.13,
+          "dep_amort": 690175,
+          "total_assets": 132689798,
+          "total_liabilities": 17759236,
+          "stockholders_equity": 114930562,
+          "cash": 47496527,
+          "long_term_debt": 300000,
+          "shares_outstanding": 40788681
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "dep_amort": "DepreciationAndAmortization",
+          "total_assets": "Assets",
+          "total_liabilities": "Liabilities",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue",
+          "long_term_debt": "LongTermDebtNoncurrent",
+          "shares_outstanding": "CommonStockSharesOutstanding"
+        }
+      },
+      "2022-03-31": {
+        "filed": "2023-11-14",
+        "metrics": {
+          "revenue": 410198,
+          "gross_profit": 122266,
+          "operating_income": -9991333,
+          "net_income": -10010399,
+          "eps_diluted": -0.24,
+          "operating_cash_flow": -7101930,
+          "capex": 1553212,
+          "dep_amort": 39634,
+          "total_assets": 111967519,
+          "total_liabilities": 8416691,
+          "stockholders_equity": 103550828,
+          "cash": 32060661,
+          "shares_outstanding": 40990604
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "ProfitLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "operating_cash_flow": "NetCashProvidedByUsedInOperatingActivities",
+          "capex": "PaymentsToAcquirePropertyPlantAndEquipment",
+          "dep_amort": "Depreciation",
+          "total_assets": "Assets",
+          "total_liabilities": "Liabilities",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue",
+          "shares_outstanding": "CommonStockSharesOutstanding"
+        }
+      },
+      "2022-06-30": {
+        "filed": "2023-11-14",
+        "metrics": {
+          "revenue": 604219,
+          "gross_profit": 318580,
+          "operating_income": -11373088,
+          "net_income": -11391425,
+          "eps_diluted": -0.27,
+          "dep_amort": 87402,
+          "total_assets": 113920301,
+          "total_liabilities": 8223009,
+          "stockholders_equity": 105697292,
+          "cash": 28014077,
+          "shares_outstanding": 42623283
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "ProfitLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "dep_amort": "Depreciation",
+          "total_assets": "Assets",
+          "total_liabilities": "Liabilities",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue",
+          "shares_outstanding": "CommonStockSharesOutstanding"
+        }
+      },
+      "2022-09-30": {
+        "filed": "2023-11-14",
+        "metrics": {
+          "revenue": 632489,
+          "gross_profit": 399488,
+          "operating_income": -13548744,
+          "net_income": -13578341,
+          "eps_diluted": -0.32,
+          "dep_amort": 153159,
+          "total_assets": 103015982,
+          "total_liabilities": 9213284,
+          "stockholders_equity": 93802698,
+          "cash": 15283557,
+          "shares_outstanding": 42682335
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "dep_amort": "Depreciation",
+          "total_assets": "Assets",
+          "total_liabilities": "Liabilities",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue",
+          "shares_outstanding": "CommonStockSharesOutstanding"
+        }
+      },
+      "2023-03-31": {
+        "filed": "2024-11-12",
+        "metrics": {
+          "revenue": 2595991,
+          "gross_profit": 1026896,
+          "operating_income": -12652679,
+          "net_income": -14455551,
+          "eps_diluted": -0.3,
+          "operating_cash_flow": -12832263,
+          "capex": 135224,
+          "dep_amort": 1231382,
+          "total_assets": 93771634,
+          "total_liabilities": 39687700,
+          "stockholders_equity": 54083934,
+          "cash": 14115989,
+          "shares_outstanding": 49108159
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "operating_cash_flow": "NetCashProvidedByUsedInOperatingActivities",
+          "capex": "PaymentsToAcquirePropertyPlantAndEquipment",
+          "dep_amort": "DepreciationDepletionAndAmortization",
+          "total_assets": "Assets",
+          "total_liabilities": "Liabilities",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue",
+          "shares_outstanding": "CommonStockSharesOutstanding"
+        }
+      },
+      "2023-06-30": {
+        "filed": "2024-11-12",
+        "metrics": {
+          "revenue": 5468964,
+          "gross_profit": 3071776,
+          "operating_income": -8496665,
+          "net_income": -8958086,
+          "eps_diluted": -0.18,
+          "dep_amort": 1220036,
+          "total_assets": 84561579,
+          "total_liabilities": 35043786,
+          "stockholders_equity": 49517793,
+          "cash": 3063905,
+          "shares_outstanding": 52451402
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "dep_amort": "DepreciationDepletionAndAmortization",
+          "total_assets": "Assets",
+          "total_liabilities": "Liabilities",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue",
+          "shares_outstanding": "CommonStockSharesOutstanding"
+        }
+      },
+      "2023-09-30": {
+        "filed": "2024-11-12",
+        "metrics": {
+          "revenue": 2665190,
+          "gross_profit": 554878,
+          "operating_income": -5934021,
+          "net_income": -7292461,
+          "eps_diluted": -0.15,
+          "dep_amort": 1300797,
+          "total_assets": 100645018,
+          "total_liabilities": 44420021,
+          "stockholders_equity": 45195518,
+          "cash": 20971982,
+          "shares_outstanding": 55184623
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "dep_amort": "DepreciationDepletionAndAmortization",
+          "total_assets": "Assets",
+          "total_liabilities": "Liabilities",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue",
+          "shares_outstanding": "CommonStockSharesOutstanding"
+        }
+      },
+      "2024-03-31": {
+        "filed": "2025-11-13",
+        "metrics": {
+          "revenue": 625009,
+          "gross_profit": -394982,
+          "operating_income": -9127195,
+          "net_income": -9876084,
+          "eps_diluted": -0.17,
+          "operating_cash_flow": -7455524,
+          "capex": 1188086,
+          "dep_amort": 123071,
+          "total_assets": 91615524,
+          "total_liabilities": 47929588,
+          "stockholders_equity": 27763652,
+          "shares_outstanding": 65564484
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "operating_cash_flow": "NetCashProvidedByUsedInOperatingActivities",
+          "capex": "PaymentsToAcquirePropertyPlantAndEquipment",
+          "dep_amort": "Depreciation",
+          "total_assets": "Assets",
+          "total_liabilities": "Liabilities",
+          "stockholders_equity": "StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest",
+          "shares_outstanding": "CommonStockSharesOutstanding"
+        }
+      },
+      "2024-06-30": {
+        "filed": "2025-11-13",
+        "metrics": {
+          "revenue": 957851,
+          "gross_profit": -190895,
+          "operating_income": -8303590,
+          "net_income": -8269736,
+          "eps_diluted": -0.14,
+          "dep_amort": 111234,
+          "total_assets": 82520936,
+          "total_liabilities": 46097639,
+          "stockholders_equity": 19392519,
+          "shares_outstanding": 66550712
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "dep_amort": "Depreciation",
+          "total_assets": "Assets",
+          "total_liabilities": "Liabilities",
+          "stockholders_equity": "StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest",
+          "shares_outstanding": "CommonStockSharesOutstanding"
+        }
+      },
+      "2024-09-30": {
+        "filed": "2025-11-13",
+        "metrics": {
+          "revenue": 1480792,
+          "gross_profit": 47560,
+          "operating_income": -8660715,
+          "net_income": -9526268,
+          "eps_diluted": -0.15,
+          "dep_amort": 190332,
+          "total_assets": 80158656,
+          "total_liabilities": 47063442,
+          "stockholders_equity": 14918792,
+          "shares_outstanding": 75297311
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "dep_amort": "Depreciation",
+          "total_assets": "Assets",
+          "total_liabilities": "Liabilities",
+          "stockholders_equity": "StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest",
+          "shares_outstanding": "CommonStockSharesOutstanding"
+        }
+      },
+      "2025-03-31": {
+        "filed": "2026-05-15",
+        "metrics": {
+          "revenue": 4248000,
+          "gross_profit": 1488000,
+          "operating_income": -10310000,
+          "net_income": -14136000,
+          "eps_diluted": -0.15,
+          "operating_cash_flow": -6659000,
+          "capex": 171000,
+          "dep_amort": 181000,
+          "total_assets": 104600639,
+          "total_liabilities": 57951020,
+          "stockholders_equity": 26082000,
+          "shares_outstanding": 127724799
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "operating_cash_flow": "NetCashProvidedByUsedInOperatingActivities",
+          "capex": "PaymentsToAcquirePropertyPlantAndEquipment",
+          "dep_amort": "DepreciationDepletionAndAmortization",
+          "total_assets": "Assets",
+          "total_liabilities": "Liabilities",
+          "stockholders_equity": "StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest",
+          "shares_outstanding": "CommonStockSharesOutstanding"
+        }
+      },
+      "2025-06-30": {
+        "filed": "2025-11-13",
+        "metrics": {
+          "revenue": 6273388,
+          "gross_profit": 3332070,
+          "operating_income": -9249104,
+          "net_income": -10750150,
+          "eps_diluted": -0.08,
+          "dep_amort": 188980,
+          "total_assets": 151950806,
+          "total_liabilities": 39292810,
+          "stockholders_equity": 90821184,
+          "cash": 67567978,
+          "shares_outstanding": 206732666
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "dep_amort": "Depreciation",
+          "total_assets": "Assets",
+          "total_liabilities": "Liabilities",
+          "stockholders_equity": "StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest",
+          "cash": "CashAndCashEquivalentsAtCarryingValue",
+          "shares_outstanding": "CommonStockSharesOutstanding"
+        }
+      },
+      "2025-09-30": {
+        "filed": "2025-11-13",
+        "metrics": {
+          "revenue": 10098310,
+          "gross_profit": 2604395,
+          "operating_income": -15503550,
+          "net_income": -7480856,
+          "eps_diluted": -0.03,
+          "dep_amort": 195954,
+          "total_assets": 550150569,
+          "total_liabilities": 39775843,
+          "stockholders_equity": 486077869,
+          "cash": 432816982,
+          "shares_outstanding": 329515817
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "dep_amort": "Depreciation",
+          "total_assets": "Assets",
+          "total_liabilities": "Liabilities",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue",
+          "shares_outstanding": "CommonStockSharesOutstanding"
+        }
+      },
+      "2026-03-31": {
+        "filed": "2026-05-15",
+        "metrics": {
+          "revenue": 50122000,
+          "gross_profit": 24658000,
+          "operating_income": -42671000,
+          "net_income": 362796000,
+          "eps_diluted": 0.56,
+          "operating_cash_flow": -51298000,
+          "capex": 1332000,
+          "dep_amort": 669000,
+          "total_assets": 2439370000,
+          "total_liabilities": 1359055000,
+          "stockholders_equity": 1074004000,
+          "cash": 1026003000,
+          "shares_outstanding": 469062109
+        },
+        "tags": {
+          "revenue": "Revenues",
+          "gross_profit": "GrossProfit",
+          "operating_income": "OperatingIncomeLoss",
+          "net_income": "NetIncomeLoss",
+          "eps_diluted": "EarningsPerShareDiluted",
+          "operating_cash_flow": "NetCashProvidedByUsedInOperatingActivities",
+          "capex": "PaymentsToAcquirePropertyPlantAndEquipment",
+          "dep_amort": "DepreciationDepletionAndAmortization",
+          "total_assets": "Assets",
+          "total_liabilities": "Liabilities",
+          "stockholders_equity": "StockholdersEquity",
+          "cash": "CashAndCashEquivalentsAtCarryingValue",
+          "shares_outstanding": "CommonStockSharesOutstanding"
+        }
+      }
+    }
+  },
+  "price_bars": [
+    [
+      "2024-06-13",
+      0.85,
+      0.86,
+      0.8,
+      0.8,
+      129300
+    ],
+    [
+      "2024-06-14",
+      0.8,
+      0.8,
+      0.76,
+      0.79,
+      86300
+    ],
+    [
+      "2024-06-17",
+      0.79,
+      0.81,
+      0.74,
+      0.74,
+      71900
+    ],
+    [
+      "2024-06-18",
+      0.74,
+      0.75,
+      0.71,
+      0.73,
+      194600
+    ],
+    [
+      "2024-06-20",
+      0.71,
+      0.71,
+      0.65,
+      0.66,
+      186400
+    ],
+    [
+      "2024-06-21",
+      0.66,
+      0.7,
+      0.66,
+      0.69,
+      235800
+    ],
+    [
+      "2024-06-24",
+      0.67,
+      0.7,
+      0.62,
+      0.62,
+      245500
+    ],
+    [
+      "2024-06-25",
+      0.62,
+      0.62,
+      0.58,
+      0.59,
+      317200
+    ],
+    [
+      "2024-06-26",
+      0.59,
+      0.63,
+      0.59,
+      0.62,
+      277600
+    ],
+    [
+      "2024-06-27",
+      0.6,
+      0.63,
+      0.59,
+      0.62,
+      67100
+    ],
+    [
+      "2024-06-28",
+      0.61,
+      0.62,
+      0.58,
+      0.58,
+      164000
+    ],
+    [
+      "2024-07-01",
+      0.57,
+      0.6,
+      0.55,
+      0.57,
+      156700
+    ],
+    [
+      "2024-07-02",
+      0.6,
+      0.6,
+      0.55,
+      0.55,
+      102800
+    ],
+    [
+      "2024-07-03",
+      0.54,
+      0.59,
+      0.54,
+      0.57,
+      113200
+    ],
+    [
+      "2024-07-05",
+      0.57,
+      0.65,
+      0.57,
+      0.61,
+      142200
+    ],
+    [
+      "2024-07-08",
+      0.61,
+      0.8,
+      0.6,
+      0.78,
+      511900
+    ],
+    [
+      "2024-07-09",
+      0.78,
+      0.8,
+      0.7,
+      0.71,
+      232100
+    ],
+    [
+      "2024-07-10",
+      0.7,
+      0.72,
+      0.65,
+      0.69,
+      158700
+    ],
+    [
+      "2024-07-11",
+      0.7,
+      0.75,
+      0.7,
+      0.73,
+      132000
+    ],
+    [
+      "2024-07-12",
+      0.74,
+      0.94,
+      0.74,
+      0.86,
+      476100
+    ],
+    [
+      "2024-07-15",
+      0.85,
+      0.86,
+      0.76,
+      0.77,
+      124700
+    ],
+    [
+      "2024-07-16",
+      0.75,
+      0.86,
+      0.75,
+      0.84,
+      168400
+    ],
+    [
+      "2024-07-17",
+      0.81,
+      0.88,
+      0.8,
+      0.87,
+      131000
+    ],
+    [
+      "2024-07-18",
+      0.88,
+      0.88,
+      0.82,
+      0.83,
+      122600
+    ],
+    [
+      "2024-07-19",
+      0.86,
+      0.87,
+      0.84,
+      0.84,
+      41200
+    ],
+    [
+      "2024-07-22",
+      0.92,
+      1.15,
+      0.86,
+      1.13,
+      2194900
+    ],
+    [
+      "2024-07-23",
+      1.18,
+      1.3,
+      1.0,
+      1.13,
+      1363700
+    ],
+    [
+      "2024-07-24",
+      1.11,
+      1.11,
+      0.98,
+      0.99,
+      379100
+    ],
+    [
+      "2024-07-25",
+      0.96,
+      1.02,
+      0.91,
+      1.0,
+      196600
+    ],
+    [
+      "2024-07-26",
+      1.0,
+      1.1,
+      1.0,
+      1.06,
+      177800
+    ],
+    [
+      "2024-07-29",
+      1.08,
+      1.08,
+      0.98,
+      1.01,
+      128300
+    ],
+    [
+      "2024-07-30",
+      1.01,
+      1.02,
+      0.91,
+      0.91,
+      233900
+    ],
+    [
+      "2024-07-31",
+      0.93,
+      1.07,
+      0.9,
+      0.99,
+      510100
+    ],
+    [
+      "2024-08-01",
+      0.98,
+      1.14,
+      0.91,
+      1.12,
+      450900
+    ],
+    [
+      "2024-08-02",
+      1.09,
+      1.18,
+      0.96,
+      1.06,
+      512700
+    ],
+    [
+      "2024-08-05",
+      0.99,
+      1.08,
+      0.93,
+      1.02,
+      169800
+    ],
+    [
+      "2024-08-06",
+      1.03,
+      1.07,
+      0.96,
+      0.96,
+      175600
+    ],
+    [
+      "2024-08-07",
+      0.96,
+      0.99,
+      0.85,
+      0.89,
+      359200
+    ],
+    [
+      "2024-08-08",
+      0.89,
+      0.94,
+      0.8,
+      0.82,
+      157600
+    ],
+    [
+      "2024-08-09",
+      0.86,
+      0.86,
+      0.75,
+      0.79,
+      272600
+    ],
+    [
+      "2024-08-12",
+      0.8,
+      0.82,
+      0.76,
+      0.77,
+      112400
+    ],
+    [
+      "2024-08-13",
+      0.77,
+      0.83,
+      0.66,
+      0.69,
+      888100
+    ],
+    [
+      "2024-08-14",
+      0.73,
+      0.73,
+      0.54,
+      0.59,
+      1110100
+    ],
+    [
+      "2024-08-15",
+      0.61,
+      0.69,
+      0.61,
+      0.66,
+      283500
+    ],
+    [
+      "2024-08-16",
+      0.67,
+      0.71,
+      0.65,
+      0.71,
+      189500
+    ],
+    [
+      "2024-08-19",
+      0.72,
+      0.75,
+      0.68,
+      0.74,
+      240200
+    ],
+    [
+      "2024-08-20",
+      0.71,
+      0.82,
+      0.7,
+      0.78,
+      547300
+    ],
+    [
+      "2024-08-21",
+      0.79,
+      0.9,
+      0.78,
+      0.85,
+      680500
+    ],
+    [
+      "2024-08-22",
+      0.85,
+      0.92,
+      0.85,
+      0.89,
+      363700
+    ],
+    [
+      "2024-08-23",
+      0.88,
+      0.88,
+      0.82,
+      0.83,
+      103900
+    ],
+    [
+      "2024-08-26",
+      0.83,
+      0.88,
+      0.81,
+      0.86,
+      130600
+    ],
+    [
+      "2024-08-27",
+      0.86,
+      0.89,
+      0.83,
+      0.87,
+      143500
+    ],
+    [
+      "2024-08-28",
+      0.87,
+      0.87,
+      0.79,
+      0.81,
+      126300
+    ],
+    [
+      "2024-08-29",
+      0.75,
+      0.84,
+      0.75,
+      0.82,
+      134900
+    ],
+    [
+      "2024-08-30",
+      0.85,
+      0.88,
+      0.8,
+      0.87,
+      106100
+    ],
+    [
+      "2024-09-03",
+      0.87,
+      0.89,
+      0.81,
+      0.86,
+      166300
+    ],
+    [
+      "2024-09-04",
+      0.86,
+      0.86,
+      0.81,
+      0.81,
+      125100
+    ],
+    [
+      "2024-09-05",
+      0.82,
+      0.87,
+      0.79,
+      0.8,
+      98300
+    ],
+    [
+      "2024-09-06",
+      0.78,
+      0.86,
+      0.73,
+      0.75,
+      378300
+    ],
+    [
+      "2024-09-09",
+      0.8,
+      0.98,
+      0.79,
+      0.89,
+      1116900
+    ],
+    [
+      "2024-09-10",
+      0.92,
+      0.94,
+      0.87,
+      0.94,
+      187500
+    ],
+    [
+      "2024-09-11",
+      0.88,
+      0.93,
+      0.85,
+      0.88,
+      185300
+    ],
+    [
+      "2024-09-12",
+      0.9,
+      0.9,
+      0.79,
+      0.82,
+      505900
+    ],
+    [
+      "2024-09-13",
+      0.81,
+      0.84,
+      0.79,
+      0.8,
+      363500
+    ],
+    [
+      "2024-09-16",
+      0.79,
+      0.82,
+      0.71,
+      0.74,
+      523300
+    ],
+    [
+      "2024-09-17",
+      0.75,
+      0.76,
+      0.73,
+      0.74,
+      187200
+    ],
+    [
+      "2024-09-18",
+      0.75,
+      0.84,
+      0.74,
+      0.77,
+      513700
+    ],
+    [
+      "2024-09-19",
+      0.79,
+      0.83,
+      0.75,
+      0.77,
+      245100
+    ],
+    [
+      "2024-09-20",
+      0.78,
+      0.79,
+      0.75,
+      0.77,
+      199600
+    ],
+    [
+      "2024-09-23",
+      0.77,
+      0.78,
+      0.73,
+      0.74,
+      154200
+    ],
+    [
+      "2024-09-24",
+      0.73,
+      0.74,
+      0.68,
+      0.7,
+      301000
+    ],
+    [
+      "2024-09-25",
+      0.69,
+      0.7,
+      0.66,
+      0.7,
+      215000
+    ],
+    [
+      "2024-09-26",
+      0.73,
+      0.73,
+      0.69,
+      0.7,
+      249700
+    ],
+    [
+      "2024-09-27",
+      0.71,
+      0.73,
+      0.68,
+      0.7,
+      166900
+    ],
+    [
+      "2024-09-30",
+      0.75,
+      0.83,
+      0.72,
+      0.77,
+      1344000
+    ],
+    [
+      "2024-10-01",
+      0.8,
+      0.81,
+      0.73,
+      0.78,
+      948300
+    ],
+    [
+      "2024-10-02",
+      0.8,
+      0.8,
+      0.73,
+      0.76,
+      237300
+    ],
+    [
+      "2024-10-03",
+      0.77,
+      0.8,
+      0.73,
+      0.74,
+      184000
+    ],
+    [
+      "2024-10-04",
+      0.75,
+      0.77,
+      0.73,
+      0.74,
+      130900
+    ],
+    [
+      "2024-10-07",
+      0.76,
+      0.83,
+      0.74,
+      0.82,
+      711200
+    ],
+    [
+      "2024-10-08",
+      0.85,
+      0.98,
+      0.8,
+      0.92,
+      975200
+    ],
+    [
+      "2024-10-09",
+      0.93,
+      0.97,
+      0.87,
+      0.9,
+      488300
+    ],
+    [
+      "2024-10-10",
+      0.89,
+      0.93,
+      0.85,
+      0.93,
+      238400
+    ],
+    [
+      "2024-10-11",
+      0.99,
+      1.02,
+      0.89,
+      0.9,
+      251800
+    ],
+    [
+      "2024-10-14",
+      0.92,
+      1.02,
+      0.91,
+      0.98,
+      1010600
+    ],
+    [
+      "2024-10-15",
+      1.0,
+      1.0,
+      0.88,
+      0.9,
+      427600
+    ],
+    [
+      "2024-10-16",
+      0.9,
+      0.95,
+      0.88,
+      0.92,
+      445300
+    ],
+    [
+      "2024-10-17",
+      0.92,
+      0.94,
+      0.9,
+      0.94,
+      173600
+    ],
+    [
+      "2024-10-18",
+      0.94,
+      0.98,
+      0.91,
+      0.92,
+      157200
+    ],
+    [
+      "2024-10-21",
+      0.93,
+      0.96,
+      0.87,
+      0.92,
+      134000
+    ],
+    [
+      "2024-10-22",
+      0.92,
+      0.94,
+      0.86,
+      0.9,
+      123500
+    ],
+    [
+      "2024-10-23",
+      0.91,
+      0.91,
+      0.81,
+      0.86,
+      333600
+    ],
+    [
+      "2024-10-24",
+      0.85,
+      0.93,
+      0.82,
+      0.91,
+      228600
+    ],
+    [
+      "2024-10-25",
+      0.9,
+      0.91,
+      0.83,
+      0.86,
+      214000
+    ],
+    [
+      "2024-10-28",
+      0.89,
+      0.91,
+      0.83,
+      0.87,
+      213900
+    ],
+    [
+      "2024-10-29",
+      0.87,
+      0.87,
+      0.8,
+      0.82,
+      195600
+    ],
+    [
+      "2024-10-30",
+      0.81,
+      0.82,
+      0.77,
+      0.78,
+      271200
+    ],
+    [
+      "2024-10-31",
+      0.77,
+      0.77,
+      0.72,
+      0.77,
+      292000
+    ],
+    [
+      "2024-11-01",
+      0.78,
+      0.79,
+      0.74,
+      0.74,
+      156900
+    ],
+    [
+      "2024-11-04",
+      0.72,
+      0.75,
+      0.72,
+      0.74,
+      82100
+    ],
+    [
+      "2024-11-05",
+      0.76,
+      0.78,
+      0.73,
+      0.74,
+      230800
+    ],
+    [
+      "2024-11-06",
+      0.74,
+      0.79,
+      0.74,
+      0.78,
+      223800
+    ],
+    [
+      "2024-11-07",
+      0.8,
+      0.83,
+      0.74,
+      0.75,
+      472100
+    ],
+    [
+      "2024-11-08",
+      0.75,
+      0.8,
+      0.72,
+      0.75,
+      176300
+    ],
+    [
+      "2024-11-11",
+      0.76,
+      0.82,
+      0.73,
+      0.8,
+      258400
+    ],
+    [
+      "2024-11-12",
+      0.76,
+      0.86,
+      0.76,
+      0.79,
+      427700
+    ],
+    [
+      "2024-11-13",
+      0.75,
+      0.8,
+      0.74,
+      0.76,
+      297100
+    ],
+    [
+      "2024-11-14",
+      0.78,
+      0.8,
+      0.73,
+      0.74,
+      204800
+    ],
+    [
+      "2024-11-15",
+      0.73,
+      0.8,
+      0.68,
+      0.71,
+      497400
+    ],
+    [
+      "2024-11-18",
+      0.74,
+      0.74,
+      0.66,
+      0.68,
+      346200
+    ],
+    [
+      "2024-11-19",
+      0.68,
+      0.72,
+      0.65,
+      0.67,
+      376300
+    ],
+    [
+      "2024-11-20",
+      0.68,
+      0.72,
+      0.67,
+      0.71,
+      231700
+    ],
+    [
+      "2024-11-21",
+      0.72,
+      0.86,
+      0.72,
+      0.81,
+      1043500
+    ],
+    [
+      "2024-11-22",
+      0.87,
+      1.02,
+      0.85,
+      0.89,
+      1709900
+    ],
+    [
+      "2024-11-25",
+      0.94,
+      0.95,
+      0.8,
+      0.86,
+      1997700
+    ],
+    [
+      "2024-11-26",
+      0.89,
+      0.92,
+      0.82,
+      0.83,
+      782300
+    ],
+    [
+      "2024-11-27",
+      0.84,
+      0.89,
+      0.79,
+      0.87,
+      652700
+    ],
+    [
+      "2024-11-29",
+      1.12,
+      1.2,
+      0.94,
+      0.98,
+      16927200
+    ],
+    [
+      "2024-12-02",
+      1.21,
+      1.25,
+      0.77,
+      0.82,
+      19789200
+    ],
+    [
+      "2024-12-03",
+      0.85,
+      0.86,
+      0.7,
+      0.8,
+      4262100
+    ],
+    [
+      "2024-12-04",
+      0.78,
+      0.81,
+      0.75,
+      0.8,
+      1565000
+    ],
+    [
+      "2024-12-05",
+      0.8,
+      0.8,
+      0.75,
+      0.76,
+      2165500
+    ],
+    [
+      "2024-12-06",
+      0.75,
+      0.82,
+      0.68,
+      0.8,
+      2617300
+    ],
+    [
+      "2024-12-09",
+      0.8,
+      0.82,
+      0.75,
+      0.81,
+      984200
+    ],
+    [
+      "2024-12-10",
+      0.81,
+      1.07,
+      0.79,
+      0.87,
+      3730600
+    ],
+    [
+      "2024-12-11",
+      0.9,
+      1.08,
+      0.87,
+      1.05,
+      8070400
+    ],
+    [
+      "2024-12-12",
+      1.04,
+      1.07,
+      0.96,
+      1.02,
+      2802400
+    ],
+    [
+      "2024-12-13",
+      1.03,
+      1.43,
+      0.91,
+      1.4,
+      9390300
+    ],
+    [
+      "2024-12-16",
+      1.57,
+      1.75,
+      1.36,
+      1.66,
+      14489300
+    ],
+    [
+      "2024-12-17",
+      1.8,
+      1.88,
+      1.46,
+      1.67,
+      13607400
+    ],
+    [
+      "2024-12-18",
+      1.71,
+      1.76,
+      1.06,
+      1.29,
+      8246500
+    ],
+    [
+      "2024-12-19",
+      1.56,
+      1.56,
+      1.25,
+      1.36,
+      5618700
+    ],
+    [
+      "2024-12-20",
+      1.27,
+      1.53,
+      1.2,
+      1.47,
+      5409100
+    ],
+    [
+      "2024-12-23",
+      1.6,
+      1.95,
+      1.52,
+      1.95,
+      9984200
+    ],
+    [
+      "2024-12-24",
+      2.06,
+      2.2,
+      1.8,
+      2.02,
+      8457300
+    ],
+    [
+      "2024-12-26",
+      2.17,
+      2.67,
+      2.13,
+      2.51,
+      11832200
+    ],
+    [
+      "2024-12-27",
+      2.89,
+      3.1,
+      2.34,
+      2.59,
+      15700200
+    ],
+    [
+      "2024-12-30",
+      2.74,
+      3.14,
+      2.55,
+      2.79,
+      21302300
+    ],
+    [
+      "2024-12-31",
+      2.71,
+      2.73,
+      2.28,
+      2.56,
+      9096700
+    ],
+    [
+      "2025-01-02",
+      2.5,
+      2.79,
+      2.45,
+      2.63,
+      10396100
+    ],
+    [
+      "2025-01-03",
+      3.23,
+      3.4,
+      2.76,
+      2.8,
+      37322500
+    ],
+    [
+      "2025-01-06",
+      3.05,
+      3.13,
+      2.63,
+      2.69,
+      15491300
+    ],
+    [
+      "2025-01-07",
+      2.69,
+      2.76,
+      2.4,
+      2.65,
+      8343400
+    ],
+    [
+      "2025-01-08",
+      2.72,
+      2.73,
+      2.09,
+      2.54,
+      20144700
+    ],
+    [
+      "2025-01-10",
+      2.39,
+      2.46,
+      2.2,
+      2.24,
+      6276300
+    ],
+    [
+      "2025-01-13",
+      2.05,
+      2.19,
+      1.82,
+      1.88,
+      8172000
+    ],
+    [
+      "2025-01-14",
+      1.9,
+      2.13,
+      1.9,
+      1.99,
+      4833800
+    ],
+    [
+      "2025-01-15",
+      2.06,
+      2.26,
+      2.0,
+      2.21,
+      5071700
+    ],
+    [
+      "2025-01-16",
+      2.27,
+      2.27,
+      2.01,
+      2.2,
+      3917800
+    ],
+    [
+      "2025-01-17",
+      2.2,
+      2.2,
+      2.02,
+      2.07,
+      3928200
+    ],
+    [
+      "2025-01-21",
+      2.1,
+      2.14,
+      1.94,
+      2.01,
+      4724600
+    ],
+    [
+      "2025-01-22",
+      2.07,
+      2.46,
+      1.99,
+      2.37,
+      7804200
+    ],
+    [
+      "2025-01-23",
+      2.17,
+      2.3,
+      2.1,
+      2.11,
+      4018200
+    ],
+    [
+      "2025-01-24",
+      2.06,
+      2.21,
+      1.98,
+      2.04,
+      4373100
+    ],
+    [
+      "2025-01-27",
+      1.89,
+      2.0,
+      1.83,
+      1.94,
+      3832400
+    ],
+    [
+      "2025-01-28",
+      1.93,
+      1.99,
+      1.81,
+      1.81,
+      2620000
+    ],
+    [
+      "2025-01-29",
+      1.74,
+      1.81,
+      1.64,
+      1.71,
+      3883500
+    ],
+    [
+      "2025-01-30",
+      1.74,
+      1.77,
+      1.68,
+      1.69,
+      2346000
+    ],
+    [
+      "2025-01-31",
+      1.69,
+      1.84,
+      1.66,
+      1.75,
+      3078000
+    ],
+    [
+      "2025-02-03",
+      1.61,
+      1.68,
+      1.5,
+      1.6,
+      2885700
+    ],
+    [
+      "2025-02-04",
+      1.62,
+      1.7,
+      1.62,
+      1.69,
+      1712900
+    ],
+    [
+      "2025-02-05",
+      1.72,
+      1.72,
+      1.61,
+      1.64,
+      2152600
+    ],
+    [
+      "2025-02-06",
+      1.68,
+      1.85,
+      1.68,
+      1.76,
+      2754300
+    ],
+    [
+      "2025-02-07",
+      1.78,
+      1.92,
+      1.76,
+      1.91,
+      3689900
+    ],
+    [
+      "2025-02-10",
+      2.0,
+      2.12,
+      1.82,
+      2.1,
+      5051700
+    ],
+    [
+      "2025-02-11",
+      2.05,
+      2.23,
+      2.0,
+      2.1,
+      5501000
+    ],
+    [
+      "2025-02-12",
+      2.03,
+      2.14,
+      1.93,
+      1.94,
+      4053600
+    ],
+    [
+      "2025-02-13",
+      1.94,
+      1.95,
+      1.84,
+      1.92,
+      1972800
+    ],
+    [
+      "2025-02-14",
+      1.9,
+      1.97,
+      1.8,
+      1.83,
+      1961800
+    ],
+    [
+      "2025-02-18",
+      1.84,
+      1.94,
+      1.61,
+      1.65,
+      3484500
+    ],
+    [
+      "2025-02-19",
+      1.64,
+      1.68,
+      1.4,
+      1.43,
+      5038100
+    ],
+    [
+      "2025-02-20",
+      1.39,
+      1.46,
+      1.33,
+      1.39,
+      2375800
+    ],
+    [
+      "2025-02-21",
+      1.4,
+      1.45,
+      1.24,
+      1.25,
+      2586600
+    ],
+    [
+      "2025-02-24",
+      1.25,
+      1.26,
+      1.1,
+      1.1,
+      3109900
+    ],
+    [
+      "2025-02-25",
+      1.17,
+      1.21,
+      1.0,
+      1.04,
+      4790100
+    ],
+    [
+      "2025-02-26",
+      1.06,
+      1.14,
+      1.03,
+      1.08,
+      2300400
+    ],
+    [
+      "2025-02-27",
+      1.08,
+      1.13,
+      0.97,
+      0.97,
+      1932800
+    ],
+    [
+      "2025-02-28",
+      0.95,
+      1.02,
+      0.92,
+      0.98,
+      1851900
+    ],
+    [
+      "2025-03-03",
+      0.99,
+      1.0,
+      0.84,
+      0.85,
+      2791800
+    ],
+    [
+      "2025-03-04",
+      0.8,
+      0.94,
+      0.79,
+      0.87,
+      2542000
+    ],
+    [
+      "2025-03-05",
+      0.87,
+      0.9,
+      0.83,
+      0.89,
+      1323900
+    ],
+    [
+      "2025-03-06",
+      0.87,
+      0.9,
+      0.8,
+      0.81,
+      1486900
+    ],
+    [
+      "2025-03-07",
+      0.83,
+      0.83,
+      0.75,
+      0.81,
+      2417500
+    ],
+    [
+      "2025-03-10",
+      0.8,
+      0.81,
+      0.69,
+      0.73,
+      3059200
+    ],
+    [
+      "2025-03-11",
+      1.18,
+      1.18,
+      0.68,
+      0.72,
+      104014700
+    ],
+    [
+      "2025-03-12",
+      0.69,
+      0.71,
+      0.57,
+      0.7,
+      22566300
+    ],
+    [
+      "2025-03-13",
+      0.67,
+      0.72,
+      0.65,
+      0.68,
+      8211700
+    ],
+    [
+      "2025-03-14",
+      0.66,
+      0.74,
+      0.65,
+      0.74,
+      6426900
+    ],
+    [
+      "2025-03-17",
+      0.72,
+      0.79,
+      0.72,
+      0.77,
+      5713300
+    ],
+    [
+      "2025-03-18",
+      0.78,
+      0.8,
+      0.72,
+      0.75,
+      2430600
+    ],
+    [
+      "2025-03-19",
+      0.73,
+      0.77,
+      0.72,
+      0.76,
+      2230500
+    ],
+    [
+      "2025-03-20",
+      0.75,
+      0.76,
+      0.68,
+      0.69,
+      2517600
+    ],
+    [
+      "2025-03-21",
+      0.68,
+      0.72,
+      0.68,
+      0.7,
+      1467300
+    ],
+    [
+      "2025-03-24",
+      0.71,
+      0.82,
+      0.69,
+      0.81,
+      9963900
+    ],
+    [
+      "2025-03-25",
+      0.86,
+      0.9,
+      0.8,
+      0.89,
+      8523500
+    ],
+    [
+      "2025-03-26",
+      0.9,
+      0.97,
+      0.81,
+      0.85,
+      7788300
+    ],
+    [
+      "2025-03-27",
+      0.84,
+      1.01,
+      0.83,
+      1.0,
+      10619500
+    ],
+    [
+      "2025-03-28",
+      1.0,
+      1.14,
+      0.89,
+      1.12,
+      16871500
+    ],
+    [
+      "2025-03-31",
+      1.05,
+      1.25,
+      0.89,
+      1.07,
+      28188300
+    ],
+    [
+      "2025-04-01",
+      1.15,
+      1.15,
+      1.01,
+      1.1,
+      14836300
+    ],
+    [
+      "2025-04-02",
+      1.04,
+      1.13,
+      0.99,
+      1.11,
+      7917600
+    ],
+    [
+      "2025-04-03",
+      1.02,
+      1.07,
+      0.86,
+      0.9,
+      12366900
+    ],
+    [
+      "2025-04-04",
+      0.88,
+      0.97,
+      0.83,
+      0.92,
+      8010000
+    ],
+    [
+      "2025-04-07",
+      0.86,
+      0.99,
+      0.82,
+      0.86,
+      5534800
+    ],
+    [
+      "2025-04-08",
+      0.88,
+      0.9,
+      0.72,
+      0.75,
+      7639800
+    ],
+    [
+      "2025-04-09",
+      0.73,
+      0.84,
+      0.66,
+      0.83,
+      13336700
+    ],
+    [
+      "2025-04-10",
+      0.81,
+      0.82,
+      0.71,
+      0.77,
+      4690800
+    ],
+    [
+      "2025-04-11",
+      0.79,
+      0.83,
+      0.75,
+      0.81,
+      4343800
+    ],
+    [
+      "2025-04-14",
+      0.92,
+      0.96,
+      0.86,
+      0.91,
+      13336700
+    ],
+    [
+      "2025-04-15",
+      0.93,
+      0.94,
+      0.85,
+      0.87,
+      7549200
+    ],
+    [
+      "2025-04-16",
+      0.84,
+      0.88,
+      0.81,
+      0.86,
+      4399600
+    ],
+    [
+      "2025-04-17",
+      0.88,
+      0.92,
+      0.85,
+      0.89,
+      4492500
+    ],
+    [
+      "2025-04-21",
+      0.85,
+      0.87,
+      0.77,
+      0.8,
+      4411800
+    ],
+    [
+      "2025-04-22",
+      0.82,
+      0.83,
+      0.77,
+      0.82,
+      5087800
+    ],
+    [
+      "2025-04-23",
+      0.87,
+      0.9,
+      0.83,
+      0.84,
+      4594300
+    ],
+    [
+      "2025-04-24",
+      0.86,
+      0.88,
+      0.78,
+      0.8,
+      6499100
+    ],
+    [
+      "2025-04-25",
+      0.79,
+      0.82,
+      0.69,
+      0.71,
+      10753600
+    ],
+    [
+      "2025-04-28",
+      0.75,
+      0.78,
+      0.73,
+      0.75,
+      5364800
+    ],
+    [
+      "2025-04-29",
+      0.76,
+      0.83,
+      0.73,
+      0.81,
+      5670400
+    ],
+    [
+      "2025-04-30",
+      0.76,
+      0.79,
+      0.74,
+      0.78,
+      3395600
+    ],
+    [
+      "2025-05-01",
+      0.78,
+      0.83,
+      0.77,
+      0.79,
+      4499400
+    ],
+    [
+      "2025-05-02",
+      0.81,
+      0.85,
+      0.79,
+      0.82,
+      5630300
+    ],
+    [
+      "2025-05-05",
+      0.79,
+      0.8,
+      0.76,
+      0.76,
+      3695200
+    ],
+    [
+      "2025-05-06",
+      0.78,
+      0.78,
+      0.74,
+      0.76,
+      3145000
+    ],
+    [
+      "2025-05-07",
+      0.75,
+      0.76,
+      0.73,
+      0.75,
+      2261600
+    ],
+    [
+      "2025-05-08",
+      0.75,
+      0.8,
+      0.73,
+      0.79,
+      4742400
+    ],
+    [
+      "2025-05-09",
+      0.79,
+      0.8,
+      0.76,
+      0.76,
+      3193100
+    ],
+    [
+      "2025-05-12",
+      0.77,
+      0.84,
+      0.76,
+      0.83,
+      6682200
+    ],
+    [
+      "2025-05-13",
+      0.81,
+      0.89,
+      0.81,
+      0.86,
+      7082300
+    ],
+    [
+      "2025-05-14",
+      0.92,
+      0.92,
+      0.84,
+      0.88,
+      7950200
+    ],
+    [
+      "2025-05-15",
+      0.85,
+      0.87,
+      0.76,
+      0.86,
+      12705400
+    ],
+    [
+      "2025-05-16",
+      0.86,
+      0.94,
+      0.84,
+      0.93,
+      9434100
+    ],
+    [
+      "2025-05-19",
+      0.89,
+      1.0,
+      0.86,
+      0.98,
+      12901400
+    ],
+    [
+      "2025-05-20",
+      1.01,
+      1.05,
+      0.93,
+      0.94,
+      10236500
+    ],
+    [
+      "2025-05-21",
+      0.95,
+      1.0,
+      0.83,
+      0.87,
+      8820500
+    ],
+    [
+      "2025-05-22",
+      0.85,
+      0.92,
+      0.84,
+      0.91,
+      4150600
+    ],
+    [
+      "2025-05-23",
+      0.86,
+      0.96,
+      0.86,
+      0.93,
+      5116400
+    ],
+    [
+      "2025-05-27",
+      0.92,
+      0.95,
+      0.89,
+      0.94,
+      5190200
+    ],
+    [
+      "2025-05-28",
+      0.95,
+      1.15,
+      0.93,
+      1.07,
+      13061000
+    ],
+    [
+      "2025-05-29",
+      1.1,
+      1.1,
+      1.0,
+      1.07,
+      7426000
+    ],
+    [
+      "2025-05-30",
+      1.08,
+      1.23,
+      1.07,
+      1.22,
+      17600700
+    ],
+    [
+      "2025-06-02",
+      1.35,
+      1.52,
+      1.26,
+      1.47,
+      35215700
+    ],
+    [
+      "2025-06-03",
+      1.59,
+      1.66,
+      1.4,
+      1.42,
+      31332400
+    ],
+    [
+      "2025-06-04",
+      1.5,
+      1.79,
+      1.46,
+      1.75,
+      24423000
+    ],
+    [
+      "2025-06-05",
+      1.88,
+      1.88,
+      1.5,
+      1.58,
+      30765200
+    ],
+    [
+      "2025-06-06",
+      1.66,
+      1.87,
+      1.58,
+      1.7,
+      23804900
+    ],
+    [
+      "2025-06-09",
+      1.94,
+      2.05,
+      1.67,
+      1.68,
+      43161800
+    ],
+    [
+      "2025-06-10",
+      1.48,
+      1.7,
+      1.45,
+      1.52,
+      32790800
+    ],
+    [
+      "2025-06-11",
+      1.6,
+      1.6,
+      1.4,
+      1.48,
+      12197600
+    ],
+    [
+      "2025-06-12",
+      1.53,
+      1.75,
+      1.51,
+      1.71,
+      20835900
+    ],
+    [
+      "2025-06-13",
+      1.74,
+      1.87,
+      1.66,
+      1.82,
+      29549600
+    ],
+    [
+      "2025-06-16",
+      1.85,
+      1.9,
+      1.66,
+      1.69,
+      18985400
+    ],
+    [
+      "2025-06-17",
+      1.69,
+      1.7,
+      1.52,
+      1.56,
+      13661600
+    ],
+    [
+      "2025-06-18",
+      1.57,
+      1.61,
+      1.46,
+      1.55,
+      10932700
+    ],
+    [
+      "2025-06-20",
+      1.63,
+      1.67,
+      1.52,
+      1.58,
+      14369000
+    ],
+    [
+      "2025-06-23",
+      1.58,
+      1.58,
+      1.36,
+      1.43,
+      21290600
+    ],
+    [
+      "2025-06-24",
+      1.54,
+      1.6,
+      1.47,
+      1.59,
+      14711400
+    ],
+    [
+      "2025-06-25",
+      1.74,
+      1.85,
+      1.55,
+      1.6,
+      39187100
+    ],
+    [
+      "2025-06-26",
+      1.62,
+      1.79,
+      1.53,
+      1.75,
+      31484600
+    ],
+    [
+      "2025-06-27",
+      1.76,
+      1.91,
+      1.69,
+      1.83,
+      24201300
+    ],
+    [
+      "2025-06-30",
+      2.02,
+      2.29,
+      1.91,
+      1.92,
+      46230100
+    ],
+    [
+      "2025-07-01",
+      1.89,
+      1.96,
+      1.8,
+      1.96,
+      15210400
+    ],
+    [
+      "2025-07-02",
+      1.92,
+      1.95,
+      1.8,
+      1.88,
+      12112000
+    ],
+    [
+      "2025-07-03",
+      1.92,
+      2.02,
+      1.82,
+      1.85,
+      11619700
+    ],
+    [
+      "2025-07-07",
+      1.84,
+      1.97,
+      1.72,
+      1.75,
+      12527200
+    ],
+    [
+      "2025-07-08",
+      1.78,
+      1.83,
+      1.71,
+      1.79,
+      10509200
+    ],
+    [
+      "2025-07-09",
+      1.88,
+      1.93,
+      1.79,
+      1.84,
+      18739600
+    ],
+    [
+      "2025-07-10",
+      1.85,
+      2.05,
+      1.8,
+      2.01,
+      23516400
+    ],
+    [
+      "2025-07-11",
+      2.12,
+      2.24,
+      2.05,
+      2.12,
+      30779800
+    ],
+    [
+      "2025-07-14",
+      2.16,
+      2.45,
+      2.12,
+      2.31,
+      35769800
+    ],
+    [
+      "2025-07-15",
+      2.33,
+      2.35,
+      2.2,
+      2.29,
+      14686600
+    ],
+    [
+      "2025-07-16",
+      2.22,
+      2.44,
+      2.19,
+      2.4,
+      21189700
+    ],
+    [
+      "2025-07-17",
+      2.48,
+      2.64,
+      2.28,
+      2.4,
+      26646700
+    ],
+    [
+      "2025-07-18",
+      2.43,
+      2.48,
+      2.19,
+      2.23,
+      20672500
+    ],
+    [
+      "2025-07-21",
+      2.3,
+      2.7,
+      2.24,
+      2.25,
+      40600600
+    ],
+    [
+      "2025-07-22",
+      2.26,
+      2.27,
+      2.02,
+      2.1,
+      20187600
+    ],
+    [
+      "2025-07-23",
+      2.13,
+      2.2,
+      2.05,
+      2.18,
+      10621700
+    ],
+    [
+      "2025-07-24",
+      2.19,
+      2.33,
+      2.13,
+      2.14,
+      11637100
+    ],
+    [
+      "2025-07-25",
+      2.12,
+      2.14,
+      2.06,
+      2.13,
+      8347800
+    ],
+    [
+      "2025-07-28",
+      2.15,
+      2.2,
+      1.98,
+      2.0,
+      11429700
+    ],
+    [
+      "2025-07-29",
+      2.01,
+      2.01,
+      1.78,
+      1.82,
+      18967500
+    ],
+    [
+      "2025-07-30",
+      1.87,
+      2.14,
+      1.85,
+      2.07,
+      27107700
+    ],
+    [
+      "2025-07-31",
+      2.17,
+      2.22,
+      2.03,
+      2.12,
+      22804600
+    ],
+    [
+      "2025-08-01",
+      2.05,
+      2.27,
+      2.01,
+      2.2,
+      23356200
+    ],
+    [
+      "2025-08-04",
+      2.28,
+      2.67,
+      2.25,
+      2.67,
+      41381200
+    ],
+    [
+      "2025-08-05",
+      2.75,
+      3.09,
+      2.66,
+      3.07,
+      56284000
+    ],
+    [
+      "2025-08-06",
+      2.98,
+      3.37,
+      2.92,
+      3.33,
+      36704600
+    ],
+    [
+      "2025-08-07",
+      3.4,
+      3.5,
+      3.09,
+      3.25,
+      34876200
+    ],
+    [
+      "2025-08-08",
+      3.41,
+      3.95,
+      3.39,
+      3.55,
+      41406300
+    ],
+    [
+      "2025-08-11",
+      3.61,
+      3.76,
+      3.31,
+      3.43,
+      26386900
+    ],
+    [
+      "2025-08-12",
+      3.94,
+      4.39,
+      3.86,
+      4.29,
+      71915200
+    ],
+    [
+      "2025-08-13",
+      3.48,
+      3.79,
+      3.44,
+      3.52,
+      94894900
+    ],
+    [
+      "2025-08-14",
+      3.5,
+      3.93,
+      3.43,
+      3.93,
+      53138400
+    ],
+    [
+      "2025-08-15",
+      3.83,
+      4.23,
+      3.74,
+      3.86,
+      48996000
+    ],
+    [
+      "2025-08-18",
+      3.92,
+      4.09,
+      3.72,
+      4.01,
+      33261900
+    ],
+    [
+      "2025-08-19",
+      4.14,
+      4.33,
+      3.56,
+      3.59,
+      49180100
+    ],
+    [
+      "2025-08-20",
+      3.6,
+      3.66,
+      3.2,
+      3.61,
+      43915400
+    ],
+    [
+      "2025-08-21",
+      3.64,
+      3.89,
+      3.51,
+      3.8,
+      29854500
+    ],
+    [
+      "2025-08-22",
+      3.8,
+      4.51,
+      3.8,
+      4.49,
+      65687100
+    ],
+    [
+      "2025-08-25",
+      4.68,
+      4.98,
+      4.53,
+      4.85,
+      46896700
+    ],
+    [
+      "2025-08-26",
+      4.72,
+      5.27,
+      4.71,
+      4.97,
+      45928200
+    ],
+    [
+      "2025-08-27",
+      5.02,
+      5.51,
+      5.01,
+      5.07,
+      47846400
+    ],
+    [
+      "2025-08-28",
+      5.25,
+      6.01,
+      5.2,
+      5.7,
+      60658900
+    ],
+    [
+      "2025-08-29",
+      6.0,
+      6.19,
+      5.54,
+      5.86,
+      55680200
+    ],
+    [
+      "2025-09-02",
+      5.47,
+      5.95,
+      5.33,
+      5.46,
+      38115400
+    ],
+    [
+      "2025-09-03",
+      5.62,
+      5.68,
+      5.01,
+      5.03,
+      32311400
+    ],
+    [
+      "2025-09-04",
+      5.03,
+      5.39,
+      4.9,
+      5.33,
+      32980800
+    ],
+    [
+      "2025-09-05",
+      5.45,
+      5.68,
+      5.03,
+      5.63,
+      34703500
+    ],
+    [
+      "2025-09-08",
+      5.63,
+      6.5,
+      5.6,
+      6.06,
+      54462600
+    ],
+    [
+      "2025-09-09",
+      5.31,
+      5.59,
+      5.21,
+      5.45,
+      91793000
+    ],
+    [
+      "2025-09-10",
+      5.61,
+      6.0,
+      5.39,
+      5.56,
+      55210800
+    ],
+    [
+      "2025-09-11",
+      5.68,
+      6.44,
+      5.41,
+      6.42,
+      62323000
+    ],
+    [
+      "2025-09-12",
+      6.45,
+      6.72,
+      6.2,
+      6.56,
+      47214300
+    ],
+    [
+      "2025-09-15",
+      6.71,
+      6.86,
+      6.25,
+      6.38,
+      37226300
+    ],
+    [
+      "2025-09-16",
+      6.32,
+      6.35,
+      5.92,
+      6.09,
+      36544700
+    ],
+    [
+      "2025-09-17",
+      6.06,
+      6.25,
+      5.75,
+      6.1,
+      42246200
+    ],
+    [
+      "2025-09-18",
+      6.28,
+      6.64,
+      6.01,
+      6.6,
+      36806700
+    ],
+    [
+      "2025-09-19",
+      6.55,
+      6.84,
+      6.42,
+      6.72,
+      45026800
+    ],
+    [
+      "2025-09-22",
+      6.82,
+      7.36,
+      6.58,
+      7.26,
+      48685300
+    ],
+    [
+      "2025-09-23",
+      7.51,
+      8.12,
+      7.23,
+      7.88,
+      59734600
+    ],
+    [
+      "2025-09-24",
+      7.99,
+      8.07,
+      7.25,
+      7.35,
+      45668000
+    ],
+    [
+      "2025-09-25",
+      7.01,
+      7.84,
+      6.79,
+      7.75,
+      62131000
+    ],
+    [
+      "2025-09-26",
+      7.7,
+      7.89,
+      7.36,
+      7.66,
+      36510700
+    ],
+    [
+      "2025-09-29",
+      7.96,
+      8.71,
+      7.8,
+      7.87,
+      68637300
+    ],
+    [
+      "2025-09-30",
+      7.93,
+      8.17,
+      7.57,
+      7.72,
+      41886000
+    ],
+    [
+      "2025-10-01",
+      7.75,
+      7.95,
+      7.18,
+      7.31,
+      40181900
+    ],
+    [
+      "2025-10-02",
+      7.8,
+      9.34,
+      7.66,
+      9.21,
+      103739100
+    ],
+    [
+      "2025-10-03",
+      9.51,
+      10.28,
+      9.19,
+      9.91,
+      72854000
+    ],
+    [
+      "2025-10-06",
+      10.56,
+      11.63,
+      10.27,
+      10.66,
+      82293100
+    ],
+    [
+      "2025-10-07",
+      11.0,
+      11.55,
+      10.45,
+      11.09,
+      56849500
+    ],
+    [
+      "2025-10-08",
+      11.27,
+      11.7,
+      10.71,
+      11.26,
+      45083100
+    ],
+    [
+      "2025-10-09",
+      11.14,
+      11.39,
+      10.38,
+      10.49,
+      43374900
+    ],
+    [
+      "2025-10-10",
+      10.48,
+      10.51,
+      9.19,
+      9.22,
+      61337500
+    ],
+    [
+      "2025-10-13",
+      10.03,
+      11.22,
+      9.68,
+      10.81,
+      51913400
+    ],
+    [
+      "2025-10-14",
+      10.38,
+      10.56,
+      9.88,
+      10.41,
+      36075200
+    ],
+    [
+      "2025-10-15",
+      10.82,
+      10.87,
+      9.16,
+      9.51,
+      49685800
+    ],
+    [
+      "2025-10-16",
+      9.63,
+      9.63,
+      7.92,
+      8.2,
+      70659400
+    ],
+    [
+      "2025-10-17",
+      7.95,
+      8.16,
+      7.55,
+      7.61,
+      43053500
+    ],
+    [
+      "2025-10-20",
+      8.06,
+      8.19,
+      7.33,
+      7.77,
+      37824000
+    ],
+    [
+      "2025-10-21",
+      7.68,
+      7.91,
+      7.12,
+      7.19,
+      30813700
+    ],
+    [
+      "2025-10-22",
+      6.85,
+      7.26,
+      6.47,
+      6.74,
+      53446000
+    ],
+    [
+      "2025-10-23",
+      6.85,
+      7.3,
+      6.65,
+      7.06,
+      36302900
+    ],
+    [
+      "2025-10-24",
+      7.67,
+      8.17,
+      7.41,
+      7.46,
+      51306800
+    ],
+    [
+      "2025-10-27",
+      8.19,
+      8.31,
+      7.52,
+      7.53,
+      48346900
+    ],
+    [
+      "2025-10-28",
+      7.52,
+      7.64,
+      6.66,
+      6.79,
+      44421400
+    ],
+    [
+      "2025-10-29",
+      6.89,
+      6.95,
+      6.52,
+      6.75,
+      36219300
+    ],
+    [
+      "2025-10-30",
+      6.49,
+      6.61,
+      6.2,
+      6.29,
+      125439600
+    ],
+    [
+      "2025-10-31",
+      6.25,
+      6.5,
+      6.12,
+      6.44,
+      103849100
+    ],
+    [
+      "2025-11-03",
+      6.57,
+      6.69,
+      5.78,
+      6.15,
+      118255500
+    ],
+    [
+      "2025-11-04",
+      5.78,
+      6.57,
+      5.77,
+      5.96,
+      94632800
+    ],
+    [
+      "2025-11-05",
+      5.98,
+      6.25,
+      5.83,
+      6.0,
+      59402800
+    ],
+    [
+      "2025-11-06",
+      5.92,
+      5.93,
+      5.22,
+      5.25,
+      80158700
+    ],
+    [
+      "2025-11-07",
+      5.04,
+      5.89,
+      4.95,
+      5.81,
+      106713300
+    ],
+    [
+      "2025-11-10",
+      6.37,
+      6.39,
+      5.77,
+      5.88,
+      135019900
+    ],
+    [
+      "2025-11-11",
+      5.85,
+      6.09,
+      5.6,
+      5.8,
+      78879000
+    ],
+    [
+      "2025-11-12",
+      5.99,
+      6.16,
+      5.48,
+      5.51,
+      78891600
+    ],
+    [
+      "2025-11-13",
+      6.32,
+      7.34,
+      6.31,
+      6.56,
+      220831400
+    ],
+    [
+      "2025-11-14",
+      6.16,
+      7.86,
+      6.1,
+      7.18,
+      184450300
+    ],
+    [
+      "2025-11-17",
+      7.51,
+      7.51,
+      5.98,
+      6.26,
+      154730900
+    ],
+    [
+      "2025-11-18",
+      6.16,
+      7.92,
+      6.15,
+      7.84,
+      179882000
+    ],
+    [
+      "2025-11-19",
+      7.47,
+      8.03,
+      7.26,
+      7.5,
+      127637400
+    ],
+    [
+      "2025-11-20",
+      7.92,
+      7.97,
+      6.25,
+      6.27,
+      118430900
+    ],
+    [
+      "2025-11-21",
+      6.56,
+      6.85,
+      5.93,
+      6.74,
+      130829200
+    ],
+    [
+      "2025-11-24",
+      6.78,
+      8.8,
+      6.67,
+      8.72,
+      177068100
+    ],
+    [
+      "2025-11-25",
+      8.48,
+      8.88,
+      8.07,
+      8.44,
+      119782400
+    ],
+    [
+      "2025-11-26",
+      8.61,
+      8.68,
+      7.68,
+      8.24,
+      114905200
+    ],
+    [
+      "2025-11-28",
+      8.28,
+      8.47,
+      7.8,
+      7.9,
+      32709000
+    ],
+    [
+      "2025-12-01",
+      7.88,
+      8.07,
+      7.47,
+      7.58,
+      50596600
+    ],
+    [
+      "2025-12-02",
+      7.68,
+      8.55,
+      7.32,
+      8.07,
+      90636900
+    ],
+    [
+      "2025-12-03",
+      8.39,
+      9.1,
+      7.46,
+      8.92,
+      140917600
+    ],
+    [
+      "2025-12-04",
+      8.64,
+      9.34,
+      8.52,
+      9.19,
+      106884700
+    ],
+    [
+      "2025-12-05",
+      8.93,
+      9.3,
+      8.58,
+      9.07,
+      82497100
+    ],
+    [
+      "2025-12-08",
+      9.3,
+      9.75,
+      8.97,
+      9.02,
+      86527600
+    ],
+    [
+      "2025-12-09",
+      8.92,
+      9.86,
+      8.61,
+      9.23,
+      83620400
+    ],
+    [
+      "2025-12-10",
+      9.11,
+      9.11,
+      8.31,
+      8.32,
+      86853700
+    ],
+    [
+      "2025-12-11",
+      8.49,
+      9.08,
+      8.12,
+      9.02,
+      66219100
+    ],
+    [
+      "2025-12-12",
+      8.98,
+      9.57,
+      8.41,
+      8.75,
+      89059100
+    ],
+    [
+      "2025-12-15",
+      8.68,
+      8.74,
+      7.56,
+      7.69,
+      100385800
+    ],
+    [
+      "2025-12-16",
+      7.62,
+      8.19,
+      7.59,
+      8.09,
+      51608600
+    ],
+    [
+      "2025-12-17",
+      8.14,
+      8.56,
+      7.28,
+      7.37,
+      59633100
+    ],
+    [
+      "2025-12-18",
+      7.79,
+      8.34,
+      7.74,
+      7.8,
+      67598900
+    ],
+    [
+      "2025-12-19",
+      7.99,
+      9.24,
+      7.86,
+      9.22,
+      125776600
+    ],
+    [
+      "2025-12-22",
+      9.3,
+      9.66,
+      9.15,
+      9.27,
+      69110000
+    ],
+    [
+      "2025-12-23",
+      9.03,
+      9.84,
+      8.67,
+      8.96,
+      66186400
+    ],
+    [
+      "2025-12-24",
+      8.98,
+      9.2,
+      8.85,
+      9.13,
+      26112000
+    ],
+    [
+      "2025-12-26",
+      9.14,
+      9.17,
+      8.43,
+      8.48,
+      49157100
+    ],
+    [
+      "2025-12-29",
+      8.3,
+      8.67,
+      8.21,
+      8.46,
+      29712000
+    ],
+    [
+      "2025-12-30",
+      8.46,
+      9.3,
+      8.33,
+      8.99,
+      56951500
+    ],
+    [
+      "2025-12-31",
+      9.28,
+      10.53,
+      9.17,
+      9.76,
+      156334100
+    ],
+    [
+      "2026-01-02",
+      10.14,
+      11.06,
+      9.91,
+      11.02,
+      136003400
+    ],
+    [
+      "2026-01-05",
+      11.3,
+      12.54,
+      10.99,
+      12.53,
+      142435600
+    ],
+    [
+      "2026-01-06",
+      12.1,
+      12.93,
+      11.96,
+      12.84,
+      92109800
+    ],
+    [
+      "2026-01-07",
+      12.7,
+      13.02,
+      12.11,
+      12.18,
+      70855300
+    ],
+    [
+      "2026-01-08",
+      13.2,
+      15.07,
+      13.15,
+      14.01,
+      137379500
+    ],
+    [
+      "2026-01-09",
+      14.0,
+      15.1,
+      13.59,
+      13.69,
+      114278000
+    ],
+    [
+      "2026-01-12",
+      13.71,
+      15.28,
+      12.83,
+      13.19,
+      121385400
+    ],
+    [
+      "2026-01-13",
+      13.5,
+      14.5,
+      12.96,
+      13.89,
+      130778300
+    ],
+    [
+      "2026-01-14",
+      13.69,
+      13.75,
+      12.92,
+      13.56,
+      83593700
+    ],
+    [
+      "2026-01-15",
+      13.57,
+      14.07,
+      12.8,
+      12.82,
+      96377300
+    ],
+    [
+      "2026-01-16",
+      13.41,
+      14.25,
+      12.12,
+      12.16,
+      168234800
+    ],
+    [
+      "2026-01-20",
+      11.85,
+      14.2,
+      11.8,
+      13.13,
+      150704200
+    ],
+    [
+      "2026-01-21",
+      13.8,
+      14.33,
+      11.93,
+      12.55,
+      148204900
+    ],
+    [
+      "2026-01-22",
+      12.51,
+      13.33,
+      12.35,
+      12.62,
+      117527800
+    ],
+    [
+      "2026-01-23",
+      12.71,
+      12.86,
+      11.94,
+      12.17,
+      79504300
+    ],
+    [
+      "2026-01-26",
+      12.15,
+      12.34,
+      10.95,
+      11.16,
+      79825500
+    ],
+    [
+      "2026-01-27",
+      11.21,
+      12.47,
+      11.09,
+      12.26,
+      92724300
+    ],
+    [
+      "2026-01-28",
+      12.98,
+      13.08,
+      12.06,
+      12.27,
+      100928200
+    ],
+    [
+      "2026-01-29",
+      12.14,
+      12.28,
+      11.07,
+      11.27,
+      87794500
+    ],
+    [
+      "2026-01-30",
+      11.25,
+      11.45,
+      10.14,
+      10.36,
+      79362400
+    ],
+    [
+      "2026-02-02",
+      10.81,
+      11.2,
+      10.15,
+      10.64,
+      92683800
+    ],
+    [
+      "2026-02-03",
+      11.01,
+      11.42,
+      10.51,
+      11.38,
+      102072700
+    ],
+    [
+      "2026-02-04",
+      11.38,
+      11.4,
+      9.13,
+      9.68,
+      125055500
+    ],
+    [
+      "2026-02-05",
+      9.34,
+      9.53,
+      8.32,
+      8.48,
+      100976900
+    ],
+    [
+      "2026-02-06",
+      8.97,
+      9.76,
+      8.45,
+      9.69,
+      87820600
+    ],
+    [
+      "2026-02-09",
+      9.81,
+      10.64,
+      9.67,
+      10.34,
+      88727400
+    ],
+    [
+      "2026-02-10",
+      10.09,
+      10.44,
+      9.6,
+      9.68,
+      56340300
+    ],
+    [
+      "2026-02-11",
+      9.89,
+      9.92,
+      8.88,
+      9.23,
+      67427300
+    ],
+    [
+      "2026-02-12",
+      9.24,
+      9.27,
+      8.7,
+      8.97,
+      59629600
+    ],
+    [
+      "2026-02-13",
+      9.27,
+      9.68,
+      8.82,
+      9.31,
+      56681700
+    ],
+    [
+      "2026-02-17",
+      9.23,
+      10.32,
+      8.87,
+      10.05,
+      76272200
+    ],
+    [
+      "2026-02-18",
+      10.21,
+      11.17,
+      9.99,
+      11.07,
+      110468200
+    ],
+    [
+      "2026-02-19",
+      10.82,
+      11.59,
+      10.74,
+      11.39,
+      102375900
+    ],
+    [
+      "2026-02-20",
+      11.19,
+      11.58,
+      9.95,
+      10.03,
+      111577200
+    ],
+    [
+      "2026-02-23",
+      9.93,
+      10.57,
+      9.86,
+      10.19,
+      68820900
+    ],
+    [
+      "2026-02-24",
+      10.01,
+      10.48,
+      9.48,
+      10.4,
+      69619700
+    ],
+    [
+      "2026-02-25",
+      10.63,
+      10.94,
+      10.27,
+      10.3,
+      68949400
+    ],
+    [
+      "2026-02-26",
+      10.15,
+      10.78,
+      9.95,
+      10.45,
+      67386300
+    ],
+    [
+      "2026-02-27",
+      10.09,
+      10.18,
+      9.62,
+      10.08,
+      65528400
+    ],
+    [
+      "2026-03-02",
+      10.5,
+      12.42,
+      10.3,
+      10.67,
+      181539000
+    ],
+    [
+      "2026-03-03",
+      10.69,
+      11.0,
+      9.76,
+      10.02,
+      100359300
+    ],
+    [
+      "2026-03-04",
+      10.36,
+      10.82,
+      9.93,
+      10.51,
+      104822000
+    ],
+    [
+      "2026-03-05",
+      10.49,
+      10.92,
+      10.06,
+      10.49,
+      86235300
+    ],
+    [
+      "2026-03-06",
+      10.25,
+      11.61,
+      9.76,
+      9.83,
+      160635300
+    ],
+    [
+      "2026-03-09",
+      10.03,
+      10.03,
+      9.2,
+      9.72,
+      91130900
+    ],
+    [
+      "2026-03-10",
+      9.84,
+      10.45,
+      9.57,
+      10.01,
+      90578700
+    ],
+    [
+      "2026-03-11",
+      10.05,
+      10.56,
+      9.5,
+      9.83,
+      88367400
+    ],
+    [
+      "2026-03-12",
+      10.09,
+      10.84,
+      9.8,
+      10.33,
+      136065200
+    ],
+    [
+      "2026-03-13",
+      10.43,
+      10.98,
+      10.05,
+      10.16,
+      73311700
+    ],
+    [
+      "2026-03-16",
+      10.37,
+      10.87,
+      10.11,
+      10.53,
+      88867500
+    ],
+    [
+      "2026-03-17",
+      10.55,
+      11.47,
+      10.37,
+      11.28,
+      109611300
+    ],
+    [
+      "2026-03-18",
+      11.38,
+      11.76,
+      10.82,
+      10.83,
+      79494300
+    ],
+    [
+      "2026-03-19",
+      10.69,
+      10.98,
+      10.12,
+      10.75,
+      69267000
+    ],
+    [
+      "2026-03-20",
+      10.79,
+      10.83,
+      9.73,
+      10.06,
+      86922700
+    ],
+    [
+      "2026-03-23",
+      10.29,
+      10.97,
+      9.97,
+      10.9,
+      92323400
+    ],
+    [
+      "2026-03-24",
+      10.91,
+      11.37,
+      10.48,
+      10.68,
+      96637500
+    ],
+    [
+      "2026-03-25",
+      10.88,
+      11.14,
+      10.23,
+      10.31,
+      96871600
+    ],
+    [
+      "2026-03-26",
+      10.05,
+      10.14,
+      9.27,
+      9.44,
+      72606200
+    ],
+    [
+      "2026-03-27",
+      9.35,
+      9.37,
+      8.7,
+      8.8,
+      56393100
+    ],
+    [
+      "2026-03-30",
+      8.81,
+      8.82,
+      7.78,
+      8.15,
+      71761400
+    ],
+    [
+      "2026-03-31",
+      8.45,
+      9.14,
+      8.2,
+      9.04,
+      59296600
+    ],
+    [
+      "2026-04-01",
+      9.3,
+      9.35,
+      8.78,
+      8.81,
+      63384400
+    ],
+    [
+      "2026-04-02",
+      8.52,
+      9.63,
+      8.46,
+      9.6,
+      71272400
+    ],
+    [
+      "2026-04-06",
+      9.63,
+      9.9,
+      9.38,
+      9.52,
+      45392400
+    ],
+    [
+      "2026-04-07",
+      9.43,
+      9.69,
+      9.19,
+      9.53,
+      47377100
+    ],
+    [
+      "2026-04-08",
+      10.17,
+      10.37,
+      9.34,
+      9.45,
+      64338100
+    ],
+    [
+      "2026-04-09",
+      9.41,
+      9.52,
+      9.01,
+      9.14,
+      37717900
+    ],
+    [
+      "2026-04-10",
+      9.23,
+      9.36,
+      8.99,
+      9.13,
+      33455200
+    ],
+    [
+      "2026-04-13",
+      9.01,
+      9.59,
+      8.73,
+      9.47,
+      52073400
+    ],
+    [
+      "2026-04-14",
+      9.72,
+      9.86,
+      9.3,
+      9.4,
+      41727200
+    ],
+    [
+      "2026-04-15",
+      9.51,
+      10.03,
+      9.37,
+      10.03,
+      54416500
+    ],
+    [
+      "2026-04-16",
+      10.25,
+      10.39,
+      9.76,
+      10.2,
+      52178100
+    ],
+    [
+      "2026-04-17",
+      10.38,
+      10.53,
+      9.77,
+      10.0,
+      58571400
+    ],
+    [
+      "2026-04-20",
+      9.8,
+      11.06,
+      9.66,
+      10.73,
+      94506700
+    ],
+    [
+      "2026-04-21",
+      10.9,
+      11.29,
+      10.64,
+      10.87,
+      80859000
+    ],
+    [
+      "2026-04-22",
+      11.27,
+      11.61,
+      10.85,
+      11.06,
+      67613600
+    ],
+    [
+      "2026-04-23",
+      10.88,
+      10.97,
+      10.1,
+      10.54,
+      52294400
+    ],
+    [
+      "2026-04-24",
+      10.63,
+      10.77,
+      10.11,
+      10.55,
+      45396400
+    ],
+    [
+      "2026-04-27",
+      10.36,
+      11.06,
+      10.21,
+      10.95,
+      57126900
+    ],
+    [
+      "2026-04-28",
+      10.69,
+      11.07,
+      10.34,
+      10.48,
+      41736600
+    ],
+    [
+      "2026-04-29",
+      10.38,
+      10.43,
+      9.41,
+      9.49,
+      58503700
+    ],
+    [
+      "2026-04-30",
+      9.5,
+      10.16,
+      9.31,
+      10.04,
+      35726100
+    ],
+    [
+      "2026-05-01",
+      10.0,
+      10.56,
+      9.62,
+      10.32,
+      45644500
+    ],
+    [
+      "2026-05-04",
+      10.15,
+      10.36,
+      9.67,
+      9.73,
+      47914900
+    ],
+    [
+      "2026-05-05",
+      9.78,
+      9.79,
+      9.16,
+      9.33,
+      56570800
+    ],
+    [
+      "2026-05-06",
+      9.25,
+      9.46,
+      9.02,
+      9.34,
+      54577200
+    ],
+    [
+      "2026-05-07",
+      9.25,
+      9.25,
+      8.78,
+      8.89,
+      45228600
+    ],
+    [
+      "2026-05-08",
+      9.0,
+      9.09,
+      8.65,
+      9.06,
+      34078000
+    ],
+    [
+      "2026-05-11",
+      8.92,
+      9.65,
+      8.72,
+      9.42,
+      44661900
+    ],
+    [
+      "2026-05-12",
+      9.23,
+      9.35,
+      8.8,
+      9.04,
+      37093800
+    ],
+    [
+      "2026-05-13",
+      8.92,
+      9.18,
+      8.67,
+      8.86,
+      50015000
+    ],
+    [
+      "2026-05-14",
+      9.99,
+      11.73,
+      9.6,
+      11.21,
+      244801000
+    ],
+    [
+      "2026-05-15",
+      10.91,
+      12.12,
+      10.5,
+      10.62,
+      140436900
+    ],
+    [
+      "2026-05-18",
+      10.63,
+      10.67,
+      9.46,
+      9.7,
+      78884300
+    ],
+    [
+      "2026-05-19",
+      9.82,
+      9.88,
+      8.97,
+      9.12,
+      56079800
+    ],
+    [
+      "2026-05-20",
+      9.25,
+      9.54,
+      9.12,
+      9.36,
+      43365700
+    ],
+    [
+      "2026-05-21",
+      9.28,
+      9.38,
+      8.98,
+      9.18,
+      56296500
+    ],
+    [
+      "2026-05-22",
+      9.21,
+      9.56,
+      9.06,
+      9.06,
+      59348700
+    ],
+    [
+      "2026-05-26",
+      9.34,
+      10.26,
+      9.31,
+      9.77,
+      83107000
+    ],
+    [
+      "2026-05-27",
+      10.0,
+      11.06,
+      9.68,
+      10.8,
+      93222600
+    ],
+    [
+      "2026-05-28",
+      11.48,
+      13.78,
+      11.22,
+      13.25,
+      248294700
+    ],
+    [
+      "2026-05-29",
+      12.75,
+      13.41,
+      11.6,
+      13.22,
+      142374000
+    ],
+    [
+      "2026-06-01",
+      13.24,
+      13.91,
+      12.8,
+      13.46,
+      87142100
+    ],
+    [
+      "2026-06-02",
+      13.62,
+      14.16,
+      13.09,
+      13.58,
+      92963600
+    ],
+    [
+      "2026-06-03",
+      12.96,
+      13.0,
+      11.53,
+      11.61,
+      95129000
+    ],
+    [
+      "2026-06-04",
+      11.48,
+      12.42,
+      11.06,
+      11.97,
+      63405000
+    ],
+    [
+      "2026-06-05",
+      11.42,
+      11.66,
+      10.33,
+      10.43,
+      63881400
+    ],
+    [
+      "2026-06-08",
+      10.83,
+      10.84,
+      10.25,
+      10.3,
+      39401500
+    ],
+    [
+      "2026-06-09",
+      10.34,
+      10.41,
+      9.04,
+      9.65,
+      69199700
+    ],
+    [
+      "2026-06-10",
+      9.69,
+      9.98,
+      9.3,
+      9.31,
+      42011200
+    ],
+    [
+      "2026-06-11",
+      9.32,
+      9.9,
+      9.26,
+      9.83,
+      45132500
+    ],
+    [
+      "2026-06-12",
+      9.79,
+      9.88,
+      9.18,
+      9.33,
+      54155036
+    ]
+  ],
+  "last_run_warnings": []
+}

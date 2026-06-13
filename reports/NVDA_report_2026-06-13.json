@@ -5,37 +5,57 @@
   "score": 8.0,
   "band": "推薦",
   "confidence": "中（偏高）",
+  "weighted_raw": 8.03,
   "dimensions": {
-    "成長與業務品質": {"score": 9.0, "weight": 0.30, "reason": "FY26 營收 215.9B(+65%)、Q1FY27 +85%、資料中心 +92%、毛利率 71-75%、FCF 96.7B"},
-    "估值合理性": {"score": 7.0, "weight": 0.25, "reason": "前瞻 P/E 22-25x(PEG<1、自身歷史低檔)，但 P/S ~20x、FCF 殖利率 ~1.9% 絕對值偏高"},
-    "產業地位與護城河": {"score": 9.0, "weight": 0.20, "reason": "AI 訓練 ~80% 份額、CUDA 生態、全棧路線圖(Blackwell→Vera Rubin)、$1T 訂單能見度"},
-    "財務體質": {"score": 9.0, "weight": 0.12, "reason": "淨現金、權益 157B、總負債僅 49.5B、年 FCF 96.7B"},
-    "供應鏈與外部風險": {"score": 5.0, "weight": 0.08, "reason": "客戶集中(6 家占 85%)、中國被排除、TSMC 集中、ASIC 競爭與 capex 永續性"},
-    "技術面時機": {"score": 6.0, "weight": 0.05, "reason": "多頭排列、站上 MA50/200、距高 -12.9% 量縮整理、短線在 MA20 之下"}
+    "成長與業務品質": {
+      "score": 9.0,
+      "weight": 30,
+      "reason": "FY26 +65%、Q1FY27 +85%、資料中心 +92%、FCF 96.7B"
+    },
+    "估值合理性": {
+      "score": 7.0,
+      "weight": 25,
+      "reason": "前瞻 P/E 22–25x（PEG<1、歷史低檔），絕對 P/S ~20x 偏高"
+    },
+    "產業地位與護城河": {
+      "score": 9.0,
+      "weight": 20,
+      "reason": "~80% 訓練份額、CUDA、全棧路線圖、$1T 能見度"
+    },
+    "財務體質": {
+      "score": 9.0,
+      "weight": 12,
+      "reason": "淨現金、權益 157B、總負債僅 49.5B"
+    },
+    "供應鏈與外部風險": {
+      "score": 5.0,
+      "weight": 8,
+      "reason": "客戶集中、中國排除、TSMC 集中、ASIC 競爭"
+    },
+    "技術面時機": {
+      "score": 6.0,
+      "weight": 5,
+      "reason": "多頭排列、距高 -12.9% 量縮整理"
+    }
   },
   "key_factors": {
-    "bull": ["AI 基礎建設超級週期 + 全棧近壟斷地位", "前瞻估值對成長偏便宜(PEG<1)"],
-    "bear": ["營收高度集中於少數雲端巨頭 capex", "自研 ASIC 長期侵蝕份額，賭 AI 投資週期持續性"]
+    "bull": [
+      "AI 資本支出超級週期 + 全棧近壟斷地位，前瞻 P/E 22–25x 對應 25–85% 成長（PEG<1），估值對成長其實不貴。"
+    ],
+    "bear": [
+      "營收高度集中於少數雲端巨頭 capex，加上自研 ASIC 侵蝕份額——最大風險是成長「持續性」而非估值本身。"
+    ]
   },
   "valuation_snapshot": {
     "price": 205.19,
     "market_cap_usd": 4986000000000,
-    "shares_outstanding": 24300000000,
     "ps_ttm": 19.7,
     "pe_forward": 23.5,
-    "pe_trailing_gaap": 31.0,
-    "pb": 31.8,
-    "ev_ebitda_forward": 30.0,
-    "fcf_yield_pct": 1.9,
-    "implied_growth_note": "前瞻 22-25x 對 25-85% 成長，PEG<1，市場隱含成長相對保守，未觸發估值封頂"
-  },
-  "data_as_of": {
-    "price": "2026-06-12",
-    "financials_filed": "FY2026 年報(期末 2026-01-25) + Q1 FY2027 季報(期末 2026-04-26)"
+    "fcf_yield_pct": 1.9
   },
   "warnings": [
-    "Q1 FY2027 GAAP 淨利 58.3B > 營業利益 53.5B，含顯著業外利益，GAAP 淨利率/P-E 會被高估，估值以營業利益與前瞻交叉校正",
-    "同業倍數、前瞻 P/E、產業 capex 數字來自網搜，列中信心"
+    "Q1 FY2027 GAAP 淨利 58.3B 大於營業利益 53.5B（淨利率 71%，含顯著業外利益）→ GAAP P/E 會被高估，估值以營業利益與前瞻交叉校正。",
+    "M5 同業倍數、前瞻 P/E、產業 capex 數字來自網搜（中信心）。"
   ],
   "news_adjustments": []
 }
