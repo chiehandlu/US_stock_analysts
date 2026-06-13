@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Python CLIs that fetch US-stock data locally and emit **self-describing JSON**, plus a Claude Code skill (`.claude/skills/analyze/`) that consumes the JSON to produce investment analysis. Data layer produces verified numbers; interpretation happens in the skill. Comments and docs are in Traditional Chinese.
 
-**一行指令分析**:在 Claude Code / Cowork 中說「幫我評估NVDA」(或 `/analyze NVDA`),analyze skill 會自動跑 `update_history.py` 抓最新數據 → 讀 `history/{TICKER}_history.json` → 依 M2~M7 方法論與 0-10 評分 Rubric 產出報告,並存成 HTML 到 `reports/` 自動開啟(同步存機器可讀的 `_report_*.json` 摘要)。說「快速評估」走快速模式(不網搜,只用本機數據);提到「我看到某消息,幫我查證/比對報告」走消息比對模式(查證 → 讀最新報告 JSON → 逐維影響評估 → 產出更新版報告,調整軌跡記在 `news_adjustments`)。方法論同步維護於 claude.ai Project 的自訂指令(網頁版仍需手動上傳歷史檔)。
+**一行指令分析**:在 Claude Code / Cowork 中說「幫我評估NVDA」(或 `/analyze NVDA`),analyze skill 會自動跑 `update_history.py` 抓最新數據 → 讀 `history/{TICKER}_history.json` → 依 M2~M7 方法論與 0-10 評分 Rubric 產出報告,並存成 HTML 到 `reports/` 自動開啟(同步存機器可讀的 `_report_*.json` 摘要)。說「快速評估」走快速模式(不網搜,只用本機數據);提供一或多則新聞/連結要求查證時走**消息事件分析模式(M8)**(分群 → 逐事件查證 → 先讀既有報告 → 逐維影響評估 → 跨事件彙總 + 觀察點 → 跑 `build_news_report.py` 產出**獨立**消息報告)。方法論同步維護於 claude.ai Project 的自訂指令(網頁版仍需手動上傳歷史檔);**新增 M8 後 Project 自訂指令需手動同步**。
 
 - `fetch_stock.py TICKER` — daily price/technical indicators (MAs, alignment, golden/death cross, 52w range, volume) via yfinance, cross-checked against Nasdaq's official quote API (獨立第二來源).
 - `fetch_financials.py TICKER` — XBRL financial facts (3 fiscal years + latest quarter) from SEC EDGAR companyfacts.
@@ -14,6 +14,7 @@ Python CLIs that fetch US-stock data locally and emit **self-describing JSON**, 
   - 期間軸防呆：年度/季度軸由營收/淨利（duration）的結束日建立，其他指標只對齊到軸上——否則 dei 標籤（端點日=申報封面日）會長出單指標碎片期間。
 - `inject_kline.py TICKER REPORT_HTML` — 把 history 的 `price_bars` 畫成自包含互動日K線（canvas + 內嵌資料 + 純 JS，含 MA20/50/200、成交量、十字游標即時 OHLC、1月/半年/1年/2年 切換），注入報告 HTML 的 `<!-- KLINE -->` 佔位符。離線可渲染。
 - `build_report.py TICKER content.json` — **固定格式報告產生器**（解決報告版面浮動）：版面/CSS/章節/圖表畫法全寫死在程式裡，模型只產出「內容 JSON」（分數、各段文字、風險清單…），程式讀 history（財報/指標/日K線）+ 內容 → 輸出版面 100% 一致的 HTML（內含所有圖表與日K線）+ 摘要 JSON。重用 `inject_kline` 的 K 線區塊。analyze skill 第 4–5 步即走此流程。
+- `build_news_report.py TICKER content.json` — **M8 消息事件分析報告產生器**：同 `build_report.py` 哲學（版面/章節寫死、模型只產內容 JSON），重用其 CSS（暗色視覺單一來源）。輸入消息事件 content JSON（新聞清單、各事件查證/影響/對六維評分影響、跨事件彙總、關鍵觀察點）→ 輸出**獨立** `reports/{TICKER}_news_{date}.html`（同日重跑自動加序號不覆蓋）+ 機器可讀摘要 `reports/{TICKER}_news_{date}.json`（供後續追蹤）。analyze skill 消息事件分析模式（M8）即走此流程。
 
 ## 互動入口（每個 session 都遵守）
 
@@ -21,7 +22,7 @@ Python CLIs that fetch US-stock data locally and emit **self-describing JSON**, 
 
 1. **快速評估** — 不網搜，只用本機數據，最快（analyze skill 快速模式）
 2. **完整評估** — M2~M7 全跑，含法說會/同業/風險網搜（analyze skill 完整模式）
-3. **消息查證與比對** — 查證一則新消息並跟既有報告比對（analyze skill 消息比對模式；選此項後先追問「請貼上或描述你看到的消息」）
+3. **消息事件分析（M8）** — 查證一或多則新聞/連結、跟既有報告比對並產出獨立消息報告（analyze skill 消息事件分析模式；選此項後先追問「請貼上或描述你看到的消息／連結（可多則）」）
 
 （AskUserQuestion 會自動附「Other」選項，即為「其他」，使用者可自行輸入需求。）
 
