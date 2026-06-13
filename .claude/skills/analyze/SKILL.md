@@ -17,15 +17,16 @@ description: 美股個股投資分析。當使用者要求評估/分析某美股
 ### 第 0 步:確定 ticker
 從使用者輸入解析 ticker(如 NVDA)。沒給就問。
 
-### 第 1 步:更新資料(必做,不可跳過)
-**先依環境選直譯器**(本機與雲端 session 不同):
+### 第 1 步:先同步、再更新資料(必做,不可跳過)
+
+**(a) 自動拉取遠端最新**(在 git repo 內時;讓電腦/手機共用同一份累積):
+- 先判斷:`git rev-parse --is-inside-work-tree` 成功且 `git remote` 含 origin 才做 git 動作;否則跳過所有 git 步驟,當純本機使用。
+- 執行 `git pull --rebase --autostash origin main`。
+- 失敗(離線/衝突)**不中斷分析**:告知使用者「無法同步遠端,改用本機現有 history」,繼續往下;有衝突則提示使用者手動處理,不要強推。
+
+**(b) 依環境選直譯器並更新**:
 - 本機(存在 `.venv/bin/python`):`.venv/bin/python update_history.py {TICKER}`
 - 雲端 session(無 `.venv`):先 `pip install -q -r requirements.txt`,再 `python3 update_history.py {TICKER}`
-
-跨裝置累積(在 git repo 內時):
-- 開跑前若可行先 `git pull`,確保拿到其他裝置(手機/電腦)最新的 history。
-- 全部跑完、寫好 `history/` 與 `reports/` 後,把這兩個資料夾 `git add` → commit → push 回遠端。
-  **雲端 session 尤其必做**:session 結束即銷毀,不 push 則本次更新與報告全部遺失。
 
 規則:
 - 失敗時把錯誤訊息原樣告知使用者,不要用記憶中的數據硬分析。
@@ -106,6 +107,16 @@ HTML 要求:
 ```
 欄位有就填、沒有就 null,不臆測。
 
+### 第 6 步:自動同步回雲端(必做,在 git repo 內時)
+報告產出後,把累積資料推回遠端,讓電腦/手機永遠共用同一份歷史:
+1. 不在 git repo 或無 origin remote → 跳過(純本機使用),不報錯。
+2. `git add history reports`(只加累積資料;當日快照、`.venv` 已被 `.gitignore` 排除)。
+3. `git commit -m "analyze {TICKER}: 更新 history 與報告（{YYYY-MM-DD}）"`;若無可提交變更則略過 commit 與 push。
+4. `git push origin main`。
+   - **雲端 session 必做**:session 結束即銷毀,不 push 則本次更新與報告全部遺失。
+   - push 失敗(離線/權限/衝突):明確告知「報告已產出但**尚未同步到雲端**」,提示在電腦端 `git pull` 後重試;**不可**假裝成功。
+5. 對話中用一行回報同步結果(已 push ✓ / 已跳過-純本機 / 失敗-原因)。
+
 ## 消息比對流程(消息比對模式專用)
 
 使用者看到一則消息,要查證並跟既有評估比對。步驟:
@@ -117,6 +128,7 @@ HTML 要求:
 - 區分:公司公告/監管文件(硬消息)vs 媒體報導(中)vs 傳聞/分析師猜測(軟,信心低)。
 
 ### N2 讀既有評估
+- 先 `git pull --rebase --autostash origin main` 拿其他裝置最新報告(在 git repo 內;失敗不中斷)。
 - 讀 `reports/` 中該 ticker **最新一份** `_report_*.json` 摘要(沒有 JSON 才退回讀 HTML)。
 - 讀 `history/{TICKER}_history.json` 確認數據 as-of 日期。
 - 若該 ticker 從未做過評估:告知使用者,建議先跑一次完整或快速評估,或只做獨立的消息影響分析。
@@ -131,3 +143,4 @@ HTML 要求:
 - 對話中給:消息查證結果(等級+來源)、受影響維度與調整、新舊分數對照、是否建議重跑完整評估(若消息涉及財報數字或重大結構變化,建議重跑並提示「下一份財報/法說會時間點」)。
 - 產出更新版 HTML 報告存 `reports/{TICKER}_report_{YYYY-MM-DD}_news.html` 並開啟:沿用原報告骨架,開頭加「消息更新」區塊(消息摘要、查證等級、來源清單),受調整的維度用醒目標示新舊分數。
 - 同步存新的 JSON 摘要(`mode: "news-update"`),並在 `news_adjustments` 陣列記錄:消息摘要、日期、查證等級、調整了哪些維度、調整前後分數。這樣未來再比對時,調整軌跡都在。
+- 最後執行**第 6 步「自動同步回雲端」**,把更新版報告 push 回遠端。
