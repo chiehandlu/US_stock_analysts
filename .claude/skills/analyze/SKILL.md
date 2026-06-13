@@ -79,18 +79,24 @@ description: 美股個股投資分析。當使用者要求評估/分析某美股
 3. M7:最終分數 + 信心度 + 六維各自分數與一句理由 + 最關鍵 1-2 個多空因子
 4. 結尾必附:「本內容為分析,非投資顧問建議」+ 報告產出日期
 
-### 第 5 步:存成 HTML 並自動開啟(必做)
-把報告寫成單一自包含 HTML 檔存到 `reports/{TICKER}_report_{YYYY-MM-DD}.html`(資料夾不存在就建立),然後執行 `open reports/{TICKER}_report_{YYYY-MM-DD}.html` 用預設瀏覽器打開。
+### 第 5 步:存成自包含 HTML（含圖表）並開啟/給連結(必做)
+報告寫成**單一自包含 HTML** 存到 `reports/{TICKER}_report_{YYYY-MM-DD}.html`(資料夾不存在就建立)。
+
+**自包含鐵則(關鍵)**:所有樣式與圖表都內嵌,**絕不引用任何外部資源**(不可用 Chart.js / CDN / 外部字型 / 外部圖)。圖表一律用**內嵌 SVG**(或純 CSS)手繪——因為使用者會把檔案下載到手機本機開啟,離線也必須完整渲染。
 
 HTML 要求:
-- 內嵌 CSS,不引用外部資源。繁體中文字型 `font-family: "PingFang TC", "Noto Sans TC", sans-serif`。
-- 版面:窄欄置中(max-width 860px)、充足行高與留白,類似券商研究報告。
-- 開頭放醒目摘要卡:ticker、公司名、**最終分數(大字)**、分數帶判定、信心度、最關鍵多空因子各一句。
-- 六維分數用表格呈現(維度/分數/權重/一句理由);財務數據用表格,數字靠右對齊、千分位。
-- 正面/負面結論可用綠/紅色點綴,但整體配色克制(白底深灰字)。
-- 警告(warnings、mismatch、快速模式註記)用黃底警示框。
-- 頁尾:免責聲明 + 報告產出日期 + 資料 as-of 日期。
-- 對話中不用重複整份報告,給重點摘要 + 告知 HTML 已開啟即可。
+- 內嵌 CSS,中文字型 `"PingFang TC","Noto Sans TC",sans-serif`;加 `<meta name="viewport">` 響應式,手機可讀。
+- 開頭 hero 區:ticker、公司名、**最終分數(大字)**、分數帶、信心度、多空各一句,並放**六維評分雷達圖(SVG)**。
+- 標準圖表(用 SVG/CSS,有數據就畫):六維評分→雷達圖;年度營收/FCF→長條+折線;近 6 季營收→長條;52 週位置→水平區間條(現價標記);估值對同業→水平長條(前瞻 P/E);價值鏈/客戶集中→CSS 樹狀圖。
+- 財務數據用表格,數字靠右對齊;綠/紅標多空;黃底框放 warnings。
+- 頁尾:免責聲明 + 報告產出日 + 資料 as-of 日。
+
+**開啟方式(依環境)**:
+- 本機(Mac,`open` 可用):執行 `open reports/{TICKER}_report_{YYYY-MM-DD}.html`。
+- 雲端 session(無瀏覽器):**不要** open。改在第 6 步 push 後,於對話輸出可點連結與下載步驟:
+  連結 `https://github.com/{OWNER}/{REPO}/blob/main/reports/{TICKER}_report_{YYYY-MM-DD}.html`({OWNER}/{REPO} 由 `git remote get-url origin` 取得),
+  並附說明:「手機點開→按『Download raw file』下載→從下載項目用 Chrome 開啟即完整渲染(離線也可)→看完可刪。」
+- 對話中給重點摘要即可,不重複整份報告。
 
 同時存一份機器可讀摘要 `reports/{TICKER}_report_{YYYY-MM-DD}.json`(供日後消息比對與報告間比較,不給人看):
 ```json
