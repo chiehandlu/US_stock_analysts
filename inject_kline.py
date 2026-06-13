@@ -37,11 +37,11 @@ BLOCK = START + """
     <span style="color:#f59e0b;font-weight:700">MA20</span> ·
     <span style="color:#a78bfa;font-weight:700">MA50</span> ·
     <span style="color:#60a5fa;font-weight:700">MA200</span> · 下方為成交量。移動游標／觸控看當日 OHLC</div>
-  <div class="klbtns" style="display:flex;gap:6px;margin:2px 0 8px 2px">
+  <div class="klbtns" style="display:flex;gap:6px;margin:2px auto 8px;max-width:840px">
     <button data-n="22">1月</button><button data-n="126">半年</button>
     <button data-n="252" class="on">1年</button><button data-n="0">2年</button>
   </div>
-  <canvas id="klcv" style="width:100%;height:380px;display:block;touch-action:none"></canvas>
+  <canvas id="klcv" style="width:100%;max-width:840px;height:400px;display:block;margin:0 auto;touch-action:none"></canvas>
   <style>
     .klbtns button{font:13px/1 inherit;padding:5px 12px;border:1px solid #cbd5e1;
       background:#fff;color:#475569;border-radius:7px;cursor:pointer}
@@ -56,7 +56,7 @@ BLOCK = START + """
   function ma(p){const r=[];let s=0;for(let i=0;i<close.length;i++){s+=close[i];
     if(i>=p)s-=close[i-p];r.push(i>=p-1?s/p:null);}return r;}
   const MA20=ma(20), MA50=ma(50), MA200=ma(200);
-  const cv=document.getElementById('klcv'), cx=cv.getContext('2d'), H=380;
+  const cv=document.getElementById('klcv'), cx=cv.getContext('2d'), H=400;
   let N=252, G=null, hx=null, hy=null;
 
   function draw(){
