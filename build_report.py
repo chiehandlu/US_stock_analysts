@@ -48,7 +48,7 @@ CSS = """
   *{box-sizing:border-box}
   body{font-family:"PingFang TC","Noto Sans TC",sans-serif;color:var(--ink);background:var(--page);
     margin:0;line-height:1.7;font-size:15.5px;-webkit-text-size-adjust:100%}
-  .wrap{max-width:880px;margin:0 auto;background:var(--bg)}
+  .wrap{max-width:1080px;margin:0 auto;background:var(--bg)}
   .hero{background:linear-gradient(135deg,#1e1b4b 0%,#4f46e5 60%,#0ea5e9 100%);color:#fff;padding:32px 32px 26px}
   .hero h1{font-size:24px;margin:0 0 2px;font-weight:800}
   .hero .tic{font-size:13px;opacity:.85;letter-spacing:1px}
@@ -129,7 +129,7 @@ def radar_svg(dims):
         sv = d.get("score")
         sv = f"{sv:g}" if isinstance(sv, (int, float)) else "—"
         labels += f'<text x="{lx:.1f}" y="{ly+4:.1f}" text-anchor="{anchor}">{d["name"][:2]} {sv}</text>'
-    return (f'<svg width="320" height="300" viewBox="0 0 320 300">'
+    return (f'<svg width="380" height="348" viewBox="-30 -14 380 348" style="max-width:100%;height:auto">'
             f'<polygon points="{outer}" fill="rgba(255,255,255,.07)" stroke="rgba(255,255,255,.35)"/>'
             f'<polygon points="{mid}" fill="none" stroke="rgba(255,255,255,.22)" stroke-dasharray="3 3"/>'
             f'<g stroke="rgba(255,255,255,.25)">{axes}</g>'
@@ -164,7 +164,7 @@ def annual_chart_svg(items):
         line = (f'<polyline points="{" ".join(line_pts)}" fill="none" stroke="#0ea5e9" stroke-width="2.5"/>'
                 + "".join(f'<circle cx="{p.split(",")[0]}" cy="{p.split(",")[1]}" r="3.5" fill="#0ea5e9"/>' for p in line_pts))
     xlbl = "".join(f'<text x="{left+slot*i+slot/2:.1f}" y="{base+18}" fill="#94a3b8" font-size="11" font-weight="600" text-anchor="middle">{it["label"]}</text>' for i, it in enumerate(items))
-    return f'<svg width="{W}" height="{Hc}" viewBox="0 0 {W} {Hc}">{grid}{bars}{line}{vals}{xlbl}</svg>'
+    return f'<svg viewBox="0 0 {W} {Hc}" width="100%" style="height:auto;display:block">{grid}{bars}{line}{vals}{xlbl}</svg>'
 
 
 def bar_chart_svg(items, color="#0ea5e9"):
@@ -182,7 +182,7 @@ def bar_chart_svg(items, color="#0ea5e9"):
             out += f'<rect x="{xc-barw/2:.1f}" y="{base-h:.1f}" width="{barw:.1f}" height="{h:.1f}" rx="3" fill="{color}"/>'
             out += f'<text x="{xc:.1f}" y="{base-h-5:.1f}" fill="#7dd3fc" font-size="11" font-weight="700" text-anchor="middle">{it["val"]:.1f}</text>'
         out += f'<text x="{xc:.1f}" y="{base+16}" fill="#94a3b8" font-size="10" text-anchor="middle">{it["label"]}</text>'
-    return f'<svg width="{W}" height="{Hc}" viewBox="0 0 {W} {Hc}">{out}</svg>'
+    return f'<svg viewBox="0 0 {W} {Hc}" width="100%" style="height:auto;display:block">{out}</svg>'
 
 
 def peer_bar_svg(peer):
@@ -191,7 +191,7 @@ def peer_bar_svg(peer):
     sp, pp = peer.get("self_pe"), peer.get("peer_pe")
     mx = max(sp or 0, pp or 0, 1)
     w = lambda v: (v or 0) / mx * 280
-    return (f'<svg width="400" height="120" viewBox="0 0 400 120">'
+    return (f'<svg viewBox="0 0 400 120" width="100%" style="height:auto;display:block;max-width:480px">'
             f'<line x1="90" y1="92" x2="380" y2="92" stroke="#2b3a52"/>'
             f'<rect x="90" y="28" width="{w(sp):.1f}" height="22" rx="4" fill="#6366f1"/>'
             f'<rect x="90" y="62" width="{w(pp):.1f}" height="22" rx="4" fill="#94a3b8"/>'
