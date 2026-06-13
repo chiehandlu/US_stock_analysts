@@ -80,13 +80,13 @@ CSS = """
   .factor b.bull{color:var(--pos)}.factor b.bear{color:var(--neg)}
   ul{margin:6px 0;padding-left:22px}li{margin:5px 0;font-size:17px}
   svg text{font-family:"PingFang TC","Noto Sans TC",sans-serif}
-  .tree{display:flex;flex-direction:column;align-items:center;margin:8px 0}
-  .tlevel{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
-  .tnode{background:var(--card);border:1.5px solid var(--accent);border-radius:9px;padding:7px 12px;font-size:12.5px;text-align:center;min-width:96px;color:var(--ink2)}
+  .tree{display:flex;flex-direction:column;align-items:center;margin:12px 0}
+  .tlevel{display:flex;gap:15px;justify-content:center;flex-wrap:wrap}
+  .tnode{background:var(--card);border:2px solid var(--accent);border-radius:13px;padding:11px 18px;font-size:19px;text-align:center;min-width:144px;color:var(--ink2)}
   .tnode.mid{background:var(--accent);color:#0b1020;font-weight:700}
-  .tnode small{display:block;font-size:10.5px;opacity:.75;font-weight:400}
-  .tconn{width:2px;height:16px;background:var(--accent);opacity:.5}
-  .tlabel{font-size:14px;color:var(--mute);margin:9px 0 3px}
+  .tnode small{display:block;font-size:16px;opacity:.75;font-weight:400}
+  .tconn{width:3px;height:24px;background:var(--accent);opacity:.5}
+  .tlabel{font-size:21px;color:var(--mute);margin:13px 0 4px}
   .rangebar{position:relative;height:34px;background:linear-gradient(90deg,#fecaca,#fde68a,#bbf7d0);border-radius:8px;margin:10px 0 22px}
   .rangebar .mk{position:absolute;top:-4px;width:3px;height:42px;background:var(--ink);border-radius:2px}
   .rangebar .lbl{position:absolute;top:38px;font-size:14px;color:var(--mute);transform:translateX(-50%)}
