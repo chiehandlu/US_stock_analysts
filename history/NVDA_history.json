@@ -15,8 +15,8 @@
     "entity_name": "NVIDIA CORP",
     "cik": "0001045810",
     "created_at_utc": "2026-06-11T07:42:26+00:00",
-    "last_updated_utc": "2026-06-13T03:36:28+00:00",
-    "runs": 5
+    "last_updated_utc": "2026-06-13T13:46:28+00:00",
+    "runs": 6
   },
   "technical_snapshots": [
     {
@@ -2338,7 +2338,10 @@
       }
     }
   },
-  "last_run_warnings": [],
+  "last_run_warnings": [
+    "本次技術面抓取失敗，沿用既有歷史：argument of type 'NoneType' is not iterable",
+    "本次財報抓取失敗，沿用既有歷史：HTTP Error 403: Forbidden"
+  ],
   "price_bars": [
     [
       "2024-06-13",
