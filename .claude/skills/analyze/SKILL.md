@@ -111,7 +111,9 @@ null 或 []，完整結構見 `build_report.py` 檔頭):
 1. 不在 git repo 或無 origin remote → 跳過(純本機使用),不報錯。
 2. `git add history reports`(只加累積資料;當日快照、`.venv` 已被 `.gitignore` 排除)。
 3. `git commit -m "analyze {TICKER}: 更新 history 與報告（{YYYY-MM-DD}）"`;若無可提交變更則略過 commit 與 push。
-4. `git push origin main`。
+4. 推送(依環境，先 `git rev-parse --abbrev-ref HEAD` 看當前分支)：
+   - **本機(在 main 上)**：`git push origin main`。
+   - **雲端 session(在 `claude/*` 分支上)**：`git push`(推當前 `claude/*` 分支即可，**不要**推 main——雲端沙箱禁止、會 403)。推上去後 GitHub Actions(`auto-merge.yml`)會**自動把 `claude/*` 併入 main 並刪分支**，Pages 隨即更新；你不需開 PR 或手動 merge。
    - **雲端 session 必做**:session 結束即銷毀,不 push 則本次更新與報告全部遺失。
    - push 失敗(離線/權限/衝突):明確告知「報告已產出但**尚未同步到雲端**」,提示在電腦端 `git pull` 後重試;**不可**假裝成功。
 5. 對話中用一行回報同步結果(已 push ✓ / 已跳過-純本機 / 失敗-原因)。
