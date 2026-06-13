@@ -67,7 +67,7 @@ CSS = """
   h2::after{content:"";flex:1;height:2px;background:linear-gradient(90deg,var(--accent),transparent)}
   h3{font-size:18px;margin:18px 0 4px;color:var(--ink2)}
   p{margin:8px 0}
-  table{width:100%;border-collapse:collapse;margin:10px 0;font-size:19px}
+  table{width:100%;border-collapse:collapse;margin:10px 0;font-size:21px}
   th,td{padding:9px 11px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
   th{background:var(--card);font-weight:700;color:var(--ink2)}
   td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
@@ -297,7 +297,7 @@ def build(ticker, content):
     m3 = ""
     if content.get("m3_points"):
         tr = "".join(f'<tr><td>{p["label"]}</td><td>{p["text"]}</td></tr>' for p in content["m3_points"])
-        m3 = f'<h2><span class="tag">M3</span> 法說會 10 點</h2><table style="font-size:21px"><tr><th>項目</th><th>重點</th></tr>{tr}</table>'
+        m3 = f'<h2><span class="tag">M3</span> 法說會 10 點</h2><table><tr><th>項目</th><th>重點</th></tr>{tr}</table>'
     m6 = ""
     if content.get("m6_risks"):
         li = "".join(f'<li><b>{r["title"]}（{r.get("level","")}）</b>：{r["text"]}〔{r.get("confidence","")}信心〕</li>' for r in content["m6_risks"])
