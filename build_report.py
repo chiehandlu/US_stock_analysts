@@ -75,8 +75,8 @@ CSS = """
   .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:14px 0}
   .chartcard{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:14px;margin:14px 0;overflow-x:auto}
   .chartttl{font-size:16px;font-weight:700;color:var(--ink2);margin:2px 0 8px 4px}
-  .warn{background:var(--warnbg);border-left:4px solid var(--warnbd);border-radius:8px;padding:13px 17px;margin:12px 0;font-size:16px}
-  .factor{margin:9px 0;font-size:17px}
+  .warn{background:var(--warnbg);border-left:4px solid var(--warnbd);border-radius:8px;padding:14px 18px;margin:12px 0;font-size:23px}
+  .factor{margin:10px 0;font-size:23px}
   .factor b.bull{color:var(--pos)}.factor b.bear{color:var(--neg)}
   ul{margin:6px 0;padding-left:22px}li{margin:5px 0;font-size:17px}
   svg text{font-family:"PingFang TC","Noto Sans TC",sans-serif}

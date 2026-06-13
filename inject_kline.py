@@ -75,7 +75,7 @@ BLOCK = START + """
     let vmax=0; view.forEach(b=>vmax=Math.max(vmax,b[5]||0));
     const volTop=padT+priceH+gap, vy=v=>volTop+volH-(v/(vmax||1))*volH;
     const cw=(x1-x0)/view.length, bw=Math.max(1,Math.min(cw*0.7,13));
-    cx.strokeStyle='rgba(148,163,184,0.16)'; cx.fillStyle='#94a3b8'; cx.font='14px sans-serif'; cx.textAlign='left';
+    cx.strokeStyle='rgba(148,163,184,0.16)'; cx.fillStyle='#94a3b8'; cx.font='16px sans-serif'; cx.textAlign='left';
     for(let g=0;g<=4;g++){const v=lo+(hi-lo)*g/4,y=py(v);
       cx.beginPath();cx.moveTo(x0,y);cx.lineTo(x1,y);cx.stroke();
       cx.fillText(v.toFixed(v<10?2:0),x1+4,y+3);}
@@ -120,9 +120,9 @@ BLOCK = START + """
       '漲跌 '+(chg>=0?'+':'')+chg.toFixed(2)+'%   量 '+fmtVol(b[5]),
       'MA20 '+(m20!=null?m20.toFixed(1):'-')+'  MA50 '+(m50!=null?m50.toFixed(1):'-')+'  MA200 '+(m200!=null?m200.toFixed(1):'-')
     ];
-    cx.font='13px sans-serif';
+    cx.font='16px sans-serif';
     let tw=0; lines.forEach(t=>tw=Math.max(tw,cx.measureText(t).width));
-    const bw2=tw+18, bh=lines.length*19+10;
+    const bw2=tw+20, bh=lines.length*22+12;
     let tx=xc+12; if(tx+bw2>g.W) tx=xc-12-bw2; if(tx<2)tx=2;
     const ty=g.padT+4;
     cx.fillStyle='rgba(15,23,42,.95)';cx.strokeStyle='#334155';cx.lineWidth=1;
@@ -130,8 +130,8 @@ BLOCK = START + """
     cx.textAlign='left';cx.textBaseline='top';
     lines.forEach((t,k)=>{
       cx.fillStyle = k===0?'#f1f5f9':(k===3?(chg>=0?'#22c55e':'#ef4444'):'#cbd5e1');
-      cx.font = k===0?'700 13px sans-serif':'13px sans-serif';
-      cx.fillText(t,tx+8,ty+6+k*19);
+      cx.font = k===0?'700 16px sans-serif':'16px sans-serif';
+      cx.fillText(t,tx+8,ty+7+k*22);
     });
     cx.textBaseline='alphabetic';
   }
