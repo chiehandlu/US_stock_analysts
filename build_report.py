@@ -47,7 +47,7 @@ CSS = """
     --accent:#818cf8;--pos:#22c55e;--neg:#f87171;--warnbg:#2a2211;--warnbd:#f59e0b;--card:#111c2e;--ink2:#cbd5e1}
   *{box-sizing:border-box}
   body{font-family:"PingFang TC","Noto Sans TC",sans-serif;color:var(--ink);background:var(--page);
-    margin:0;line-height:1.8;font-size:19px;-webkit-text-size-adjust:100%}
+    margin:0;line-height:1.8;font-size:23px;-webkit-text-size-adjust:100%}
   .wrap{max-width:1440px;margin:0 auto;background:var(--bg)}
   .hero{background:linear-gradient(135deg,#1e1b4b 0%,#4f46e5 60%,#0ea5e9 100%);color:#fff;padding:32px 32px 26px}
   .hero h1{font-size:31px;margin:0 0 2px;font-weight:800}
