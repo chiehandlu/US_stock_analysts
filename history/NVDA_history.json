@@ -15,8 +15,8 @@
     "entity_name": "NVIDIA CORP",
     "cik": "0001045810",
     "created_at_utc": "2026-06-11T07:42:26+00:00",
-    "last_updated_utc": "2026-06-11T07:59:24+00:00",
-    "runs": 3
+    "last_updated_utc": "2026-06-13T02:59:22+00:00",
+    "runs": 4
   },
   "technical_snapshots": [
     {
@@ -2312,6 +2312,7 @@
     }
   },
   "last_run_warnings": [
-    "yfinance 最新收盤 208.19 與 Nasdaq 最新成交 200.42（Jun 10, 2026）差異 3.73%（>1.5%）。常見原因：Yahoo 缺最新交易日收盤而落後一天、除權息日、或盤中即時報價與收盤時點不同，建議人工確認最新收盤價"
+    "本次技術面抓取失敗，沿用既有歷史：argument of type 'NoneType' is not iterable",
+    "本次財報抓取失敗，沿用既有歷史：HTTP Error 403: Forbidden"
   ]
 }
