@@ -254,7 +254,15 @@ def build(ticker, content):
         chart_items.append({"label": annual[e]["fy_label"],
                             "rev": m.get("revenue") / 1e9 if m.get("revenue") else None,
                             "fcf": d.get("free_cash_flow") / 1e9 if d.get("free_cash_flow") else None})
-    # 表格近 3 年（含 YoY）
+    # 由期間結束日推算財年起訖（財年≈結束月往前 12 個月；公司財年未必對齊曆年）
+    def fy_period(end):
+        ey, em = int(end[:4]), int(end[5:7])
+        sm, sy = em + 1, ey - 1
+        if sm == 13:
+            sm, sy = 1, ey
+        return f"{sy}/{sm:02d}–{ey}/{em:02d}"
+
+    # 表格近 3 年（含 YoY、實際期間）
     rows = ""
     for idx in range(max(0, len(akeys) - 3), len(akeys)):
         e = akeys[idx]; m = annual[e]["metrics"]; d = annual[e].get("derived", {})
@@ -262,7 +270,8 @@ def build(ticker, content):
         yoy = pct(m.get("revenue"), prev)
         yoy_s = "—" if yoy is None else f'<span class="{"pos" if yoy>=0 else "neg"}">{yoy:+.0f}%</span>'
         gm = d.get("gross_margin_pct")
-        rows += (f'<tr><td>{annual[e]["fy_label"]}</td><td class="num">{b(m.get("revenue"))}</td>'
+        rows += (f'<tr><td>{annual[e]["fy_label"]}<br><span style="font-size:11px;color:var(--mute)">{fy_period(e)}</span></td>'
+                 f'<td class="num">{b(m.get("revenue"))}</td>'
                  f'<td class="num">{yoy_s}</td><td class="num">{gm if gm is not None else "—"}%</td>'
                  f'<td class="num">{b(m.get("net_income"))}</td><td class="num">{b(d.get("free_cash_flow"))}</td>'
                  f'<td class="num">{m.get("eps_diluted") if m.get("eps_diluted") is not None else "—"}</td></tr>')
@@ -322,8 +331,10 @@ def build(ticker, content):
     # M2
     parts.append('<h2><span class="tag">M2</span> 基本面</h2>')
     parts.append(f'<div class="chartcard"><div class="chartttl">年度營收（長條）與自由現金流（折線）　單位：十億美元</div>{annual_chart_svg(chart_items)}</div>')
-    parts.append(f'<table><tr><th>會計年度</th><th class="num">營收</th><th class="num">YoY</th><th class="num">毛利率</th>'
+    parts.append(f'<table><tr><th>會計年度<br><span style="font-size:11px;color:var(--mute)">(實際期間)</span></th>'
+                 f'<th class="num">營收</th><th class="num">YoY</th><th class="num">毛利率</th>'
                  f'<th class="num">淨利</th><th class="num">FCF</th><th class="num">EPS</th></tr>{rows}</table>')
+    parts.append('<p style="font-size:12px;color:var(--mute);margin-top:2px">財年依「期間結束日」命名，未必對齊曆年（如財年結束於 1 月底者，FY 標籤年份＝結束年，該年實際多落在前一曆年）。</p>')
     parts.append(f'<p>{content.get("m2_note","")}</p>')
     parts.append(f'<div class="chartcard"><div class="chartttl">近 6 季單季營收　單位：十億美元（季末）</div>{bar_chart_svg(q_items)}</div>')
     # M3
