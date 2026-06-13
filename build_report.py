@@ -54,12 +54,12 @@ CSS = """
   .hero .tic{font-size:13px;opacity:.85;letter-spacing:1px}
   .hero .sub{font-size:12.5px;opacity:.8;margin-top:10px}
   .scorewrap{display:flex;gap:24px;align-items:center;flex-wrap:wrap;margin-top:18px}
-  .scorebox{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);border-radius:14px;
-    padding:14px 22px;text-align:center}
-  .scorebox .n{font-size:46px;font-weight:800;line-height:1}
-  .scorebox .n small{font-size:16px;opacity:.7;font-weight:600}
-  .scorebox .b{font-size:14px;font-weight:700;margin-top:2px}
-  .conf{font-size:12px;opacity:.85;margin-top:2px}
+  .scorebox{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);border-radius:16px;
+    padding:22px 36px;text-align:center}
+  .scorebox .n{font-size:66px;font-weight:800;line-height:1}
+  .scorebox .n small{font-size:24px;opacity:.7;font-weight:600}
+  .scorebox .b{font-size:22px;font-weight:700;margin-top:4px}
+  .conf{font-size:17px;opacity:.85;margin-top:3px}
   .radarwrap{flex:1;min-width:300px;display:flex;justify-content:center}
   .body{padding:8px 32px 40px}
   h2{font-size:23px;margin:34px 0 6px;display:flex;align-items:center;gap:9px}
@@ -129,7 +129,7 @@ def radar_svg(dims):
         sv = d.get("score")
         sv = f"{sv:g}" if isinstance(sv, (int, float)) else "—"
         labels += f'<text x="{lx:.1f}" y="{ly+4:.1f}" text-anchor="{anchor}">{d["name"][:2]} {sv}</text>'
-    return (f'<svg width="380" height="348" viewBox="-30 -14 380 348" style="max-width:100%;height:auto">'
+    return (f'<svg width="520" height="476" viewBox="-30 -14 380 348" style="max-width:100%;height:auto">'
             f'<polygon points="{outer}" fill="rgba(255,255,255,.07)" stroke="rgba(255,255,255,.35)"/>'
             f'<polygon points="{mid}" fill="none" stroke="rgba(255,255,255,.22)" stroke-dasharray="3 3"/>'
             f'<g stroke="rgba(255,255,255,.25)">{axes}</g>'
