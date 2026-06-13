@@ -43,8 +43,8 @@ from inject_kline import BLOCK as KLINE_BLOCK
 HERE = os.path.dirname(os.path.abspath(__file__))
 
 CSS = """
-  :root{--ink:#0f172a;--mute:#64748b;--line:#e2e8f0;--bg:#fff;--page:#eef1f6;
-    --accent:#4f46e5;--pos:#16a34a;--neg:#dc2626;--warnbg:#fff7ed;--warnbd:#f59e0b;--card:#f8fafc;--ink2:#1e293b}
+  :root{--ink:#e5e7eb;--mute:#94a3b8;--line:#243044;--bg:#0f172a;--page:#020617;
+    --accent:#818cf8;--pos:#22c55e;--neg:#f87171;--warnbg:#2a2211;--warnbd:#f59e0b;--card:#111c2e;--ink2:#cbd5e1}
   *{box-sizing:border-box}
   body{font-family:"PingFang TC","Noto Sans TC",sans-serif;color:var(--ink);background:var(--page);
     margin:0;line-height:1.7;font-size:15.5px;-webkit-text-size-adjust:100%}
@@ -82,8 +82,8 @@ CSS = """
   svg text{font-family:"PingFang TC","Noto Sans TC",sans-serif}
   .tree{display:flex;flex-direction:column;align-items:center;margin:8px 0}
   .tlevel{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
-  .tnode{background:#fff;border:1.5px solid var(--accent);border-radius:9px;padding:7px 12px;font-size:12.5px;text-align:center;min-width:96px;color:var(--ink2)}
-  .tnode.mid{background:var(--accent);color:#fff;font-weight:700}
+  .tnode{background:var(--card);border:1.5px solid var(--accent);border-radius:9px;padding:7px 12px;font-size:12.5px;text-align:center;min-width:96px;color:var(--ink2)}
+  .tnode.mid{background:var(--accent);color:#0b1020;font-weight:700}
   .tnode small{display:block;font-size:10.5px;opacity:.75;font-weight:400}
   .tconn{width:2px;height:16px;background:var(--accent);opacity:.5}
   .tlabel{font-size:11px;color:var(--mute);margin:9px 0 3px}
@@ -146,7 +146,7 @@ def annual_chart_svg(items):
     slot = (right - left) / len(items)
     barw = min(56, slot * 0.55)
     grid = "".join(
-        f'<line x1="{left}" y1="{base-scl*v:.1f}" x2="{right}" y2="{base-scl*v:.1f}" stroke="#e2e8f0" stroke-dasharray="3 3"/>'
+        f'<line x1="{left}" y1="{base-scl*v:.1f}" x2="{right}" y2="{base-scl*v:.1f}" stroke="#2b3a52" stroke-dasharray="3 3"/>'
         f'<text x="{left-6}" y="{base-scl*v+4:.1f}" fill="#94a3b8" font-size="10" text-anchor="end">{v:.0f}</text>'
         for v in (0, maxv / 2, maxv))
     bars = vals = ""
@@ -156,14 +156,14 @@ def annual_chart_svg(items):
         if it["rev"] is not None:
             h = it["rev"] * scl
             bars += f'<rect x="{xc-barw/2:.1f}" y="{base-h:.1f}" width="{barw:.1f}" height="{h:.1f}" rx="3" fill="#6366f1"/>'
-            vals += f'<text x="{xc:.1f}" y="{base-h-6:.1f}" fill="#4338ca" font-size="11" font-weight="700" text-anchor="middle">{it["rev"]:.1f}</text>'
+            vals += f'<text x="{xc:.1f}" y="{base-h-6:.1f}" fill="#c7d2fe" font-size="11" font-weight="700" text-anchor="middle">{it["rev"]:.1f}</text>'
         if it.get("fcf") is not None:
             line_pts.append(f'{xc:.1f},{base-it["fcf"]*scl:.1f}')
     line = ""
     if len(line_pts) >= 2:
         line = (f'<polyline points="{" ".join(line_pts)}" fill="none" stroke="#0ea5e9" stroke-width="2.5"/>'
                 + "".join(f'<circle cx="{p.split(",")[0]}" cy="{p.split(",")[1]}" r="3.5" fill="#0ea5e9"/>' for p in line_pts))
-    xlbl = "".join(f'<text x="{left+slot*i+slot/2:.1f}" y="{base+18}" fill="#475569" font-size="11" font-weight="600" text-anchor="middle">{it["label"]}</text>' for i, it in enumerate(items))
+    xlbl = "".join(f'<text x="{left+slot*i+slot/2:.1f}" y="{base+18}" fill="#94a3b8" font-size="11" font-weight="600" text-anchor="middle">{it["label"]}</text>' for i, it in enumerate(items))
     return f'<svg width="{W}" height="{Hc}" viewBox="0 0 {W} {Hc}">{grid}{bars}{line}{vals}{xlbl}</svg>'
 
 
@@ -174,14 +174,14 @@ def bar_chart_svg(items, color="#0ea5e9"):
     scl = (base - top) / maxv
     slot = (right - left) / len(items)
     barw = min(58, slot * 0.62)
-    out = f'<line x1="{left}" y1="{base}" x2="{right}" y2="{base}" stroke="#e2e8f0"/>'
+    out = f'<line x1="{left}" y1="{base}" x2="{right}" y2="{base}" stroke="#2b3a52"/>'
     for i, it in enumerate(items):
         xc = left + slot * i + slot / 2
         if it["val"] is not None:
             h = it["val"] * scl
             out += f'<rect x="{xc-barw/2:.1f}" y="{base-h:.1f}" width="{barw:.1f}" height="{h:.1f}" rx="3" fill="{color}"/>'
-            out += f'<text x="{xc:.1f}" y="{base-h-5:.1f}" fill="#0369a1" font-size="11" font-weight="700" text-anchor="middle">{it["val"]:.1f}</text>'
-        out += f'<text x="{xc:.1f}" y="{base+16}" fill="#475569" font-size="10" text-anchor="middle">{it["label"]}</text>'
+            out += f'<text x="{xc:.1f}" y="{base-h-5:.1f}" fill="#7dd3fc" font-size="11" font-weight="700" text-anchor="middle">{it["val"]:.1f}</text>'
+        out += f'<text x="{xc:.1f}" y="{base+16}" fill="#94a3b8" font-size="10" text-anchor="middle">{it["label"]}</text>'
     return f'<svg width="{W}" height="{Hc}" viewBox="0 0 {W} {Hc}">{out}</svg>'
 
 
@@ -192,12 +192,12 @@ def peer_bar_svg(peer):
     mx = max(sp or 0, pp or 0, 1)
     w = lambda v: (v or 0) / mx * 280
     return (f'<svg width="400" height="120" viewBox="0 0 400 120">'
-            f'<line x1="90" y1="92" x2="380" y2="92" stroke="#e2e8f0"/>'
+            f'<line x1="90" y1="92" x2="380" y2="92" stroke="#2b3a52"/>'
             f'<rect x="90" y="28" width="{w(sp):.1f}" height="22" rx="4" fill="#6366f1"/>'
             f'<rect x="90" y="62" width="{w(pp):.1f}" height="22" rx="4" fill="#94a3b8"/>'
             f'<g font-size="12" font-weight="700" fill="#fff" text-anchor="end">'
             f'<text x="{86+w(sp):.1f}" y="44">{sp:g}x</text><text x="{86+w(pp):.1f}" y="78">{pp:g}x</text></g>'
-            f'<g font-size="12" fill="#334155" font-weight="600" text-anchor="end">'
+            f'<g font-size="12" fill="#cbd5e1" font-weight="600" text-anchor="end">'
             f'<text x="84" y="44">{peer["self_label"]}</text><text x="84" y="78">{peer["peer_label"]}</text></g></svg>')
 
 

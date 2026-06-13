@@ -34,9 +34,9 @@ PLACEHOLDER = "<!-- KLINE -->"
 BLOCK = START + """
 <div class="chartcard">
   <div class="chartttl">日K線（還原權值）　綠漲紅跌 ·
-    <span style="color:#d97706;font-weight:700">MA20</span> ·
-    <span style="color:#7c3aed;font-weight:700">MA50</span> ·
-    <span style="color:#2563eb;font-weight:700">MA200</span> · 下方為成交量。移動游標／觸控看當日 OHLC</div>
+    <span style="color:#f59e0b;font-weight:700">MA20</span> ·
+    <span style="color:#a78bfa;font-weight:700">MA50</span> ·
+    <span style="color:#60a5fa;font-weight:700">MA200</span> · 下方為成交量。移動游標／觸控看當日 OHLC</div>
   <div class="klbtns" style="display:flex;gap:6px;margin:2px 0 8px 2px">
     <button data-n="22">1月</button><button data-n="126">半年</button>
     <button data-n="252" class="on">1年</button><button data-n="0">2年</button>
@@ -75,23 +75,23 @@ BLOCK = START + """
     let vmax=0; view.forEach(b=>vmax=Math.max(vmax,b[5]||0));
     const volTop=padT+priceH+gap, vy=v=>volTop+volH-(v/(vmax||1))*volH;
     const cw=(x1-x0)/view.length, bw=Math.max(1,Math.min(cw*0.7,13));
-    cx.strokeStyle='#eef2f7'; cx.fillStyle='#94a3b8'; cx.font='10px sans-serif'; cx.textAlign='left';
+    cx.strokeStyle='rgba(148,163,184,0.16)'; cx.fillStyle='#94a3b8'; cx.font='10px sans-serif'; cx.textAlign='left';
     for(let g=0;g<=4;g++){const v=lo+(hi-lo)*g/4,y=py(v);
       cx.beginPath();cx.moveTo(x0,y);cx.lineTo(x1,y);cx.stroke();
       cx.fillText(v.toFixed(v<10?2:0),x1+4,y+3);}
     view.forEach((b,i)=>{
-      const xc=x0+cw*i+cw/2, up=b[4]>=b[1], col=up?'#16a34a':'#dc2626';
+      const xc=x0+cw*i+cw/2, up=b[4]>=b[1], col=up?'#22c55e':'#ef4444';
       cx.strokeStyle=col; cx.fillStyle=col;
       cx.beginPath();cx.moveTo(xc,py(b[2]));cx.lineTo(xc,py(b[3]));cx.stroke();
       const yo=py(b[1]),yc=py(b[4]),top=Math.min(yo,yc),hh=Math.max(1,Math.abs(yo-yc));
       cx.fillRect(xc-bw/2,top,bw,hh);
-      cx.fillStyle=up?'rgba(22,163,74,.4)':'rgba(220,38,38,.4)';
+      cx.fillStyle=up?'rgba(34,197,94,.4)':'rgba(239,68,68,.4)';
       const vyy=vy(b[5]||0); cx.fillRect(xc-bw/2,vyy,bw,volTop+volH-vyy);
     });
     function line(arr,col){cx.strokeStyle=col;cx.lineWidth=1.4;cx.beginPath();let st=false;
       arr.forEach((v,i)=>{if(v==null)return;const x=x0+cw*i+cw/2,y=py(v);
         if(!st){cx.moveTo(x,y);st=true;}else cx.lineTo(x,y);});cx.stroke();cx.lineWidth=1;}
-    line(m20,'#d97706'); line(m50,'#7c3aed'); line(m200,'#2563eb');
+    line(m20,'#f59e0b'); line(m50,'#a78bfa'); line(m200,'#60a5fa');
     cx.fillStyle='#94a3b8'; cx.textAlign='center';
     [0,Math.floor(view.length/2),view.length-1].forEach(i=>{
       if(i<0||i>=view.length)return; cx.fillText(view[i][0].slice(2),x0+cw*i+cw/2,H-6);});
@@ -125,11 +125,11 @@ BLOCK = START + """
     const bw2=tw+16, bh=lines.length*16+10;
     let tx=xc+12; if(tx+bw2>g.W) tx=xc-12-bw2; if(tx<2)tx=2;
     const ty=g.padT+4;
-    cx.fillStyle='rgba(255,255,255,.96)';cx.strokeStyle='#cbd5e1';cx.lineWidth=1;
+    cx.fillStyle='rgba(15,23,42,.95)';cx.strokeStyle='#334155';cx.lineWidth=1;
     cx.beginPath();cx.rect(tx,ty,bw2,bh);cx.fill();cx.stroke();
     cx.textAlign='left';cx.textBaseline='top';
     lines.forEach((t,k)=>{
-      cx.fillStyle = k===0?'#0f172a':(k===3?(chg>=0?'#16a34a':'#dc2626'):'#334155');
+      cx.fillStyle = k===0?'#f1f5f9':(k===3?(chg>=0?'#22c55e':'#ef4444'):'#cbd5e1');
       cx.font = k===0?'700 11px sans-serif':'11px sans-serif';
       cx.fillText(t,tx+8,ty+6+k*16);
     });
