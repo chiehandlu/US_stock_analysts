@@ -101,10 +101,9 @@ null 或 []，完整結構見 `build_report.py` 檔頭):
 
 **開啟/連結(依環境)**:
 - 本機(Mac):`open reports/{TICKER}_report_{YYYY-MM-DD}.html`。
-- 雲端 session(無瀏覽器):**不要** open。在第 6 步 push 後,於對話輸出可點連結與下載步驟:
-  `https://github.com/{OWNER}/{REPO}/blob/main/reports/{TICKER}_report_{YYYY-MM-DD}.html`
-  ({OWNER}/{REPO} 由 `git remote get-url origin` 取得),並附:「手機點開→按『Download raw file』
-  下載→從下載項目用 Chrome 開啟即完整渲染(離線也可)→看完可刪。」
+- 雲端 session(無瀏覽器):**不要** open。在第 6 步 push 後,於對話輸出 **GitHub Pages 渲染網址**(手機點一下即直接顯示報告,免下載):
+  `https://{OWNER}.github.io/{REPO}/reports/{TICKER}_report_{YYYY-MM-DD}.html`
+  ({OWNER}/{REPO} 由 `git remote get-url origin` 取得;OWNER 用小寫)。提醒使用者:「push 後 Pages 約 1 分鐘才部署完,若顯示 404 稍等再重整。」
 - 對話中給重點摘要即可,不重複整份報告。
 
 ### 第 6 步:自動同步回雲端(必做,在 git repo 內時)
@@ -159,7 +158,7 @@ null 或 []，完整結構見 `build_report.py` 檔頭):
 ### 步驟 6:產出獨立報告(必做)
 1. 把以上整理成 content JSON(完整結構見 `build_news_report.py` 檔頭),存到 `reports/{TICKER}_news_content_{YYYY-MM-DD}.json`。關鍵欄位:`ticker`、`report_date`、`confidence`、`existing_report`(或 null+`no_existing_note`)、`news_items[]`、`events[]`(各含 `verification`/`credible`/`impact`/`scoring_impact`)、`summary`(stance/key_events/confidence/text)、`watch_points[]`。
 2. 執行 `{PYTHON} build_news_report.py {TICKER} reports/{TICKER}_news_content_{YYYY-MM-DD}.json`(`{PYTHON}` 同第 1 步:本機 `.venv/bin/python`、雲端 `python3`)。它輸出**版面固定**的 `reports/{TICKER}_news_{YYYY-MM-DD}.html`(同日重跑自動加序號不覆蓋)+ 機器可讀摘要 `reports/{TICKER}_news_{YYYY-MM-DD}.json`(供後續追蹤/比對)。
-3. **開啟/連結(依環境)**:本機(Mac)`open` 該 HTML;雲端 session 不要 open,改在對話給 `https://github.com/{OWNER}/{REPO}/blob/main/reports/{檔名}.html` 可點連結 + 下載步驟(同主流程第 5 步寫法)。
+3. **開啟/連結(依環境)**:本機(Mac)`open` 該 HTML;雲端 session 不要 open,改在對話給 **GitHub Pages 渲染網址** `https://{OWNER}.github.io/{REPO}/reports/{檔名}.html`(手機點一下即顯示,免下載;OWNER 小寫;push 後約 1 分鐘部署完成,同主流程第 5 步寫法)。
 4. 對話中給重點:各事件查證結果(等級+來源)、受影響維度與方向、整體傾向、最該追蹤的觀察點;不重複整份報告。
 
 ### 步驟 7:自動同步回雲端(必做,在 git repo 內時)
