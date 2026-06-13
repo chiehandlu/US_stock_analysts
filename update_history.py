@@ -31,7 +31,7 @@ from datetime import datetime, timezone
 import fetch_stock as fs
 import fetch_financials as ff
 
-HISTORY_SCHEMA_VERSION = "history-1.0"
+HISTORY_SCHEMA_VERSION = "history-1.1"  # 1.1：新增 price_bars（日K線，滾動視窗覆蓋）
 HISTORY_DIR = os.path.join(os.path.expanduser(fs.SAVE_DIR), "history")
 
 DOC = {
@@ -43,6 +43,7 @@ DOC = {
                          "tags 記錄各指標實際採用的 XBRL 標籤；filed 為該年資料最新申報日",
     "financials.quarters": "全部單季序列（只增不減），鍵為季末日。損益/現金流為單季值（80~100天），"
                            "資產負債為 10-Q 時點值",
+    "price_bars": "近 2 年日線 [日期,開,高,低,收,量]，每次更新覆蓋（滾動視窗，非累積），供報告畫日K線",
     "financials.annual.<end>.derived": "該年衍生指標：毛利率%、淨利率%、自由現金流、EBITDA（輸入齊全才計算）",
     "last_run_warnings": "最近一次更新的警告（含兩支腳本的 warnings 與抓取失敗訊息）",
 }
@@ -71,6 +72,7 @@ def new_history(ticker):
         },
         "technical_snapshots": [],
         "financials": {"annual": {}, "quarters": {}},
+        "price_bars": [],
         "last_run_warnings": [],
     }
 
@@ -79,10 +81,14 @@ def load_history(path, ticker):
     if os.path.exists(path):
         with open(path, encoding="utf-8") as f:
             hist = json.load(f)
-        if hist.get("schema_version") != HISTORY_SCHEMA_VERSION:
+        ver = hist.get("schema_version", "")
+        # 同主版本（history-1.x）相容、可直接續用（欄位增補是向後相容的）；主版本不符才擋下
+        if not ver.startswith("history-1."):
             raise RuntimeError(
-                f"歷史檔 schema 為 {hist.get('schema_version')}，本腳本為 {HISTORY_SCHEMA_VERSION}，"
+                f"歷史檔 schema 為 {ver}，本腳本為 {HISTORY_SCHEMA_VERSION}（主版本不符），"
                 f"請先處理版本差異（避免默默混寫壞檔）")
+        hist.setdefault("price_bars", [])  # 由 1.0 升上來時補欄位
+        hist["schema_version"] = HISTORY_SCHEMA_VERSION
         return hist
     return new_history(ticker)
 
@@ -224,6 +230,7 @@ def update_technical(hist, ticker, run_warnings):
         "indicators": output["indicators"],
     }
     hist["technical_snapshots"] = merge_snapshot(hist["technical_snapshots"], snap)
+    hist["price_bars"] = output.get("price_bars", [])  # 滾動視窗：每次以最新 2 年覆蓋
     if name:
         hist["meta"]["company_name"] = name
     run_warnings.extend(output["warnings"])

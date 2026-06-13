@@ -12,6 +12,7 @@ Python CLIs that fetch US-stock data locally and emit **self-describing JSON**, 
 - `fetch_financials.py TICKER` — XBRL financial facts (3 fiscal years + latest quarter) from SEC EDGAR companyfacts.
 - `update_history.py TICKER` — 累積層（建議日常入口）：跑上面兩支的抓取邏輯、照常輸出當日快照，並把數據合併進 `history/{TICKER}_history.json`：技術面軌跡（每交易日一筆，同日重跑覆蓋）、全部會計年度與全部單季序列（只增不減）。冪等；單側抓取失敗時另一側照常更新。歷史檔自我描述，可直接上傳 Project。
   - 期間軸防呆：年度/季度軸由營收/淨利（duration）的結束日建立，其他指標只對齊到軸上——否則 dei 標籤（端點日=申報封面日）會長出單指標碎片期間。
+- `inject_kline.py TICKER REPORT_HTML` — 把 history 的 `price_bars` 畫成自包含互動日K線（canvas + 內嵌資料 + 純 JS，含 MA20/50、成交量、1月/半年/1年/2年 切換），注入報告 HTML 的 `<!-- KLINE -->` 佔位符。離線可渲染。
 
 ## 互動入口（每個 session 都遵守）
 

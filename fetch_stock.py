@@ -28,7 +28,7 @@ from datetime import datetime, timezone
 
 import pandas as pd
 
-SCHEMA_VERSION = "1.1"  # 1.1：第二來源由 Stooq（已被反爬蟲牆封）改為 Nasdaq 官方 API；cross_check 欄位改名
+SCHEMA_VERSION = "1.2"  # 1.2：新增 price_bars（近 2 年日 OHLCV，供畫日K線）。1.1：第二來源 Stooq→Nasdaq
 
 # 存檔資料夾。預設＝腳本所在資料夾（本機 Mac 與雲端 GitHub 簽出皆通用，勿寫死絕對路徑，
 # 否則雲端 session 會把檔案寫到 repo 外、push 不回來，跨裝置累積即斷裂）。
@@ -209,6 +209,7 @@ DOC = {
     "indicators": "技術指標。MA 均線、均線排列、趨勢格局、黃金/死亡交叉、52週位置、量能",
     "cross_check": "yfinance 收盤 與 Nasdaq 獨立來源最新成交價交叉比對。mismatch 常代表 Yahoo 缺最新交易日收盤（落後一天）或盤中時點差異，須人工確認",
     "warnings": "所有合理性檢查的警告。非空時 data_quality=review",
+    "price_bars": "近 2 年日線，格式 [日期, 開, 高, 低, 收, 量]，收盤為還原權值，供畫日K線",
 }
 
 
@@ -252,6 +253,17 @@ def build_output(ticker, df, name, indicators, warnings):
         cross_check["status"] = "nasdaq_unavailable"
         warnings.append("Nasdaq 交叉檢查不可用（無法取得第二來源），本次僅單一來源")
 
+    # 日線 OHLCV（緊湊陣列格式 [日期,開,高,低,收,量]），供下游畫日K線
+    price_bars = []
+    for idx, row in df.iterrows():
+        d = str(idx.date()) if hasattr(idx, "date") else str(idx)
+        price_bars.append([
+            d,
+            _round(row["Open"], 2), _round(row["High"], 2),
+            _round(row["Low"], 2), _round(row["Close"], 2),
+            int(row["Volume"]) if not pd.isna(row["Volume"]) else None,
+        ])
+
     return {
         "schema_version": SCHEMA_VERSION,
         "_doc": DOC,
@@ -266,6 +278,7 @@ def build_output(ticker, df, name, indicators, warnings):
         "indicators": indicators,
         "cross_check": cross_check,
         "warnings": warnings,
+        "price_bars": price_bars,
     }
 
 
