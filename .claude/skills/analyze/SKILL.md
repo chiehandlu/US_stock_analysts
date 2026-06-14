@@ -101,9 +101,13 @@ null 或 []，完整結構見 `build_report.py` 檔頭):
 
 **開啟/連結(依環境)**:
 - 本機(Mac):`open reports/{TICKER}_report_{YYYY-MM-DD}.html`。
-- 雲端 session(無瀏覽器):**不要** open。在第 6 步 push 後,於對話輸出 **GitHub Pages 渲染網址**(手機點一下即直接顯示報告,免下載):
-  `https://{OWNER}.github.io/{REPO}/reports/{TICKER}_report_{YYYY-MM-DD}.html`
-  ({OWNER}/{REPO} 由 `git remote get-url origin` 取得;OWNER 用小寫)。提醒使用者:「push 後 Pages 約 1 分鐘才部署完,若顯示 404 稍等再重整。」
+- 雲端 session(無瀏覽器):**不要** open。第 6 步 push 後,`claude/*` 分支需先經 `auto-merge.yml` 併入 main、Pages 再重新部署完成,網址才會活(push→merge→部署整段約 1~3 分鐘)。**務必先確認 Pages 部署成功,才把連結給使用者:**
+  - 查部署:用 GitHub MCP 看最新一筆 `pages build and deployment` workflow run 的 `conclusion` 是否 `success`(且時間晚於本次 merge);查不到工具時改請使用者等 1~3 分鐘。
+  - **在確認部署成功前,不要請使用者開啟網址**——提早開會拿到 404,被瀏覽器/CDN 快取住,之後檔案上線了仍回舊的 404(這是跨裝置「明明檔案在卻 404」的元兇)。
+  - 確認成功後,於對話輸出**帶快取破解參數**的 GitHub Pages 渲染網址(手機點一下即顯示,免下載):
+    `https://{OWNER}.github.io/{REPO}/reports/{TICKER}_report_{YYYY-MM-DD}.html?t={UNIX秒}`
+    ({OWNER}/{REPO} 由 `git remote get-url origin` 取得;**OWNER 小寫,REPO 保持原大小寫**——github.io 路徑大小寫敏感,如 `US_stock_analysts` 不可寫成全小寫)。
+  - 救急:若使用者仍踩到 404,請其改用無痕視窗,或在網址後加 `?t=任意數字` 即可繞開快取。
 - 對話中給重點摘要即可,不重複整份報告。
 
 ### 第 6 步:自動同步回雲端(必做,在 git repo 內時)
@@ -160,7 +164,7 @@ null 或 []，完整結構見 `build_report.py` 檔頭):
 ### 步驟 6:產出獨立報告(必做)
 1. 把以上整理成 content JSON(完整結構見 `build_news_report.py` 檔頭),存到 `reports/{TICKER}_news_content_{YYYY-MM-DD}.json`。關鍵欄位:`ticker`、`report_date`、`confidence`、`existing_report`(或 null+`no_existing_note`)、`news_items[]`、`events[]`(各含 `verification`/`credible`/`impact`/`scoring_impact`)、`summary`(stance/key_events/confidence/text)、`watch_points[]`。
 2. 執行 `{PYTHON} build_news_report.py {TICKER} reports/{TICKER}_news_content_{YYYY-MM-DD}.json`(`{PYTHON}` 同第 1 步:本機 `.venv/bin/python`、雲端 `python3`)。它輸出**版面固定**的 `reports/{TICKER}_news_{YYYY-MM-DD}.html`(同日重跑自動加序號不覆蓋)+ 機器可讀摘要 `reports/{TICKER}_news_{YYYY-MM-DD}.json`(供後續追蹤/比對)。
-3. **開啟/連結(依環境)**:本機(Mac)`open` 該 HTML;雲端 session 不要 open,改在對話給 **GitHub Pages 渲染網址** `https://{OWNER}.github.io/{REPO}/reports/{檔名}.html`(手機點一下即顯示,免下載;OWNER 小寫;push 後約 1 分鐘部署完成,同主流程第 5 步寫法)。
+3. **開啟/連結(依環境)**:本機(Mac)`open` 該 HTML;雲端 session 不要 open,改在對話給 **GitHub Pages 渲染網址** `https://{OWNER}.github.io/{REPO}/reports/{檔名}.html?t={UNIX秒}`(手機點一下即顯示,免下載;OWNER 小寫、REPO 保持原大小寫)。**寫法完全同主流程第 5 步**:先確認 Pages 部署成功(查 `pages build and deployment` workflow=success)再給帶 `?t=` 的連結;確認前不要請使用者開啟,以免 404 被快取。
 4. 對話中給重點:各事件查證結果(等級+來源)、受影響維度與方向、整體傾向、最該追蹤的觀察點;不重複整份報告。
 
 ### 步驟 7:自動同步回雲端(必做,在 git repo 內時)
