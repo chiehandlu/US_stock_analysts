@@ -101,12 +101,9 @@ null 或 []，完整結構見 `build_report.py` 檔頭):
 
 **開啟/連結(依環境)**:
 - 本機(Mac):`open reports/{TICKER}_report_{YYYY-MM-DD}.html`。
-- 雲端 session(無瀏覽器):**不要** open。第 6 步 push 後,`claude/*` 分支需先經 `auto-merge.yml` 併入 main、Pages 再重新部署完成,網址才會活(push→merge→部署整段約 1~3 分鐘)。**務必先確認 Pages 部署成功,才把連結給使用者:**
-  - 查部署:用 GitHub MCP 看最新一筆 `pages build and deployment` workflow run 的 `conclusion` 是否 `success`(且時間晚於本次 merge);查不到工具時改請使用者等 1~3 分鐘。
-  - **在確認部署成功前,不要請使用者開啟網址**——提早開會拿到 404,被瀏覽器/CDN 快取住,之後檔案上線了仍回舊的 404(這是跨裝置「明明檔案在卻 404」的元兇)。
-  - 確認成功後,於對話輸出**帶快取破解參數**的 GitHub Pages 渲染網址(手機點一下即顯示,免下載):
-    `https://{OWNER}.github.io/{REPO}/reports/{TICKER}_report_{YYYY-MM-DD}.html?t={UNIX秒}`
-    ({OWNER}/{REPO} 由 `git remote get-url origin` 取得;**OWNER 小寫,REPO 保持原大小寫**——github.io 路徑大小寫敏感,如 `US_stock_analysts` 不可寫成全小寫)。
+- 雲端 session(無瀏覽器):**不要** open。網址 `https://{OWNER}.github.io/{REPO}/reports/{TICKER}_report_{YYYY-MM-DD}.html`({OWNER}/{REPO} 由 `git remote get-url origin` 取得;**OWNER 小寫,REPO 保持原大小寫**——github.io 路徑大小寫敏感,如 `US_stock_analysts` 不可寫成全小寫)。第 6 步 push 後,`claude/*` 分支需先經 `auto-merge.yml` 併入 main、Pages 再重新部署完成,網址才會活(push→merge→部署整段約 1~3 分鐘)。
+  - **連結必須等第 6 步確認 Pages 部署成功後才給**(見第 6 步第 5 點):**在確認成功前不要請使用者開啟網址**——提早開會拿到 404,被瀏覽器/CDN 快取住,之後檔案上線了仍回舊的 404(這是跨裝置「明明檔案在卻 404」的元兇)。
+  - 確認成功後,於對話輸出**帶快取破解參數**的網址(手機點一下即顯示,免下載):`…/reports/{TICKER}_report_{YYYY-MM-DD}.html?t={UNIX秒}`(`?t=` 用當下 Unix 秒數)。
   - 救急:若使用者仍踩到 404,請其改用無痕視窗,或在網址後加 `?t=任意數字` 即可繞開快取。
 - 對話中給重點摘要即可,不重複整份報告。
 
@@ -120,7 +117,11 @@ null 或 []，完整結構見 `build_report.py` 檔頭):
    - **雲端 session(在 `claude/*` 分支上)**：`git push`(推當前 `claude/*` 分支即可，**不要**推 main——雲端沙箱禁止、會 403)。推上去後 GitHub Actions(`auto-merge.yml`)會**自動把 `claude/*` 併入 main 並刪分支**，Pages 隨即更新；你不需開 PR 或手動 merge。
    - **雲端 session 必做**:session 結束即銷毀,不 push 則本次更新與報告全部遺失。
    - push 失敗(離線/權限/衝突):明確告知「報告已產出但**尚未同步到雲端**」,提示在電腦端 `git pull` 後重試;**不可**假裝成功。
-5. 對話中用一行回報同步結果(已 push ✓ / 已跳過-純本機 / 失敗-原因)。
+5. **確認 Pages 部署成功,才把連結給使用者(必做)**:
+   - 組出 Pages 網址(同第 5 步)。確認部署成功二擇一:(a) 用 `curl -s -o /dev/null -w "%{http_code}" {URL}`(或 WebFetch)**輪詢直到回 `200`**;(b) 有 GitHub MCP 時,查最新一筆 `pages build and deployment` workflow run 的 `conclusion` 是否 `success`(且時間晚於本次 merge)。剛 push 常是 404;**雲端 session 還要先等 `auto-merge.yml` 把 `claude/*` 併入 main、Pages 再重建**,整段通常 1~3 分鐘。每次間隔約 15~20 秒,最多輪詢約 3 分鐘。(雲端若 curl 被 egress 擋,改用 WebFetch。)
+   - 確認到 `200` 後,才把**帶 `?t={epoch}` 的網址**(epoch=當下 Unix 秒數,破瀏覽器/CDN 快取)貼給使用者請其開啟。**在這之前不要**請使用者點網址。
+   - 逾時仍非 200:告知「報告已產出並 push,但 Pages 尚未部署完成,請稍後再開此網址(可手動在結尾加 `?t=` 重整)」,**不要**催使用者現在點。
+6. 對話中用一行回報同步結果(已 push ✓ / 已跳過-純本機 / 失敗-原因)。
 
 ## M8 消息事件分析流程(消息事件分析模式專用)
 
@@ -164,7 +165,7 @@ null 或 []，完整結構見 `build_report.py` 檔頭):
 ### 步驟 6:產出獨立報告(必做)
 1. 把以上整理成 content JSON(完整結構見 `build_news_report.py` 檔頭),存到 `reports/{TICKER}_news_content_{YYYY-MM-DD}.json`。關鍵欄位:`ticker`、`report_date`、`confidence`、`existing_report`(或 null+`no_existing_note`)、`news_items[]`、`events[]`(各含 `verification`/`credible`/`impact`/`scoring_impact`)、`summary`(stance/key_events/confidence/text)、`watch_points[]`。
 2. 執行 `{PYTHON} build_news_report.py {TICKER} reports/{TICKER}_news_content_{YYYY-MM-DD}.json`(`{PYTHON}` 同第 1 步:本機 `.venv/bin/python`、雲端 `python3`)。它輸出**版面固定**的 `reports/{TICKER}_news_{YYYY-MM-DD}.html`(同日重跑自動加序號不覆蓋)+ 機器可讀摘要 `reports/{TICKER}_news_{YYYY-MM-DD}.json`(供後續追蹤/比對)。
-3. **開啟/連結(依環境)**:本機(Mac)`open` 該 HTML;雲端 session 不要 open,改在對話給 **GitHub Pages 渲染網址** `https://{OWNER}.github.io/{REPO}/reports/{檔名}.html?t={UNIX秒}`(手機點一下即顯示,免下載;OWNER 小寫、REPO 保持原大小寫)。**寫法完全同主流程第 5 步**:先確認 Pages 部署成功(查 `pages build and deployment` workflow=success)再給帶 `?t=` 的連結;確認前不要請使用者開啟,以免 404 被快取。
+3. **開啟/連結(依環境)**:本機(Mac)`open` 該 HTML;雲端 session 不要 open,網址 `https://{OWNER}.github.io/{REPO}/reports/{檔名}.html`(OWNER 小寫、**REPO 保持原大小寫**)。**連結要等步驟 7 push 並確認 Pages 部署成功(curl 輪詢回 200,或查 `pages build and deployment` workflow=success)後才給,且帶 `?t={UNIX秒}` 快取破解參數;未確認前不要請使用者開啟**(以免 404 被快取)——規則同主流程第 5、6 步。
 4. 對話中給重點:各事件查證結果(等級+來源)、受影響維度與方向、整體傾向、最該追蹤的觀察點;不重複整份報告。
 
 ### 步驟 7:自動同步回雲端(必做,在 git repo 內時)

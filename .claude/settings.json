@@ -16,6 +16,7 @@
       "Bash(git commit:*)",
       "Bash(git push:*)",
       "Bash(git pull:*)",
+      "Bash(curl -s -o /dev/null -w:*)",
       "WebSearch"
     ]
   },
@@ -28,7 +29,8 @@
         "fc.yahoo.com",
         "api.nasdaq.com",
         "data.sec.gov",
-        "www.sec.gov"
+        "www.sec.gov",
+        "*.github.io"
       ]
     }
   }
