@@ -16,13 +16,13 @@
     "entity_name": "Ondas Inc.",
     "cik": "0001646188",
     "created_at_utc": "2026-06-13T03:52:28+00:00",
-    "last_updated_utc": "2026-06-13T03:52:34+00:00",
-    "runs": 1
+    "last_updated_utc": "2026-06-14T03:09:35+00:00",
+    "runs": 2
   },
   "technical_snapshots": [
     {
       "as_of": "2026-06-12",
-      "fetched_at_utc": "2026-06-13T03:52:33+00:00",
+      "fetched_at_utc": "2026-06-14T03:09:34+00:00",
       "data_quality": "ok",
       "cross_check_status": "consistent",
       "indicators": {
@@ -42,9 +42,9 @@
         "low_52w": 1.43,
         "pct_from_52w_high": -33.4,
         "pct_from_52w_low": 552.45,
-        "volume_latest": 54155036,
-        "volume_avg20": 82691561,
-        "volume_ratio_vs_avg20": 0.65
+        "volume_latest": 55086900,
+        "volume_avg20": 82738155,
+        "volume_ratio_vs_avg20": 0.67
       }
     }
   ],
@@ -5409,11 +5409,11 @@
     ],
     [
       "2026-06-12",
-      9.79,
+      9.8,
       9.88,
       9.18,
       9.33,
-      54155036
+      55086900
     ]
   ],
   "last_run_warnings": []
