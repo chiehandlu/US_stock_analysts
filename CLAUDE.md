@@ -30,7 +30,7 @@ Python CLIs that fetch US-stock data locally and emit **self-describing JSON**, 
 
 ## 報告連結（Pages）— 跨裝置開啟（每個 session 都遵守）
 
-雲端 session 產出報告並 push 後,報告檔要先經 `auto-merge.yml` 併入 `main`、GitHub Pages 再重新部署(整段約 1~3 分鐘)網址才會活。**規則:先確認 Pages 部署成功(查 `pages build and deployment` workflow=success),才把連結給使用者;確認成功前不要請使用者開啟網址**——提早開會拿到 404 並被瀏覽器/CDN 快取,之後檔案上線了仍回舊 404(這是「檔案明明在卻 404」的元兇)。給連結時**一律附快取破解參數** `?t={UNIX秒}`,且 **REPO 保持原大小寫**(github.io 路徑大小寫敏感,如 `US_stock_analysts`)。救急:無痕視窗或在網址後加 `?t=任意數字` 即可繞開快取。詳見 analyze skill 第 5 步。
+雲端 session(手機)是 push `claude/*` → `auto-merge.yml` 併入 `main` → GitHub Pages 重新部署,三段非同步(整段約 1~3 分鐘)網址才會活。**規則:先確認 Pages 部署成功(curl 輪詢網址回 `200`,或查 `pages build and deployment` workflow=success),才把連結給使用者;確認成功前不要請使用者開啟網址**——提早開會拿到 404 並被瀏覽器/CDN 快取,之後檔案上線了仍回舊 404(這就是「merge 回 main 了還是打不開」的元兇)。給連結時**一律附快取破解參數** `?t={UNIX秒}`,且 **REPO 保持原大小寫**(github.io 路徑大小寫敏感,如 `US_stock_analysts`)。救急:無痕視窗或在網址後加 `?t=任意數字` 即可繞開快取。詳見 analyze skill 第 5–6 步。
 
 ## 執行環境（重要）
 
@@ -53,7 +53,7 @@ Python CLIs that fetch US-stock data locally and emit **self-describing JSON**, 
 - 存檔路徑用 `os.path.dirname(os.path.abspath(__file__))`（腳本所在資料夾），本機與雲端皆通用，**勿改回絕對路徑**。
 - 版控範圍（見 `.gitignore`）：`history/`、`reports/` 要進 repo（累積大腦＋報告，跨裝置共享）；根目錄當日快照 `*_stock_*.json`/`*_fin_*.json`、`.venv/`、`__pycache__/` 不進。
 - 累積靠 git：每次跑前 `git pull`、跑後 push `history/`＋`reports/`。雲端 session 用完即毀，不 push 則更新遺失。兩裝置避免同時跑同一檔以免衝突。
-- **報告連結要等部署確認再給**：手機（雲端 session）是 push `claude/*` → `auto-merge.yml` 併入 main → Pages 重建，三段非同步，約 1~3 分鐘才真的可開。流程必須**輪詢 Pages 網址直到回 HTTP 200**，確認部署成功後，才把**帶快取破解參數 `?t={epoch}`** 的連結給使用者；未確認前不要請使用者開啟網址（避免點到 404 或舊快取——這就是「merge 回 main 了還是打不開」的主因）。細節見 SKILL.md 第 5–6 步。
+- 報告連結要等 Pages 部署確認成功才給（帶 `?t=` 破快取），規則見上方「報告連結（Pages）」一節。
 
 ## 目前狀態與待辦（先讀這段）
 
